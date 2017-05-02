@@ -9,58 +9,6 @@ Modified : 2017.05.02
 
 <br>
 
-## <a name="Control::Double8">Control::Double8</a>
-PETRONE 자동차 조종 시에 사용합니다. 드론 모드일 때 이 명령을 전송하면 무시합니다.
-```cpp
-namespace Control
-{
-    struct Double8
-    {
-        s8      wheel;      // wheel
-        s8      accel;      // accel
-    };
-}
-```
-
-Control::Double8 입력 값의 범위는 다음과 같습니다
-
-
-|이름      | 형식 | 범위        | 방향      | 음수 값(-) | 양수 값(+)    |
-|:--------:|:----:|:-----------:|:---------:|:----------:|:-------------:|
-| wheel     | s8   | -100 ~ 100  | 좌우 회전 | 좌회전       | 우회전          |
-| accel | s8   | -100 ~ 100  | 전후진 속도    | 후진       | 전진          |
-
-<br>
-<br>
-
-## <a name="Control::Quad8">Control::Quad8</a>
-PETRONE 드론 및 자동차 조종 시에 사용합니다.
-```cpp
-namespace Control
-{
-    struct Quad8
-    {
-        s8      roll;       // roll
-        s8      pitch;      // pitch
-        s8      yaw;        // yaw
-        s8      throttle;   // throttle
-    };
-}
-```
-
-Control 입력 값의 범위는 다음과 같습니다. Drive 모드에서는 **throttle**(전후)과 **roll**(좌우)만 사용합니다.
-
-
-|이름      | 형식 | 범위        | 방향      | 음수 값(-) | 양수 값(+)    |
-|:--------:|:----:|:-----------:|:---------:|:----------:|:-------------:|
-| roll     | s8   | -100 ~ 100  | 좌우 이동 | 좌측       | 우측          |
-| pitch    | s8   | -100 ~ 100  | 전후 이동 | 후방       | 전방          |
-| yaw      | s8   | -100 ~ 100  | 좌우 회전 | 반시계     | 시계 방향     |
-| throttle | s8   | -100 ~ 100  | 승하강    | 하강       | 상승          |
-
-<br>
-<br>
-
 ## <a name="CommandBase">Protocol::CommandBase</a>
 PETRONE의 설정을 변경하거나 데이터를 요청할 때 사용합니다.
 ```cpp

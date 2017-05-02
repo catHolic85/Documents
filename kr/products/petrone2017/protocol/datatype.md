@@ -108,6 +108,38 @@ namespace Protocol
 
 
 <br>
+<br>
+
+
+
+<table>
+    <tr>
+        <td><div align="center">값</div></td>
+        <td><div align="center">이름</div></td>
+        <td><div align="center">설명</div></td>
+        <td><div align="center">관련구조체</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">0x00</div></td>
+        <td><div align="center">None</div></td>
+        <td><div align="center">없음</div></td>
+        <td><div align="center"></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">0x01</div></td>
+        <td><div align="center">Ping</div></td>
+        <td><div align="center">통신 확인</div></td>
+        <td><div align="center">[Protocol::Ping](structs.md#Ping)</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">0x02</div></td>
+        <td><div align="center">Ack</div></td>
+        <td><div align="center">데이터 수신에 대한 응답</div></td>
+        <td><div align="center">[Protocol::Ack](structs.md#Ack)</div></td>
+    </tr>
+</table>
+
+<br>
 
 ---
 
