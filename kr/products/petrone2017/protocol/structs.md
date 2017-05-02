@@ -33,9 +33,9 @@ namespace Protocol
 {
     struct Ack
     {
-		u32		systemTime;		// 수신 받은 시간
-		u8		dataType;		// 수신 받은 데이터 타입
-		u16		crc16;			// 수신 받은 데이터의 crc16
+        u32     systemTime;     // 수신 받은 시간
+        u8      dataType;       // 수신 받은 데이터 타입
+        u16     crc16;          // 수신 받은 데이터의 crc16
     };
 }
 ```
@@ -367,10 +367,10 @@ namespace Protocol
 {
     struct Pressure
     {
-        s32		d1;
-        s32		d2;
-        s32		temperature;
-        s32		pressure;
+        s32     d1;
+        s32     d2;
+        s32     temperature;
+        s32     pressure;
     };
 }
 ```
@@ -386,8 +386,8 @@ namespace Protocol
 {
     struct ImageFlow
     {
-        s32		fVelocitySumX;
-        s32		fVelocitySumY;
+        s32     fVelocitySumX;
+        s32     fVelocitySumY;
     };
 }
 ```
@@ -437,12 +437,12 @@ namespace Protocol
 {
     struct Range
     {
-        u16	left;
-        u16	front;
-        u16	right;
-        u16	rear;
-        u16	top;
-        u16	bottom;
+        u16 left;
+        u16 front;
+        u16 right;
+        u16 rear;
+        u16 top;
+        u16 bottom;
     };
 }
 ```

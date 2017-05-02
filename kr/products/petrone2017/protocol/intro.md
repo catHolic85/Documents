@@ -32,26 +32,26 @@ Petrone2017은 주로 조종기를 PC에 연결한 상태에서 통신을 하게
     </tr>
     <tr>
         <td rowspan="2" colspan="2"><div align="center">Start code</div></td>
-        <td colspan="4"><div align="center">Header</div></td>
-        <td rowspan="2"><div align="center">Data</div></td>
+ ? ? ? ?<td colspan="4"><div align="center">Header</div></td>
+ ? ? ? ?<td rowspan="2"><div align="center">Data</div></td>
         <td rowspan="2" colspan="2"><div align="center">CRC16</div></td>
     </tr>
     <tr>
-        <td><div align="center">DataType</div></td>
-        <td><div align="center">Length</div></td>
-        <td><div align="center">From</div></td>
-        <td><div align="center">To</div></td>
+ ? ? ? ?<td><div align="center">DataType</div></td>
+ ? ? ? ?<td><div align="center">Length</div></td>
+ ? ? ? ?<td><div align="center">From</div></td>
+ ? ? ? ?<td><div align="center">To</div></td>
     </tr>
     <tr>
-        <td><div align="center">0x0A</div></td>
-        <td><div align="center">0x55</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
-        <td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">0x0A</div></td>
+ ? ? ? ?<td><div align="center">0x55</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
+ ? ? ? ?<td><div align="center">-</div></td>
     </tr>
 </table>
 각 항목에 대한 설명은 다음과 같습니다.

@@ -16,8 +16,8 @@ namespace Control
 {
     struct Double8
     {
-		s8		wheel;		// wheel
-		s8		accel;		// accel
+        s8      wheel;      // wheel
+        s8      accel;      // accel
     };
 }
 ```
@@ -40,10 +40,10 @@ namespace Control
 {
     struct Quad8
     {
-		s8		roll;		// roll
-		s8		pitch;		// pitch
-		s8		yaw;		// yaw
-		s8		throttle;	// throttle
+        s8      roll;       // roll
+        s8      pitch;      // pitch
+        s8      yaw;        // yaw
+        s8      throttle;   // throttle
     };
 }
 ```
