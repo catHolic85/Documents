@@ -117,7 +117,7 @@ namespace Protocol
         <td><div align="center">값</div></td>
         <td><div align="center">이름</div></td>
         <td><div align="center">설명</div></td>
-        <td><div align="center">관련구조체</div></td>
+        <td><div align="center">구조체</div></td>
     </tr>
     <tr>
         <td><div align="center">0x00</div></td>
@@ -129,13 +129,13 @@ namespace Protocol
         <td><div align="center">0x01</div></td>
         <td><div align="center">Ping</div></td>
         <td><div align="center">통신 확인</div></td>
-        <td><div align="center">[Protocol::Ping](structs.md#Ping)</div></td>
+        <td><div align="center"><a href="structs.md#Ping">Protocol::Ping</a></div></td>
     </tr>
     <tr>
         <td><div align="center">0x02</div></td>
         <td><div align="center">Ack</div></td>
         <td><div align="center">데이터 수신에 대한 응답</div></td>
-        <td><div align="center">[Protocol::Ack](structs.md#Ack)</div></td>
+        <td><div align="center"><a href="structs.md#Ack">Protocol::Ack</a></div></td>
     </tr>
 </table>
 
