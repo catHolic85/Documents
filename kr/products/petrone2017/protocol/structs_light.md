@@ -1,5 +1,5 @@
-***PETRONE / BLE / Protocol / Structs / Light***<br>
-Modified : 2017.03.27
+***PETRONE2017 / Protocol / Structs / Light***<br>
+Modified : 2017.05.02
 
 ---
 
@@ -251,7 +251,7 @@ namespace Protocol
 
 ---
 
-### PETRONE
+### PETRONE 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
@@ -261,17 +261,6 @@ namespace Protocol
 6. [Structs](structs.md)
 7. ***Structs - Light***
 
-
-### PETRONE Link
-
-1. [Intro](link/intro.md)
-2. [DataType](link/datatype.md)
-3. [Definitions](link/definitions.md)
-4. [Structs](link/structs.md)
-5. [Examples](link/examples.md)
-
 <br>
 
-[Home](../../README.md)
-
-
+[Index](index.md)

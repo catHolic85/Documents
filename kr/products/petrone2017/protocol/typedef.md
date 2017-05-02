@@ -28,7 +28,7 @@ typedef uint8_t   u8;
 
 ---
 
-### PETRONE
+### PETRONE 2017
 
 1. [Intro](intro.md)
 2. ***Typedef***
@@ -40,5 +40,5 @@ typedef uint8_t   u8;
 
 <br>
 
-[Home](../../README.md)
+[Index](index.md)
 

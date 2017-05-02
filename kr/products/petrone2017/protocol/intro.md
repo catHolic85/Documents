@@ -60,8 +60,8 @@ Petrone2017은 주로 조종기를 PC에 연결한 상태에서 통신을 하게
 |영역 | 설명 |
 |:---|:---|
 | Start code | 데이터 전송 시작을 알림 |
-| Header - DataType | 헤더 뒤에 이어지는 데이터의 형식 |
-| Header - Length | 헤더 뒤에 이어지는 데이터의 길이 |
+| Header - DataType | 데이터의 형식 |
+| Header - Length | 데이터의 길이 |
 | Header - From | 데이터를 전송하는 장치의 DeviceType |
 | Header - To | 데이터를 수신 받는 장치의 DeviceType |
 | Data | 전송할 데이터 |
@@ -121,7 +121,7 @@ Petrone2017 조종기는 윈도우10인 경우 자동으로 인식합니다. 그
 
 ---
 
-### PETRONE
+### PETRONE 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
@@ -131,8 +131,6 @@ Petrone2017 조종기는 윈도우10인 경우 자동으로 인식합니다. 그
 6. [Structs](structs.md)
 7. [Structs - Light](structs_light.md)
 
-
 <br>
 
-[Home](../../README.md)
-
+[Index](index.md)

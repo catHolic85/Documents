@@ -563,7 +563,7 @@ namespace Light
 
 ---
 
-### PETRONE
+### PETRONE 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
@@ -573,4 +573,6 @@ namespace Light
 6. [Structs](structs.md)
 7. [Structs - Light](structs_light.md)
 
-[Home](../../README.md)
+<br>
+
+[Index](index.md)

@@ -1,5 +1,5 @@
-***PETRONE / BLE / Protocol / Structs***<br>
-Modified : 2017.04.17
+***PETRONE2017 / Protocol / Structs***<br>
+Modified : 2017.05.02
 
 ---
 
@@ -9,15 +9,33 @@ Modified : 2017.04.17
 
 <br>
 
+## <a name="Ping">Protocol::Ping</a>
+특정 장치가 존재하는지를 확인할 때 사용합니다. 응답은 Ack를 받습니다.
+```cpp
+namespace Protocol
+{
+    struct Ping
+    {
+        u32  systemTime;   // Ping을 전송하는 장치의 시각
+    };
+}
+```
+
+
+<br>
+<br>
+
+
 ## <a name="Ack">Protocol::Ack</a>
-PETRONE이 데이터를 수신 받았을 때 응답으로 보내는 데이터입니다. PETRONE의 현재 내부 시간과 수신 받은 데이터의 타입을 담아서 반환합니다. Ack와 Control을 제외한 대부분의 명령에 대해 응답으로 전송합니다.
+특정한 데이터를 요청하지 않은 경우에 Ack를 응답으로 전송합니다. 수신 받은 데이터의 crc16을 포함하여 돌려보내기 때문에 데이터를 전송한 측에서 정상적으로 데이터를 전송했는지 판별하는데 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Ack
     {
-        u32  systemTime;   // 수신 받은 시각
-        u8   dataType;     // 수신 받은 데이터 타입
+		u32		systemTime;		// 수신 받은 시간
+		u8		dataType;		// 수신 받은 데이터 타입
+		u16		crc16;			// 수신 받은 데이터의 crc16
     };
 }
 ```
@@ -40,36 +58,6 @@ namespace Protocol
 }
 ```
 - dataType : [Protocol::DataType::Type](datatype.md#DataType)
-
-
-<br>
-<br>
-
-
-## <a name="Control">Protocol::Control</a>
-PETRONE을 조종할 때 사용하는 입력값입니다.
-```cpp
-namespace Protocol
-{
-    struct Control
-    {
-        s8   roll;        // Roll
-        s8   pitch;       // Pitch
-        s8   yaw;         // Yaw
-        s8   throttle;    // Throttle
-    };
-}
-```
-
-Control 입력 값의 범위는 다음과 같습니다. Drive 모드에서는 **throttle**(전후)과 **roll**(좌우)만 사용합니다.
-
-
-|이름      | 형식 | 범위        | 방향      | 음수 값(-) | 양수 값(+)    |
-|:--------:|:----:|:-----------:|:---------:|:----------:|:-------------:|
-| roll     | s8   | -100 ~ 100  | 좌우 이동 | 좌측       | 우측          |
-| pitch    | s8   | -100 ~ 100  | 전후 이동 | 후방       | 전방          |
-| yaw      | s8   | -100 ~ 100  | 좌우 회전 | 반시계     | 시계 방향     |
-| throttle | s8   | -100 ~ 100  | 승하강    | 하강       | 상승          |
 
 
 <br>
@@ -465,7 +453,7 @@ namespace Protocol
 
 ---
 
-### PETRONE
+### PETRONE 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
@@ -475,17 +463,6 @@ namespace Protocol
 6. ***Structs***
 7. [Structs - Light](structs_light.md)
 
-
-### PETRONE Link
-
-1. [Intro](link/intro.md)
-2. [DataType](link/datatype.md)
-3. [Definitions](link/definitions.md)
-4. [Structs](link/structs.md)
-5. [Examples](link/examples.md)
-
 <br>
 
-[Home](../../README.md)
-
-
+[Index](index.md)
