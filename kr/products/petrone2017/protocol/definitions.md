@@ -49,7 +49,7 @@ namespace Protocol
 <br>
 <br>
 
-## <a name="Mode::Vehicle">Mode::Vehicle::Type</a>
+## <a name="Mode_Vehicle">Mode::Vehicle::Type</a>
 페트론 동작 모드를 선택합니다.
 
 ```cpp
@@ -79,7 +79,7 @@ namespace Mode
 <br>
 <br>
 
-## <a name="Mode::System">Mode::System::Type</a>
+## <a name="Mode_System">Mode::System::Type</a>
 시스템 동작 상태를 나타냅니다.
 
 ```cpp
@@ -111,7 +111,7 @@ namespace Mode
 <br>
 <br>
 
-## <a name="Mode::Flight">Mode::Flight::Type</a>
+## <a name="Mode_Flight">Mode::Flight::Type</a>
 비행 제어기 동작 상태를 나타냅니다.
 
 ```cpp
@@ -148,7 +148,7 @@ namespace Mode
 <br>
 <br>
 
-## <a name="Mode::Drive">Mode::Drive::Type</a>
+## <a name="Mode_Drive">Mode::Drive::Type</a>
 자동차 제어기 동작 상태를 나타냅니다.
 
 ```cpp
@@ -312,7 +312,7 @@ namespace FlightEvent
 <br>
 <br>
 
-## <a name="Light::Drone::Mode">Light::Drone::Mode::Type</a>
+## <a name="Light_Drone_Mode">Light::Drone::Mode::Type</a>
 드론 LED 모드 또는 이벤트 명령 시 동작 모드를 지정할 때 사용합니다.
 
 ```cpp
@@ -350,7 +350,7 @@ namespace Light
 <br>
 <br>
 
-## <a name="Light::Controller::Mode">Light::Controller::Mode::Type</a>
+## <a name="Light_Controller_Mode">Light::Controller::Mode::Type</a>
 조종기 LED 모드 또는 이벤트 명령 시 동작 모드를 지정할 때 사용합니다.
 
 ```cpp

@@ -64,7 +64,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Control::Double8">Control::Double8</a>
+## <a name="Control_Double8">Control::Double8</a>
 PETRONE 자동차 조종 시에 사용합니다. 드론 모드일 때 이 명령을 전송하면 무시합니다.
 ```cpp
 namespace Control
@@ -89,7 +89,7 @@ Control::Double8 입력 값의 범위는 다음과 같습니다
 <br>
 
 
-## <a name="Control::Quad8">Control::Quad8</a>
+## <a name="Control_Quad8">Control::Quad8</a>
 PETRONE 드론 및 자동차 조종 시에 사용합니다.
 ```cpp
 namespace Control
@@ -130,45 +130,6 @@ namespace Protocol
 }
 ```
 - command : [Protocol::CommandBase](base_structs.md#CommandBase)
-
-
-<br>
-<br>
-
-
-## <a name="Command2">Protocol::Command2</a>
-명령 두 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct Command2
-    {
-        CommandBase   command1;
-        CommandBase   command2;
-    };
-}
-```
-- command1, command2 : [Protocol::CommandBase](base_structs.md#CommandBase)
-
-
-<br>
-<br>
-
-
-## <a name="Command3">Protocol::Command3</a>
-명령 세 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct Command3
-    {
-        CommandBase   command1;
-        CommandBase   command2;
-        CommandBase   command3;
-    };
-}
-```
-- command1, command2, command3 : [Protocol::CommandBase](base_structs.md#CommandBase)
 
 
 <br>

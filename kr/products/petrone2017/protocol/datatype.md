@@ -110,32 +110,122 @@ namespace Protocol
 <br>
 <br>
 
-
+아래는 각 DataType와 연관된 구조체들을 링크로 연결해두었습니다.
 
 <table>
     <tr>
-        <td><div align="center">값</div></td>
         <td><div align="center">이름</div></td>
+        <td><div align="center">값</div></td>
         <td><div align="center">설명</div></td>
         <td><div align="center">구조체</div></td>
     </tr>
     <tr>
-        <td><div align="center">0x00</div></td>
         <td><div align="center">None</div></td>
+        <td><div align="center">0x00</div></td>
         <td><div align="center">없음</div></td>
         <td><div align="center"></div></td>
     </tr>
     <tr>
-        <td><div align="center">0x01</div></td>
         <td><div align="center">Ping</div></td>
+        <td><div align="center">0x01</div></td>
         <td><div align="center">통신 확인</div></td>
         <td><div align="center"><a href="structs.md#Ping">Protocol::Ping</a></div></td>
     </tr>
     <tr>
-        <td><div align="center">0x02</div></td>
         <td><div align="center">Ack</div></td>
+        <td><div align="center">0x02</div></td>
         <td><div align="center">데이터 수신에 대한 응답</div></td>
         <td><div align="center"><a href="structs.md#Ack">Protocol::Ack</a></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Error</div></td>
+        <td><div align="center">0x03</div></td>
+        <td><div align="center">오류(reserve, 비트 플래그는 추후에 지정)</div></td>
+        <td><div align="center"></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Request</div></td>
+        <td><div align="center">0x04</div></td>
+        <td><div align="center">지정한 타입의 데이터 요청</div></td>
+        <td><div align="center"><a href="structs.md#Request">Protocol::Request</a></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Message</div></td>
+        <td><div align="center">0x05</div></td>
+        <td><div align="center">문자열 데이터</div></td>
+        <td><div align="center"></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Reserved_1</div></td>
+        <td><div align="center">0x06</div></td>
+        <td><div align="center">예약</div></td>
+        <td><div align="center"></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Reserved_2</div></td>
+        <td><div align="center">0x07</div></td>
+        <td><div align="center">예약</div></td>
+        <td><div align="center"></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Monitor</div></td>
+        <td><div align="center">0x08</div></td>
+        <td><div align="center">디버깅용 값 배열 전송. 첫번째 바이트에 타입, 두 번째 바이트에 페이지 지정(수신 받는 데이터의 저장 경로 구분)</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">SystemCounter</div></td>
+        <td><div align="center">0x09</div></td>
+        <td><div align="center">시스템 카운터</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Information</div></td>
+        <td><div align="center">0x0A</div></td>
+        <td><div align="center">펌웨어 및 장치 정보</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">UpdateLocation</div></td>
+        <td><div align="center">0x0B</div></td>
+        <td><div align="center">펌웨어 업데이트 위치 정정</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Update</div></td>
+        <td><div align="center">0x0C</div></td>
+        <td><div align="center">펌웨어 업데이트</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Encrypt</div></td>
+        <td><div align="center">0x0D</div></td>
+        <td><div align="center">펌웨어 암호화</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Address</div></td>
+        <td><div align="center">0x0E</div></td>
+        <td><div align="center">장치 주소</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Administrator</div></td>
+        <td><div align="center">0x0F</div></td>
+        <td><div align="center">관리자 권한</div></td>
+        <td><div align="center"></td>
+    </tr>
+    <tr>
+        <td><div align="center">Control</div></td>
+        <td><div align="center">0x10</div></td>
+        <td><div align="center">조종 명령</div></td>
+        <td><div align="center"><a href="structs.md#Control_Double8">Control::Double8</a>, <a href="structs.md#Control_Quad8">Control::Quad8</a></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Command</div></td>
+        <td><div align="center">0x11</div></td>
+        <td><div align="center">명령</div></td>
+        <td><div align="center"><a href="structs.md#Command">Protocol::Command</a></div></td>
     </tr>
 </table>
 
