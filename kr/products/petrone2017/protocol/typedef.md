@@ -1,5 +1,5 @@
-***PETRONE / BLE / Protocol / Typedef***<br>
-Modified : 2017.03.28
+***PETRONE2017 / Protocol / Typedef***<br>
+Modified : 2017.05.02
 
 ---
 
@@ -37,15 +37,6 @@ typedef uint8_t   u8;
 5. [Base Structs](base_structs.md)
 6. [Structs](structs.md)
 7. [Structs - Light](structs_light.md)
-
-
-### PETRONE Link
-
-1. [Intro](link/intro.md)
-2. [DataType](link/datatype.md)
-3. [Definitions](link/definitions.md)
-4. [Structs](link/structs.md)
-5. [Examples](link/examples.md)
 
 <br>
 

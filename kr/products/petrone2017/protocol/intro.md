@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / Intro***<br>
-Modified : 2017.03.28
+Modified : 2017.05.02
 
 ---
 
@@ -60,7 +60,10 @@ Petrone2017은 주로 조종기를 PC에 연결한 상태에서 통신을 하게
 |영역 | 설명 |
 |:---|:---|
 | Start code | 데이터 전송 시작을 알림 |
-| Header | 헤더 뒤에 이어지는 데이터의 형식과 길이, 데이터를 전송하는 장치, 수신 받는 장치의 DeviceType |
+| Header - DataType | 헤더 뒤에 이어지는 데이터의 형식 |
+| Header - Length | 헤더 뒤에 이어지는 데이터의 길이 |
+| Header - From | 데이터를 전송하는 장치의 DeviceType |
+| Header - To | 데이터를 수신 받는 장치의 DeviceType |
 | Data | 전송할 데이터 |
 | CRC16 | Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a>    |
 
@@ -84,9 +87,9 @@ Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. L
 
 - 특정 장치를 명시한 경우, 해당 장치는 데이터를 요청받은 경우가 아니라면 Ack를 응답으로 보냅니다.
 
-- Broadcasting으로 데이터를 전송한 경우, 데이터 요청이 아닌 일반적인 명령이었다면 해당 명령을 처리할 수 있는 장치는 해당 명령을 처리합니다.
+- Broadcasting으로 데이터를 전송한 경우, 데이터 요청이 아닌 일반적인 명령이었다면 해당 명령을 처리할 수 있는 장치는 받은 명령을 실행합니다.
 
-- Broadcasting으로 데이터를 전송한 경우, 데이터 요청을 전달하였다면 해당 데이터에 대해 응답을 할 수 있는 장치가 응답을 합니다. 이 과정에서 두 개 이상의 장치가 동일한 데이터에 대해 응답이 가능하다면 데이터 송수신 간에 충돌이 발생할 수 있습니다. 사용시 주의하셔야 합니다.
+- Broadcasting으로 데이터를 전송한 경우, 데이터 요청을 전달하였다면 해당 데이터에 대해 응답을 할 수 있는 장치가 응답을 합니다. 이 과정에서 두 개 이상의 장치가 동일한 데이터에 대해 응답이 가능하다면 데이터 송수신 간에 충돌이 발생할 수 있습니다. 사용 시 주의하셔야 합니다.
 
 - Broadcasting에 대해서는 Ack를 응답으로 보내지 않습니다.
 
