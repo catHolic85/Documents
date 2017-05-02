@@ -9,7 +9,26 @@ Modified : 2017.05.02
 
 <br>
 
-## <a name="LightMode">Protocol::LightMode</a>
+## <a name="Light_Manual">Protocol::Light::Manual</a>
+선택한 LED의 밝기를 직접 조정합니다.
+```cpp
+namespace Protocol
+{
+    struct LightMode
+    {
+        u8	flags;         // Flags 열거형을 조합한 값
+        u8	brightness;    // 밝기     
+    };
+}
+```
+- lightMode : [Protocol::LightModeBase](base_structs.md#LightModeBase)
+
+
+<br>
+<br>
+
+
+## <a name="LightMode">Protocol::Light::Mode</a>
 LED 모드 변경 하나를 전달합니다.
 ```cpp
 namespace Protocol
@@ -21,23 +40,6 @@ namespace Protocol
 }
 ```
 - lightMode : [Protocol::LightModeBase](base_structs.md#LightModeBase)
-
-<br>
-<br>
-
-## <a name="LightMode2">Protocol::LightMode2</a>
-LED 모드 변경 두 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct LightMode2
-    {
-        LightModeBase   lightMode1;
-        LightModeBase   lightMode2;
-    };
-}
-```
-- lightMode1, lightMode2 : [Protocol::LightModeBase](base_structs.md#LightModeBase)
 
 <br>
 <br>
@@ -95,23 +97,6 @@ namespace Protocol
 <br>
 <br>
 
-## <a name="LightModeColor2">Protocol::LightModeColor2</a>
-LED 모드 변경 두 개를 전달합니다. RGB 값을 직접 지정합니다.
-```cpp
-namespace Protocol
-{
-    struct LightModeColor2
-    {
-        LightModeColorBase   lightModeColor1;
-        LightModeColorBase   lightModeColor2;
-    };
-}
-```
-- lightModeColor1, lightModeColor2 : [Protocol::LightModeColorBase](base_structs.md#LightModeColorBase)
-
-<br>
-<br>
-
 ## <a name="LightEvent">Protocol::LightEvent</a>
 LED 이벤트 실행 하나를 전달합니다.
 ```cpp
@@ -124,23 +109,6 @@ namespace Protocol
 }
 ```
 - lightEvent : [Protocol::LightEventBase](base_structs.md#LightEventBase)
-
-<br>
-<br>
-
-## <a name="LightEvent2">Protocol::LightEvent2</a>
-LED 이벤트 실행 두 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct LightEvent2
-    {
-        LightEventBase   lightEvent1;
-        LightEventBase   lightEvent2;
-    };
-}
-```
-- lightEvent1, lightEvent2 : [Protocol::LightEventBase](base_structs.md#LightEventBase)
 
 <br>
 <br>
@@ -198,23 +166,6 @@ namespace Protocol
 <br>
 <br>
 
-## <a name="LightEventColor2">Protocol::LightEventColor2</a>
-LED 이벤트 실행 두 개를 전달합니다. RGB 값을 직접 지정합니다.
-```cpp
-namespace Protocol
-{
-    struct LightEventColor2
-    {
-        LightEventColorBase   lightEventColor1;
-        LightEventColorBase   lightEventColor2;
-    };
-}
-```
-- lightEventColor1, lightEventColor2 : [Protocol::LightEventColorBase](base_structs.md#LightEventColorBase)
-
-<br>
-<br>
-
 ## <a name="LightModeDefaultColor">Protocol::LightModeDefaultColor</a>
 LED 시작 모드를 설정합니다. RGB 값을 직접 지정합니다. 여기서 지정한 값은 드론의 내부 메모리에 저장합니다.
 ```cpp
@@ -231,23 +182,6 @@ namespace Protocol
 <br>
 <br>
 
-## <a name="LightModeDefaultColor2">Protocol::LightModeDefaultColor2</a>
-LED 시작 모드 두 개를 설정합니다. RGB 값을 직접 지정합니다. 여기서 지정한 값은 드론의 내부 메모리에 저장합니다.
-```cpp
-namespace Protocol
-{
-    struct LightModeDefaultColor2
-    {
-        LightModeColorBase   lightModeDefaultColor1;
-        LightModeColorBase   lightModeDefaultColor2;
-    };
-}
-```
-- lightModeDefaultColor1, lightModeDefaultColor2 : [Protocol::LightModeColorBase](base_structs.md#LightModeColorBase)
-
-
-
-<br>
 
 ---
 
