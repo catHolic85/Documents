@@ -16,7 +16,7 @@ Modified : 2017.05.02
 
 # 2. 전송 데이터 구조
 
-Petrone2017은 주로 조종기를 PC에 연결한 상태에서 통신을 하게 됩니다. 이 때 송수신 데이터의 구조는 아래와 같습니다.
+Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연결한 상태에서 시리얼 통신을 하게 됩니다. 이 때 송수신 데이터의 구조는 아래와 같습니다.
 
 <table>
     <tr>
@@ -55,6 +55,42 @@ Petrone2017은 주로 조종기를 PC에 연결한 상태에서 통신을 하게
     </tr>
 </table>
 각 항목에 대한 설명은 다음과 같습니다.
+
+<table>
+	<tr>
+		<td colspan="2"><div align="center">영역</div></td>
+		<td><div align="center">설명</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div align="center">Start code</div></td>
+		<td><div align="center">데이터 전송 시작을 알림</div></td>
+	</tr>
+	<tr>
+		<td rowspan="4"><div align="center">Header</div></td>
+		<td><div align="center">DataType</div></td>
+		<td><div align="center">데이터의 형식</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">Length</div></td>
+		<td><div align="center">데이터의 길이</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">From</div></td>
+		<td><div align="center">데이터를 전송하는 장치의 DeviceType</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">To</div></td>
+		<td><div align="center">데이터를 수신 받는 장치의 DeviceType</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div align="center">Data</div></td>
+		<td><div align="center">전송할 데이터</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div align="center">CRC16</div></td>
+		<td><div align="center">Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a></div></td>
+	</tr>
+</table>
 
 
 |영역 | 설명 |
