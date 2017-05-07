@@ -54,7 +54,12 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
         <td><div align="center">-</div></td>
     </tr>
 </table>
+
+<br>
+
 각 항목에 대한 설명은 다음과 같습니다.
+
+<br>
 
 <table>
 	<tr>
@@ -63,46 +68,36 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
 	</tr>
 	<tr>
 		<td colspan="2"><div align="center">Start code</div></td>
-		<td><div align="center">데이터 전송 시작을 알림</div></td>
+		<td><div align="left">데이터 전송 시작을 알림</div></td>
 	</tr>
 	<tr>
 		<td rowspan="4"><div align="center">Header</div></td>
 		<td><div align="center">DataType</div></td>
-		<td><div align="center">데이터의 형식</div></td>
+		<td><div align="left">데이터의 형식</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">Length</div></td>
-		<td><div align="center">데이터의 길이</div></td>
+		<td><div align="left">데이터의 길이</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">From</div></td>
-		<td><div align="center">데이터를 전송하는 장치의 DeviceType</div></td>
+		<td><div align="left">데이터를 전송하는 장치의 DeviceType</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">To</div></td>
-		<td><div align="center">데이터를 수신 받는 장치의 DeviceType</div></td>
+		<td><div align="left">데이터를 수신 받는 장치의 DeviceType</div></td>
 	</tr>
 	<tr>
 		<td colspan="2"><div align="center">Data</div></td>
-		<td><div align="center">전송할 데이터</div></td>
+		<td><div align="left">전송할 데이터</div></td>
 	</tr>
 	<tr>
 		<td colspan="2"><div align="center">CRC16</div></td>
-		<td><div align="center">Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a></div></td>
+		<td><div align="left">Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a></div></td>
 	</tr>
 </table>
 
-
-|영역 | 설명 |
-|:---|:---|
-| Start code | 데이터 전송 시작을 알림 |
-| Header - DataType | 데이터의 형식 |
-| Header - Length | 데이터의 길이 |
-| Header - From | 데이터를 전송하는 장치의 DeviceType |
-| Header - To | 데이터를 수신 받는 장치의 DeviceType |
-| Data | 전송할 데이터 |
-| CRC16 | Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a>    |
-
+<br>
 
 Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. Little Endian일 때 2바이트 이상의 변수는 하위 바이트가 배열의 앞 부분에 위치합니다. C#에서는 Bitconverter를 사용하시면 편리하게 변경할 수 있습니다.
 
