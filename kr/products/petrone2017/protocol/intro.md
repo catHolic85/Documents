@@ -101,11 +101,40 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
 
 Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. Little Endian일 때 2바이트 이상의 변수는 하위 바이트가 배열의 앞 부분에 위치합니다. C#에서는 Bitconverter를 사용하시면 편리하게 변경할 수 있습니다.
 
-
-| | 0x1234 | 0x12345678 |
-|:---:|:---:|:---:|
-| Big Endian | [ 12 34 ] | [ 12 34 56 78 ] |
-| Little Endian | [ 34 12 ] | [ 78 56 34 12 ] |
+<table>
+	<tr>
+		<td><div align="center">16진수 값</div></td>
+		<td colspan="2"><div align="center">0x1234</div></td>
+		<td colspan="4"><div align="center">0x12345678</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">배열의 인덱스</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">1</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">1</div></td>
+		<td><div align="center">2</div></td>
+		<td><div align="center">3</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div align="center">Big Endian</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">34</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">34</div></td>
+		<td><div align="center">56</div></td>
+		<td><div align="center">78</div></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div align="center">Little Endian</div></td>
+		<td><div align="center">34</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">78</div></td>
+		<td><div align="center">56</div></td>
+		<td><div align="center">34</div></td>
+		<td><div align="center">12</div></td>
+	</tr>
+</table>
 
 
 <br>
