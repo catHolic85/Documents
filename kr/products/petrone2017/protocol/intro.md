@@ -105,30 +105,47 @@ Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. L
 	<tr>
 		<td><div align="center">16진수 값</div></td>
 		<td colspan="2"><div align="center">0x1234</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">배열의 인덱스</div></td>
+		<td><div align="center"><b>0</b></div></td>
+		<td><div align="center"><b>1</b></div></td>
+	</tr>
+	<tr>
+		<td><div align="center">Big Endian</div></td>
+		<td><div align="center">12</div></td>
+		<td><div align="center">34</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">Little Endian</div></td>
+		<td><div align="center">34</div></td>
+		<td><div align="center">12</div></td>
+	</tr>
+</table>
+
+<br>
+
+<table>
+	<tr>
+		<td><div align="center">16진수 값</div></td>
 		<td colspan="4"><div align="center">0x12345678</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">배열의 인덱스</div></td>
-		<td><div align="center">0</div></td>
-		<td><div align="center">1</div></td>
-		<td><div align="center">0</div></td>
-		<td><div align="center">1</div></td>
-		<td><div align="center">2</div></td>
-		<td><div align="center">3</div></td>
+		<td><div align="center"><b>0</b></div></td>
+		<td><div align="center"><b>1</b></div></td>
+		<td><div align="center"><b>2</b></div></td>
+		<td><div align="center"><b>3</b></div></td>
 	</tr>
 	<tr>
-		<td colspan="2"><div align="center">Big Endian</div></td>
-		<td><div align="center">12</div></td>
-		<td><div align="center">34</div></td>
+		<td><div align="center">Big Endian</div></td>
 		<td><div align="center">12</div></td>
 		<td><div align="center">34</div></td>
 		<td><div align="center">56</div></td>
 		<td><div align="center">78</div></td>
 	</tr>
 	<tr>
-		<td colspan="2"><div align="center">Little Endian</div></td>
-		<td><div align="center">34</div></td>
-		<td><div align="center">12</div></td>
+		<td><div align="center">Little Endian</div></td>
 		<td><div align="center">78</div></td>
 		<td><div align="center">56</div></td>
 		<td><div align="center">34</div></td>
