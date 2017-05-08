@@ -452,7 +452,7 @@ namespace Protocol
         <td>0x46</td>
         <td>C</td>
         <td class="desc">사용자 인터페이스 설정</td>
-        <td><a href="structs.md#">Protocol::</a></td>
+        <td>[System::SensorOrientation::Type](definitions.md#SensorOrientation)   <a href="structs.md#Protocol_UserInterface">Protocol::UserInterface</a></td>
     </tr>
     <tr>
         <td>Imu</td>
@@ -473,7 +473,7 @@ namespace Protocol
         <td>0x52</td>
         <td>D</td>
         <td class="desc">배터리</td>
-        <td><a href="structs.md#">Protocol::</a></td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
         <td>Range</td>
@@ -494,7 +494,7 @@ namespace Protocol
         <td>0x55</td>
         <td>D</td>
         <td class="desc">CameraImage</td>
-        <td></td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
         <td>Button</td>
@@ -543,7 +543,7 @@ namespace Protocol
         <td>0x84</td>
         <td>C</td>
         <td class="desc">진동 제어</td>
-        <td><a href="structs.md#">Protocol::</a></td>
+        <td><a href="structs.md#Protocol_Vibrator">Protocol::Vibrator</a></td>
     </tr>
     <tr class="odd">
         <td>CountFlight</td>

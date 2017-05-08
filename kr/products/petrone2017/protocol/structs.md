@@ -286,8 +286,8 @@ namespace Protocol
     };
 }
 ```
-- flight : [Protocol::TrimFlight](#TrimFlight)
-- drive : [Protocol::TrimDrive](#TrimDrive)
+- flight : [Protocol::TrimFlight](#Protocol_TrimFlight)
+- drive : [Protocol::TrimDrive](#Protocol_TrimDrive)
 
 
 <br>
