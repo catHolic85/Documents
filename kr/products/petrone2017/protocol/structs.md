@@ -39,7 +39,7 @@ namespace Protocol
     };
 }
 ```
-- dataType : [Protocol::DataType::Type](datatype.md#DataType)
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
 
 
 <br>
@@ -57,7 +57,7 @@ namespace Protocol
     };
 }
 ```
-- dataType : [Protocol::DataType::Type](datatype.md#DataType)
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
 
 
 <br>
@@ -130,8 +130,8 @@ namespace Protocol
     };
 }
 ```
-- commandType : [Protocol::CommandType::Type](definitions.md#CommandType)
-- option : [System::ModeVehicle::Type](definitions.md#ModeVehicle), [System::Coordinate::Type](definitions.md#Coordinate), [System::Trim::Type](definitions.md#Trim),  [System::FlightEvent::Type](definitions.md#FlightEvent), [Protocol::DataType::Type](datatype.md#DataType)
+- commandType : [Protocol::CommandType::Type](definitions.md#Protocol_CommandType)
+- option : [Mode::Vehicle::Type](definitions.md#Mode_Vehicle), [Coordinate::Type](definitions.md#Coordinate), [System::Trim::Type](definitions.md#Trim),  [System::FlightEvent::Type](definitions.md#FlightEvent), [Protocol::DataType::Type](datatype.md#Protocol_DataType), [UserInterface::Preset::Type](definitions.md#UserInterface_Preset)
 
 
 <br>
@@ -139,13 +139,13 @@ namespace Protocol
 
 
 ## <a name="Protocol_Address">Protocol::Address</a>
-BLE 주소를 반환합니다.
+장치 주소를 반환합니다.
 ```cpp
 namespace Protocol
 {
     struct Address
     {
-        u8   address[6];
+        u8   address[8];
     };
 }
 ```
@@ -173,12 +173,12 @@ namespace Protocol
     };
 }
 ```
-- modeVehicle : [System::ModeVehicle::Type](definitions.md#ModeVehicle)
-- modeSystem : [System::ModeSystem::Type](definitions.md#ModeSystem)
-- modeFlight : [System::ModeFlight::Type](definitions.md#ModeFlight)
-- modeDrive : [System::ModeDrive::Type](definitions.md#ModeDrive)
+- modeVehicle : [Mode::Vehicle::Type](definitions.md#Mode_Vehicle)
+- modeSystem : [Mode::System::Type](definitions.md#Mode_System)
+- modeFlight : [Mode::Flight::Type](definitions.md#Mode_Flight)
+- modeDrive : [Mode::Drive::Type](definitions.md#Mode_Drive)
 - sensorOrientation : [System::SensorOrientation::Type](definitions.md#SensorOrientation)
-- coordinate : [System::Coordinate::Type](definitions.md#Coordinate)
+- coordinate : [Coordinate::Type](definitions.md#Coordinate)
 
 
 <br>
@@ -301,11 +301,11 @@ namespace Protocol
 {
     struct CountFlight
     {
-        u64 timeFlight;             // 비행 시간
+        u64     timeFlight;             // 비행 시간
         
-        u16 countTakeOff;           // 이륙 횟수
-        u16 countLanding;           // 착륙 횟수
-        u16 countAccident;          // 충돌 횟수
+        u16     countTakeOff;           // 이륙 횟수
+        u16     countLanding;           // 착륙 횟수
+        u16     countAccident;          // 충돌 횟수
     };
 }
 ```
@@ -321,9 +321,9 @@ namespace Protocol
 {
     struct CountDrive
     {
-        u64 timeDrive;              // 주행 시간
+        u64     timeDrive;              // 주행 시간
         
-        u16 countAccident;          // 충돌 횟수
+        u16     countAccident;          // 충돌 횟수
     };
 }
 ```
@@ -341,8 +341,8 @@ namespace Protocol
 {
     struct IrMessage
     {
-        u8  direction;               // 수신 받은 방향
-        u32 irData;                  // IR 메세지
+        u8      direction;               // 수신 받은 방향
+        u32     irData;                  // IR 메세지
     };
 }
 ```
@@ -527,48 +527,53 @@ namespace Protocol
     };
 }
 ```
-- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
-- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- mode : [Buzzer::Mode::Type](definitions.md#Buzzer_Mode)
+- value : mode에서 ScaleInstantally 또는 ScaleContinually를 선택한 경우 [Buzzer::Scale::Type](definitions.md#Buzzer_Scale), HzInstantally 또는 HzContinually를 선택한 경우 0 ~ 8000(Hz)
+- time : 0 ~ 65535(ms)
 
 
 <br>
 <br>
 
 
-## <a name="Protocol_Joystick">Protocol::Joystick</a>
+## <a name="Protocol_Vibrator">Protocol::Vibrator</a>
 조이스틱 한 축의 입력 값
 ```cpp
 namespace Protocol
 {
-    struct Joystick
+    struct Vibrator
     {
-        Protocol::JoystickBlock     left;
-        Protocol::JoystickBlock     right;
+        u8		mode;	// 모드(0은 set, 1은 reserve)
+        u16		on;		// 진동을 켠 시간(ms)
+        u16		off;	// 진동을 끈 시간(ms)
+        u16		total;	// 전체 진행 시간(ms)
     };
 }
 ```
-- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
-- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- mode : [Vibrator::Mode::Type](#Vibrator_Mode)
+- on : 0 ~ 65535(ms)
+- off : 0 ~ 65535(ms)
+- total : 0 ~ 65535(ms)
 
 
 <br>
 <br>
 
 
-## <a name="Protocol_Joystick">Protocol::Joystick</a>
-조이스틱 한 축의 입력 값
+## <a name="Protocol_UserInterface">Protocol::UserInterface</a>
+조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정
 ```cpp
 namespace Protocol
 {
-    struct Joystick
+    struct UserInterface
     {
-        Protocol::JoystickBlock     left;
-        Protocol::JoystickBlock     right;
+        u8		command;	// 명령
+        u8		function;	// 기능
     };
 }
 ```
-- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
-- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- command : [UserInterface::Commands](definitions.md#UserInterface_Commands)
+- function : [UserInterface::Functions](definitions.md#UserInterface_Functions)
 
 <br>
 

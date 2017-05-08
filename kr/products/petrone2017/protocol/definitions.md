@@ -9,7 +9,7 @@ Modified : 2017.05.02
 
 <br>
 
-## <a name="CommandType">Protocol::CommandType::Type</a>
+## <a name="Protocol_CommandType">Protocol::CommandType::Type</a>
 CommandBase 구조체에서 commandType 변수에 사용합니다.
 
 ```cpp
@@ -137,7 +137,7 @@ namespace Mode
             Error,              // 오류
             
             Test = 0x40,        // 테스트 모드
-                        
+            
             EndOfType
         };
     }
@@ -419,13 +419,11 @@ namespace Buzzer
     {
         enum Type
         {
-            /* 1, 2, 3, 4 옥타브는 Timer tick 사용 */
             C1, CS1, D1, DS1, E1, F1, FS1, G1, GS1, A1, AS1, B1,
             C2, CS2, D2, DS2, E2, F2, FS2, G2, GS2, A2, AS2, B2,
             C3, CS3, D3, DS3, E3, F3, FS3, G3, GS3, A3, AS3, B3,
             C4, CS4, D4, DS4, E4, F4, FS4, G4, GS4, A4, AS4, B4,
             
-            /* 5, 6, 7, 8 옥타브는 PWM 사용 */
             C5, CS5, D5, DS5, E5, F5, FS5, G5, GS5, A5, AS5, B5,
             C6, CS6, D6, DS6, E6, F6, FS6, G6, GS6, A6, AS6, B6,
             C7, CS7, D7, DS7, E7, F7, FS7, G7, GS7, A7, AS7, B7,
@@ -441,6 +439,148 @@ namespace Buzzer
 ```
 
 <br>
+<br>
+
+
+## <a name="Vibrator_Mode">Vibrator::Mode::Type</a>
+진동 모드
+
+```cpp
+namespace Vibrator
+{
+    namespace Mode
+    {
+        enum Type
+        {
+            Stop			= 0,	// 정지
+            
+            Instantally		= 1,	// 즉시 적용
+            Continually		= 2,	// 예약
+            
+            EndOfType
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+
+## <a name="UserInterface_Commands">UserInterface::Commands::Type</a>
+사용자 인터페이스 입력
+
+```cpp
+namespace UserInterface
+{
+    namespace Commands
+    {
+        enum Type
+        {
+            None,
+            
+            Setup_Button_FrontLeft_Down,
+            Setup_Button_FrontRight_Down,
+            Setup_Button_MidTurnLeft_Down,
+            Setup_Button_MidTurnRight_Down,
+            Setup_Button_MidUp_Down,
+            Setup_Button_MidLeft_Down,
+            Setup_Button_MidRight_Down,
+            Setup_Button_MidDown_Down,
+            
+            Setup_Joystick_Left_Up_In,
+            Setup_Joystick_Left_Left_In,
+            Setup_Joystick_Left_Right_In,
+            Setup_Joystick_Left_Down_In,
+            
+            Setup_Joystick_Right_Up_In,
+            Setup_Joystick_Right_Left_In,
+            Setup_Joystick_Right_Right_In,
+            Setup_Joystick_Right_Down_In,
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="UserInterface_Functions">UserInterface::Functions::Type</a>
+사용자 인터페이스 기능
+
+```cpp
+namespace UserInterface
+{
+    namespace Functions
+    {
+        enum Type
+        {
+            None,
+            
+            JoystickCalibration_Reset,
+            
+            Change_Team_Red,
+            Change_Team_Blue,
+            
+            Change_Mode_Vehicle_Flight,
+            Change_Mode_Vehicle_FlightNoGuard,
+            Change_Mode_Vehicle_Drive,
+            
+            Change_Coordinate_Local,                // Normal
+            Change_Coordinate_World,                // Absolute
+            
+            Change_Mode_Control_Mode1,
+            Change_Mode_Control_Mode2,
+            Change_Mode_Control_Mode3,
+            Change_Mode_Control_Mode4,
+                            
+            GyroBias_Reset,
+            
+            Change_Mode_USB_CDC,
+            Change_Mode_USB_HID,
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="UserInterface_Preset">UserInterface::Preset::Type</a>
+사용자 인터페이스 프리셋
+
+```cpp
+namespace UserInterface
+{
+    namespace Preset
+    {
+        enum Type
+        {
+            None,
+            
+            Clear,				// 초기화
+            Custom,				// 사용자 설정(기본 설정에서 변경된 상태)
+            
+            Drone2017,			// 기본 설정
+            Education,			// 교육용 설정
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+
 
 ---
 

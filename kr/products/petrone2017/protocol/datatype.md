@@ -28,7 +28,7 @@ Modified : 2017.05.02
 
 <br>
 
-## <a name="DataType">Protocol::DataType::Type</a>
+## <a name="Protocol_DataType">Protocol::DataType::Type</a>
 데이터 타입
 
 ```cpp
