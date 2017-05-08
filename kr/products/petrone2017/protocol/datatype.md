@@ -2,7 +2,7 @@
 /*<![CDATA[*/
 table.ex1 {width:98%; margin:0 auto; text-align:left; border-collapse:collapse}
 .ex1 th, .ex1 td {padding:5px 10px}
-.ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:center; vertical-align:middle; margin-bottom:5px}
+.ex1 caption {font-weight:700; font-size:12px; padding:5px; color:#1BA6B2; text-align:center; vertical-align:middle; margin-bottom:5px}
 .ex1 thead th {background:#ABC668; color:#fff; text-align:center; border-right:1px solid #fff}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
@@ -289,49 +289,49 @@ namespace Protocol
     <tr>
         <td>LightModeCommandIr</td>
         <td>0x23</td>
-        <td class="desc">LED 모드, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 모드, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightModeColor</td>
         <td>0x24</td>
-        <td class="desc">LED 모드 3색 직접 지정</td>
+        <td class="desc">LED 모드 3색</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightModeColorCommand</td>
         <td>0x25</td>
-        <td class="desc">LED 모드 3색 직접 지정, 커맨드</td>
+        <td class="desc">LED 모드 3색, 커맨드</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightModeColorCommandIr</td>
         <td>0x26</td>
-        <td class="desc">LED 모드 3색 직접 지정, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 모드 3색, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightModeColors</td>
         <td>0x27</td>
-        <td class="desc">LED 모드 팔레트의 색상으로 지정</td>
+        <td class="desc">LED 모드 팔레트</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightModeColorsCommand</td>
         <td>0x28</td>
-        <td class="desc">LED 모드 팔레트의 색상으로 지정, 커맨드</td>
+        <td class="desc">LED 모드 팔레트, 커맨드</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightModeColorsCommandIr</td>
         <td>0x29</td>
-        <td class="desc">LED 모드 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 모드 팔레트, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
@@ -352,56 +352,56 @@ namespace Protocol
     <tr class="odd">
         <td>LightEventCommandIr</td>
         <td>0x2C</td>
-        <td class="desc">LED 이벤트, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 이벤트, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightEventColor</td>
         <td>0x2D</td>
-        <td class="desc">LED 이벤트 3색 직접 지정</td>
+        <td class="desc">LED 이벤트 3색</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightEventColorCommand</td>
         <td>0x2E</td>
-        <td class="desc">LED 이벤트 3색 직접 지정, 커맨드</td>
+        <td class="desc">LED 이벤트 3색, 커맨드</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightEventColorCommandIr</td>
         <td>0x2F</td>
-        <td class="desc">LED 이벤트 3색 직접 지정, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 이벤트 3색, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightEventColors</td>
         <td>0x30</td>
-        <td class="desc">LED 이벤트 팔레트의 색상으로 지정</td>
+        <td class="desc">LED 이벤트 팔레트</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightEventColorsCommand</td>
         <td>0x31</td>
-        <td class="desc">LED 이벤트 팔레트의 색상으로 지정, 커맨드</td>
+        <td class="desc">LED 이벤트 팔레트, 커맨드</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr class="odd">
         <td>LightEventColorsCommandIr</td>
         <td>0x32</td>
-        <td class="desc">LED 이벤트 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</td>
+        <td class="desc">LED 이벤트 팔레트, 커맨드, IR</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
     <tr>
         <td>LightModeDefaultColor</td>
         <td>0x33</td>
-        <td class="desc">LED 초기 모드 3색 직접 지정</td>
+        <td class="desc">LED 초기 모드 3색</td>
         <td>&nbsp;</td>
         <td>모두</td>
     </tr>
@@ -415,14 +415,14 @@ namespace Protocol
     <tr>
         <td>Attitude</td>
         <td>0x41</td>
-        <td class="desc">드론의 자세(Angle)(Vector)</td>
+        <td class="desc">드론의 자세(Angle)</td>
         <td><a href="structs.md#Attitude">Protocol::Attitude</a></td>
         <td>드론</td>
     </tr>
     <tr class="odd">
         <td>GyroBias</td>
         <td>0x42</td>
-        <td class="desc">자이로 바이어스 값(Vector)</td>
+        <td class="desc">자이로 바이어스 값</td>
         <td><a href="structs.md#GyroBias">Protocol::GyroBias</a></td>
         <td>드론</td>
     </tr>
@@ -457,7 +457,7 @@ namespace Protocol
     <tr>
         <td>Imu</td>
         <td>0x50</td>
-        <td class="desc">IMU Raw and Angle(Accel, Gyro, Angle)</td>
+        <td class="desc">IMU(Accel, Gyro, Angle)</td>
         <td><a href="structs.md#ImuRawAndAngle">Protocol::ImuRawAndAngle</a></td>
         <td>드론</td>
     </tr>
