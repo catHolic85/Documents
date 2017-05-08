@@ -7,6 +7,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
 .ex1 tbody td.desc {text-align:left; width:35%}
+.ex1 tbody tr.header {background:#c9c9e9}
 .ex1 tbody tr.odd {background:#f9f9f9}
 .ex1 tbody tr.odd th {background:#f2f2f2}
 .ex1 tbody tr:hover {background:#F3F5BB}
@@ -131,13 +132,13 @@ namespace Protocol
 아래는 각 DataType와 연관된 구조체들을 링크로 연결해두었습니다.
 
 <table class="ex1">
-    <tr>
+    <tr class="header">
         <td><div align="center">이름</div></td>
         <td><div align="center">값</div></td>
         <td><div align="center">설명</div></td>
         <td><div align="center">구조체</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">None</div></td>
         <td><div align="center">0x00</div></td>
         <td><div align="center">없음</div></td>
@@ -149,7 +150,7 @@ namespace Protocol
         <td><div align="center">통신 확인</div></td>
         <td><div align="center"><a href="structs.md#Ping">Protocol::Ping</a></div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Ack</div></td>
         <td><div align="center">0x02</div></td>
         <td><div align="center">데이터 수신에 대한 응답</div></td>
@@ -161,7 +162,7 @@ namespace Protocol
         <td><div align="center">오류(reserve, 비트 플래그는 추후에 지정)</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Request</div></td>
         <td><div align="center">0x04</div></td>
         <td><div align="center">지정한 타입의 데이터 요청</div></td>
@@ -173,7 +174,7 @@ namespace Protocol
         <td><div align="center">문자열 데이터</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Reserved_1</div></td>
         <td><div align="center">0x06</div></td>
         <td><div align="center">예약</div></td>
@@ -185,7 +186,7 @@ namespace Protocol
         <td><div align="center">예약</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Monitor</div></td>
         <td><div align="center">0x08</div></td>
         <td><div align="center">디버깅용 값 배열 전송</div></td>
@@ -197,7 +198,7 @@ namespace Protocol
         <td><div align="center">시스템 카운터</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Information</div></td>
         <td><div align="center">0x0A</div></td>
         <td><div align="center">펌웨어 및 장치 정보</div></td>
@@ -209,7 +210,7 @@ namespace Protocol
         <td><div align="center">펌웨어 업데이트 위치 정정</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Update</div></td>
         <td><div align="center">0x0C</div></td>
         <td><div align="center">펌웨어 업데이트</div></td>
@@ -221,7 +222,7 @@ namespace Protocol
         <td><div align="center">펌웨어 암호화</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Address</div></td>
         <td><div align="center">0x0E</div></td>
         <td><div align="center">장치 주소</div></td>
@@ -233,7 +234,7 @@ namespace Protocol
         <td><div align="center">관리자 권한</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Control</div></td>
         <td><div align="center">0x10</div></td>
         <td><div align="center">조종 명령</div></td>
@@ -245,7 +246,7 @@ namespace Protocol
         <td><div align="center">명령</div></td>
         <td><div align="center"><a href="structs.md#Command">Protocol::Command</a></div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightManual</div></td>
         <td><div align="center">0x20</div></td>
         <td><div align="center">LED 수동 제어</div></td>
@@ -257,7 +258,7 @@ namespace Protocol
         <td><div align="center">LED 모드 지정</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightModeCommand</div></td>
         <td><div align="center">0x22</div></td>
         <td><div align="center">LED 모드, 커맨드</div></td>
@@ -269,7 +270,7 @@ namespace Protocol
         <td><div align="center">LED 모드, 커맨드, IR 데이터 송신</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightModeColor</div></td>
         <td><div align="center">0x24</div></td>
         <td><div align="center">LED 모드 3색 직접 지정</div></td>
@@ -281,7 +282,7 @@ namespace Protocol
         <td><div align="center">LED 모드 3색 직접 지정, 커맨드</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightModeColorCommandIr</div></td>
         <td><div align="center">0x26</div></td>
         <td><div align="center">LED 모드 3색 직접 지정, 커맨드, IR 데이터 송신</div></td>
@@ -293,7 +294,7 @@ namespace Protocol
         <td><div align="center">LED 모드 팔레트의 색상으로 지정</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightModeColorsCommand</div></td>
         <td><div align="center">0x28</div></td>
         <td><div align="center">LED 모드 팔레트의 색상으로 지정, 커맨드</div></td>
@@ -305,7 +306,7 @@ namespace Protocol
         <td><div align="center">LED 모드 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightEvent</div></td>
         <td><div align="center">0x2A</div></td>
         <td><div align="center">LED 이벤트</div></td>
@@ -317,7 +318,7 @@ namespace Protocol
         <td><div align="center">LED 이벤트, 커맨드</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightEventCommandIr</div></td>
         <td><div align="center">0x2C</div></td>
         <td><div align="center">LED 이벤트, 커맨드, IR 데이터 송신</div></td>
@@ -329,7 +330,7 @@ namespace Protocol
         <td><div align="center">LED 이벤트 3색 직접 지정</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightEventColorCommand</div></td>
         <td><div align="center">0x2E</div></td>
         <td><div align="center">LED 이벤트 3색 직접 지정, 커맨드</div></td>
@@ -341,7 +342,7 @@ namespace Protocol
         <td><div align="center">LED 이벤트 3색 직접 지정, 커맨드, IR 데이터 송신</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightEventColors</div></td>
         <td><div align="center">0x30</div></td>
         <td><div align="center">LED 이벤트 팔레트의 색상으로 지정</div></td>
@@ -353,7 +354,7 @@ namespace Protocol
         <td><div align="center">LED 이벤트 팔레트의 색상으로 지정, 커맨드</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">LightEventColorsCommandIr</div></td>
         <td><div align="center">0x32</div></td>
         <td><div align="center">LED 이벤트 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</div></td>
@@ -365,7 +366,7 @@ namespace Protocol
         <td><div align="center">LED 초기 모드 3색 직접 지정</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">State</div></td>
         <td><div align="center">0x40</div></td>
         <td><div align="center">드론의 상태(비행 모드, 방위기준, 배터리량)</div></td>
@@ -377,7 +378,7 @@ namespace Protocol
         <td><div align="center">드론의 자세(Angle)(Vector)</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">GyroBias</div></td>
         <td><div align="center">0x42</div></td>
         <td><div align="center">자이로 바이어스 값(Vector)</div></td>
@@ -389,7 +390,7 @@ namespace Protocol
         <td><div align="center">전체 트림</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">TrimFlight</div></td>
         <td><div align="center">0x44</div></td>
         <td><div align="center">비행 트림</div></td>
@@ -401,7 +402,7 @@ namespace Protocol
         <td><div align="center">주행 트림</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">UserInterface</div></td>
         <td><div align="center">0x46</div></td>
         <td><div align="center">사용자 인터페이스 설정</div></td>
@@ -413,7 +414,7 @@ namespace Protocol
         <td><div align="center">IMU Raw and Angle(Accel, Gyro, Angle)</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Pressure</div></td>
         <td><div align="center">0x51</div></td>
         <td><div align="center">압력 센서 데이터</div></td>
@@ -425,7 +426,7 @@ namespace Protocol
         <td><div align="center">배터리</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Range</div></td>
         <td><div align="center">0x53</div></td>
         <td><div align="center">거리 센서</div></td>
@@ -437,7 +438,7 @@ namespace Protocol
         <td><div align="center">ImageFlow</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">CameraImage</div></td>
         <td><div align="center">0x55</div></td>
         <td><div align="center">CameraImage</div></td>
@@ -449,7 +450,7 @@ namespace Protocol
         <td><div align="center">버튼 입력</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Joystick</div></td>
         <td><div align="center">0x71</div></td>
         <td><div align="center">조이스틱 입력</div></td>
@@ -461,7 +462,7 @@ namespace Protocol
         <td><div align="center">모터 제어 및 현재 제어값 확인</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">MotorSingle</div></td>
         <td><div align="center">0x81</div></td>
         <td><div align="center">한 개의 모터 제어</div></td>
@@ -473,7 +474,7 @@ namespace Protocol
         <td><div align="center">IR 데이터 송수신</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Buzzer</div></td>
         <td><div align="center">0x83</div></td>
         <td><div align="center">부저 제어</div></td>
@@ -485,7 +486,7 @@ namespace Protocol
         <td><div align="center">진동 제어</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">CountFlight</div></td>
         <td><div align="center">0x90</div></td>
         <td><div align="center">비행 관련 카운트</div></td>
@@ -497,7 +498,7 @@ namespace Protocol
         <td><div align="center">주행 관련 카운트</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
-    <tr>
+    <tr class="odd">
         <td><div align="center">Pairing</div></td>
         <td><div align="center">0xA0</div></td>
         <td><div align="center">페어링</div></td>
