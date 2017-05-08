@@ -159,7 +159,7 @@ namespace Protocol
 | TrimFlight | 0x44 | D | 비행 트림 | [Protocol::TrimFlight](structs.md#Protocol_TrimFlight) |
 | TrimDrive | 0x45 | D | 주행 트림 | [Protocol::TrimDrive](structs.md#Protocol_TrimDrive) |
 | UserInterface | 0x46 | C | 사용자 인터페이스 설정 | [Protocol::UserInterface](structs.md#Protocol_UserInterface) |
-| Imu | 0x50 | D | IMU(Accel, Gyro, Angle) | [Protocol::ImuRawAndAngle](structs.md#Protocol_ImuRawAndAngle) |
+| Imu | 0x50 | D | IMU(Accel, Gyro, Angle) | [Protocol::Imu](structs.md#Protocol_Imu) |
 | Pressure | 0x51 | D | 압력 센서 데이터 | [Protocol::Pressure](structs.md#Protocol_Pressure) |
 | Battery | 0x52 | - | 배터리 | &nbsp; |
 | Range | 0x53 | D | 거리 센서 | [Protocol::Range](structs.md#Protocol_Range) |

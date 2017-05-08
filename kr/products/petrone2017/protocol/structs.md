@@ -353,13 +353,14 @@ namespace Protocol
 <br>
 
 
-## <a name="Protocol_ImuRawAndAngle">Protocol::ImuRawAndAngle</a>
+## <a name="Protocol_Imu">Protocol::Imu</a>
 자이로 센서에서 출력한 값과 내부에서 계산한 드론의 자세 값을 반환합니다.
 ```cpp
 namespace Protocol
 {
-    struct ImuRawAndAngle
+    struct Imu
     {
+        u32     systemTime;
         s16     accX;
         s16     accY;
         s16     accZ;
@@ -386,8 +387,8 @@ namespace Protocol
     {
         u32     systemTime;
         
-        float   temperature;
-        float   pressure;
+        f32     temperature;
+        f32     pressure;
     };
 }
 ```
@@ -397,7 +398,8 @@ namespace Protocol
 
 
 ## <a name="Protocol_ImageFlow">Protocol::ImageFlow</a>
-자세 제어에 사용하는 영상 데이터 처리 값입니다. 카메라 및 OpticalFlow 알고리즘이 동작하는지를 확인하는 용도로만 사용하고 있습니다. 외부에서 기체를 제어하는데에는 사용하실 수 없습니다.
+자세 제어에 사용하는 영상 데이터 처리 값입니다.
+카메라 및 OpticalFlow 알고리즘이 동작하는지를 확인하는 용도로만 사용하고 있습니다. 외부에서 기체를 제어하는 용도로는 사용하실 수 없습니다.
 ```cpp
 namespace Protocol
 {
@@ -431,7 +433,8 @@ namespace Protocol
 
 
 ## <a name="Protocol_Motor">Protocol::Motor</a>
-모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다. 주로 4개의 모터를 동시에 작동하거나 동작을 확인하는 데 사용합니다. 이 때에는 아래의 구조체를 배열로 사용합니다.
+모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
+주로 모터 4개를 동시에 작동하거나 동작을 확인하는 데 사용합니다. 이 때에는 아래의 구조체를 배열로 사용합니다.
 ```cpp
 namespace Protocol
 {
@@ -495,7 +498,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_JoystickBlock">Protocol::JoystickBlock</a>
-조이스틱 한 축의 입력 값
+조종기 조이스틱 한 축의 입력 값입니다.
 ```cpp
 namespace Protocol
 {
@@ -519,7 +522,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_Joystick">Protocol::Joystick</a>
-조종기 좌우 조이스틱의 입력 값
+조종기 좌우 조이스틱의 입력 값입니다.
 ```cpp
 namespace Protocol
 {
@@ -539,7 +542,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_Buzzer">Protocol::Buzzer</a>
-조이스틱 버저 소리 내기
+조이스틱 버저 소리를 낼 때 사용합니다.
 ```cpp
 namespace Protocol
 {
@@ -561,7 +564,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_Vibrator">Protocol::Vibrator</a>
-조이스틱 한 축의 입력 값
+조이스틱 진동 모터를 제어할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
@@ -574,7 +577,7 @@ namespace Protocol
     };
 }
 ```
-- mode : [Vibrator::Mode::Type](#Vibrator_Mode)
+- mode : [Vibrator::Mode::Type](definitions.md#Vibrator_Mode)
 - on : 0 ~ 65535(ms)
 - off : 0 ~ 65535(ms)
 - total : 0 ~ 65535(ms)
@@ -585,7 +588,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_UserInterface">Protocol::UserInterface</a>
-조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정
+조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
@@ -605,7 +608,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_Pairing">Protocol::Pairing</a>
-조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정
+장치 페어링 시 사용합니다.
 ```cpp
 namespace Protocol
 {
