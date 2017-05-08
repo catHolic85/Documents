@@ -41,12 +41,12 @@ namespace Protocol
             None                        = 0x00,     // 없음
             Ping                        = 0x01,     // 통신 확인
             Ack                         = 0x02,     // 데이터 수신에 대한 응답
-            Error                       = 0x03,     // 오류(reserve, 비트 플래그는 추후에 지정)
+            Error                       = 0x03,     // 오류
             Request                     = 0x04,     // 지정한 타입의 데이터 요청
             Message                     = 0x05,     // 문자열 데이터
             Reserved_1                  = 0x06,     // 예약
             Reserved_2                  = 0x07,     // 예약
-            Monitor                     = 0x08,     // 디버깅용 값 배열 전송. 첫번째 바이트에 타입, 두 번째 바이트에 페이지 지정(수신 받는 데이터의 저장 경로 구분)
+            Monitor                     = 0x08,     // 디버깅용 값 배열 전송
             SystemCounter               = 0x09,     // 시스템 카운터
             Information                 = 0x0A,     // 펌웨어 및 장치 정보
             UpdateLocation              = 0x0B,     // 펌웨어 업데이트 위치 정정
@@ -61,32 +61,32 @@ namespace Protocol
             // Light
             LightManual                 = 0x20,     // LED 수동 제어
 
-            LightMode                   = 0x21,     // LED 모드 지정
+            LightMode                   = 0x21,     // LED 모드
             LightModeCommand            = 0x22,     // LED 모드, 커맨드
-            LightModeCommandIr          = 0x23,     // LED 모드, 커맨드, IR 데이터 송신
-            LightModeColor              = 0x24,     // LED 모드 3색 직접 지정
-            LightModeColorCommand       = 0x25,     // LED 모드 3색 직접 지정, 커맨드
-            LightModeColorCommandIr     = 0x26,     // LED 모드 3색 직접 지정, 커맨드, IR 데이터 송신
-            LightModeColors             = 0x27,     // LED 모드 팔레트의 색상으로 지정
-            LightModeColorsCommand      = 0x28,     // LED 모드 팔레트의 색상으로 지정, 커맨드
-            LightModeColorsCommandIr    = 0x29,     // LED 모드 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신
+            LightModeCommandIr          = 0x23,     // LED 모드, 커맨드, IR
+            LightModeColor              = 0x24,     // LED 모드 3색
+            LightModeColorCommand       = 0x25,     // LED 모드 3색, 커맨드
+            LightModeColorCommandIr     = 0x26,     // LED 모드 3색, 커맨드, IR
+            LightModeColors             = 0x27,     // LED 모드 팔레트
+            LightModeColorsCommand      = 0x28,     // LED 모드 팔레트, 커맨드
+            LightModeColorsCommandIr    = 0x29,     // LED 모드 팔레트, 커맨드, IR
 
             LightEvent                  = 0x2A,     // LED 이벤트
             LightEventCommand           = 0x2B,     // LED 이벤트, 커맨드
-            LightEventCommandIr         = 0x2C,     // LED 이벤트, 커맨드, IR 데이터 송신
-            LightEventColor             = 0x2D,     // LED 이벤트 3색 직접 지정
-            LightEventColorCommand      = 0x2E,     // LED 이벤트 3색 직접 지정, 커맨드
-            LightEventColorCommandIr    = 0x2F,     // LED 이벤트 3색 직접 지정, 커맨드, IR 데이터 송신
-            LightEventColors            = 0x30,     // LED 이벤트 팔레트의 색상으로 지정
-            LightEventColorsCommand     = 0x31,     // LED 이벤트 팔레트의 색상으로 지정, 커맨드
-            LightEventColorsCommandIr   = 0x32,     // LED 이벤트 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신
+            LightEventCommandIr         = 0x2C,     // LED 이벤트, 커맨드, IR
+            LightEventColor             = 0x2D,     // LED 이벤트 3색
+            LightEventColorCommand      = 0x2E,     // LED 이벤트 3색, 커맨드
+            LightEventColorCommandIr    = 0x2F,     // LED 이벤트 3색, 커맨드, IR
+            LightEventColors            = 0x30,     // LED 이벤트 팔레트
+            LightEventColorsCommand     = 0x31,     // LED 이벤트 팔레트, 커맨드
+            LightEventColorsCommandIr   = 0x32,     // LED 이벤트 팔레트, 커맨드, IR
 
-            LightModeDefaultColor       = 0x33,     // LED 초기 모드 3색 직접 지정
+            LightModeDefaultColor       = 0x33,     // LED 초기 모드 3색
             
             // 상태, 설정
-            State                       = 0x40,     // 드론의 상태(비행 모드, 방위기준, 배터리량)
-            Attitude,                               // 드론의 자세(Angle)(Vector)
-            GyroBias,                               // 자이로 바이어스 값(Vector)
+            State                       = 0x40,     // 드론의 상태
+            Attitude,                               // 드론의 자세
+            GyroBias,                               // 자이로 바이어스 값
             TrimAll,                                // 전체 트림
             TrimFlight,                             // 비행 트림
             TrimDrive,                              // 주행 트림
