@@ -177,7 +177,7 @@ namespace Protocol
 - modeSystem : [Mode::System::Type](definitions.md#Mode_System)
 - modeFlight : [Mode::Flight::Type](definitions.md#Mode_Flight)
 - modeDrive : [Mode::Drive::Type](definitions.md#Mode_Drive)
-- sensorOrientation : [System::SensorOrientation::Type](definitions.md#SensorOrientation)
+- sensorOrientation : [SensorOrientation::Type](definitions.md#SensorOrientation)
 - coordinate : [Coordinate::Type](definitions.md#Coordinate)
 
 
@@ -513,8 +513,8 @@ namespace Protocol
 ```
 - x : 조이스틱 가로축, -100 ~ 100
 - y : 조이스틱 세로축, -100 ~ 100
-- direction : [Joystick::Direction](definitions.md#Joystick_Direction)
-- event : [Joystick::Event](definitions.md#Joystick_Event)
+- direction : [Joystick::Direction::Type](definitions.md#Joystick_Direction)
+- event : [Joystick::Event::Type](definitions.md#Joystick_Event)
 
 
 <br>
