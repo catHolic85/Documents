@@ -270,7 +270,7 @@ namespace Protocol
         <td>0x20</td>
         <td>A</td>
         <td class="desc">LED 수동 제어</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_Manual">Protocol::Light::Manual</a></td>
     </tr>
     <tr>
         <td>LightMode</td>
@@ -535,7 +535,7 @@ namespace Protocol
         <td>Buzzer</td>
         <td>0x83</td>
         <td>C</td>
-        <td class="desc">부저 제어</td>
+        <td class="desc">버저 제어</td>
         <td><a href="structs.md#">Protocol::</a></td>
     </tr>
     <tr>
