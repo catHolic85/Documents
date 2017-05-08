@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / Structs / Light***<br>
-Modified : 2017.05.02
+Modified : 2017.05.08
 
 ---
 
