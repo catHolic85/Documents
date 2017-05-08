@@ -7,8 +7,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
 .ex1 tbody td.desc {text-align:left; width:35%}
-.ex1 tbody tr.header {background:#c9c9e9}
-.ex1 tbody tr.odd {background:#f9f9f9}
+.ex1 tbody tr.header {background:#c9e9e9}
+.ex1 tbody tr.odd {background:#a9c9f9}
 .ex1 tbody tr.odd th {background:#f2f2f2}
 .ex1 tbody tr:hover {background:#F3F5BB}
 .ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
