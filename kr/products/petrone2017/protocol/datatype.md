@@ -575,6 +575,73 @@ namespace Protocol
     </tr>
 </table>
 
+
+|이름      | 값    | 대상      | 설명                                | 구조체  |
+|:--------|:----:|:--------:|:-----------------------------------|:------:|
+| 이름 | 값 | 대상 | 설명 | 구조체 |
+| None | 0x00 | - | 없음 | &nbsp; |
+| Ping | 0x01 | A | 통신 확인 | <a href="structs.md#Ping">Protocol::Ping</a> |
+| Ack | 0x02 | A | 데이터 수신에 대한 응답 | <a href="structs.md#Ack">Protocol::Ack</a> |
+| Error | 0x03 | A | 오류(reserve, 비트 플래그는 추후에 지정) | &nbsp; |
+| Request | 0x04 | A | 지정한 타입의 데이터 요청 | <a href="structs.md#Request">Protocol::Request</a> |
+| Message | 0x05 | A | 문자열 데이터 | &nbsp; |
+| Reserved_1 0x06 | - | 예약 | &nbsp; |
+| Reserved_2 0x07 | - | 예약 | &nbsp; |
+| Monitor | 0x08 | D | 디버깅용 값 배열 전송 | &nbsp; |
+| SystemCoun 0x09 | A | 시스템 카운터 | &nbsp; |
+| Informatio 0x0A | A | 펌웨어 및 장치 정보 | &nbsp; |
+| UpdateLoca 0x0B | A | 펌웨어 업데이트 위치 정정 | &nbsp; |
+| Update | 0x0C | A | 펌웨어 업데이트 | &nbsp; |
+| Encrypt | 0x0D | A | 펌웨어 암호화 | &nbsp; |
+| Address | 0x0E | A | 장치 주소 | &nbsp; |
+| Administra 0x0F | A | 관리자 권한 | &nbsp; |
+| Control | 0x10 | D | 조종 명령 | <a href="structs.md#Control_Double8">Control::Double8</a>, <a href="structs.md#Control_Quad8">Control::Quad8</a> |
+| Command | 0x11 | A | 명령 | <a href="structs.md#Command">Protocol::Command</a> |
+| LightManua 0x20 | A | LED 수동 제어 | <a href="structs_light.md#Protocol_Light_Manual">Protocol::Light::Manual</a> |
+| LightMode  0x21 | A | LED 모드 지정 | <a href="structs_light.md#Protocol_Light_Mode">Protocol::Light::Mode</a> |
+| LightModeC 0x22 | A | LED 모드, 커맨드 | <a href="structs_light.md#Protocol_Light_ModeCommand">Protocol::Light::ModeCommand</a> |
+| LightModeC 0x23 | A | LED 모드, 커맨드, IR | <a href="structs_light.md#Protocol_Light_ModeCommandIr">Protocol::Light::ModeCommandIr</a> |
+| LightModeC 0x24 | A | LED 모드 3색 | <a href="structs_light.md#Protocol_Light_ModeColor">Protocol::Light::ModeColor</a> |
+| LightModeC 0x25 | A | LED 모드 3색, 커맨드 | <a href="structs_light.md#Protocol_Light_ModeColorCommand">Protocol::Light::ModeColorCommand</a> |
+| LightModeC 0x26 | A | LED 모드 3색, 커맨드, IR | <a href="structs_light.md#Protocol_Light_ModeColorCommandIr">Protocol::Light::ModeColorCommandIr</a> |
+| LightModeC 0x27 | A | LED 모드 팔레트 | <a href="structs_light.md#Protocol_Light_ModeColors">Protocol::Light::ModeColors</a> |
+| LightModeC 0x28 | A | LED 모드 팔레트, 커맨드 | <a href="structs_light.md#Protocol_Light_ModeColorsCommand">Protocol::Light::ModeColorsCommand</a> |
+| LightModeC 0x29 | A | LED 모드 팔레트, 커맨드, IR | <a href="structs_light.md#Protocol_Light_ModeColorsCommandIr">Protocol::Light::ModeColorsCommandIr</a> |
+| LightEvent 0x2A | A | LED 이벤트 | <a href="structs_light.md#Protocol_Light_Event">Protocol::Light::Event</a> |
+| LightEvent 0x2B | A | LED 이벤트, 커맨드 | <a href="structs_light.md#Protocol_Light_EventCommand">Protocol::Light::EventCommand</a> |
+| LightEvent 0x2C | A | LED 이벤트, 커맨드, IR | <a href="structs_light.md#Protocol_Light_EventCommandIr">Protocol::Light::EventCommandIr</a> |
+| LightEvent 0x2D | A | LED 이벤트 3색 | <a href="structs_light.md#Protocol_Light_EventColor">Protocol::Light::EventColor</a> |
+| LightEvent 0x2E | A | LED 이벤트 3색, 커맨드 | <a href="structs_light.md#Protocol_Light_EventColorCommand">Protocol::Light::EventColorCommand</a> |
+| LightEvent 0x2F | A | LED 이벤트 3색, 커맨드, IR | <a href="structs_light.md#Protocol_Light_EventColorCommandIr">Protocol::Light::EventColorCommandIr</a> |
+| LightEvent 0x30 | A | LED 이벤트 팔레트 | <a href="structs_light.md#Protocol_Light_EventColors">Protocol::Light::EventColors</a> |
+| LightEvent 0x31 | A | LED 이벤트 팔레트, 커맨드 | <a href="structs_light.md#Protocol_Light_EventColorsCommand">Protocol::Light::EventColorsCommand</a> |
+| LightEvent 0x32 | A | LED 이벤트 팔레트, 커맨드, IR | <a href="structs_light.md#Protocol_Light_EventColorsCommandIr">Protocol::Light::EventColorsCommandIr</a> |
+| LightModeD 0x33 | D | LED 초기 모드 3색 | <a href="structs_light.md#Protocol_Light_ModeColor">Protocol::Light::ModeColor</a> |
+| State | 0x40 | D | 드론의 상태 | <a href="structs.md#State">Protocol::State</a> |
+| Attitude | 0x41 | D | 드론의 자세(Angle) | <a href="structs.md#Attitude">Protocol::Attitude</a> |
+| GyroBias | 0x42 | D | 자이로 바이어스 값 | <a href="structs.md#GyroBias">Protocol::GyroBias</a> |
+| TrimAll | 0x43 | D | 전체 트림 | <a href="structs.md#TrimAll">Protocol::TrimAll</a> |
+| TrimFlight 0x44 | D | 비행 트림 | <a href="structs.md#TrimFlight">Protocol::TrimFlight</a> |
+| TrimDrive  0x45 | D | 주행 트림 | <a href="structs.md#TrimDrive">Protocol::TrimDrive</a> |
+| UserInterf 0x46 | C | 사용자 인터페이스 설정 | [System::SensorOrientation::Type](definitions.md#SensorOrientation)   <a href="structs.md#Protocol_UserInterface">Protocol::UserInterface</a> |
+| Imu | 0x50 | D | IMU(Accel, Gyro, Angle) | <a href="structs.md#ImuRawAndAngle">Protocol::ImuRawAndAngle</a> |
+| Pressure | 0x51 | D | 압력 센서 데이터 | <a href="structs.md#Pressure">Protocol::Pressure</a> |
+| Battery | 0x52 | D | 배터리 | &nbsp; |
+| Range | 0x53 | D | 거리 센서 | <a href="structs.md#Range">Protocol::Range</a> |
+| ImageFlow  0x54 | D | ImageFlow | <a href="structs.md#ImageFlow">Protocol::ImageFlow</a> |
+| CameraImag 0x55 | D | CameraImage | &nbsp; |
+| Button | 0x70 | C | 버튼 입력 | <a href="structs.md#Button">Protocol::Button</a> |
+| Joystick | 0x71 | C | 조이스틱 입력 | <a href="structs.md#Protocol_Joystick">Protocol::Joystick</a> |
+| Motor | 0x80 | D | 모터 제어 및 현재 제어값 확인 | <a href="structs.md#Motor">Protocol::Motor</a> |
+| MotorSingl 0x81 | D | 한 개의 모터 제어 | <a href="structs.md#">Protocol::</a> |
+| IrMessage  0x82 | D | IR 데이터 송수신 | <a href="structs.md#IrMessage">Protocol::IrMessage</a> |
+| Buzzer | 0x83 | C | 버저 제어 | <a href="structs.md#">Protocol::</a> |
+| Vibrator | 0x84 | C | 진동 제어 | <a href="structs.md#Protocol_Vibrator">Protocol::Vibrator</a> |
+| CountFligh 0x90 | D | 비행 관련 카운트 | <a href="structs.md#CountFlight">Protocol::CountFlight</a> |
+| CountDrive 0x91 | D | 주행 관련 카운트 | <a href="structs.md#CountDrive">Protocol::CountDrive</a> |
+| Pairing | 0xA0 | A | 페어링 | <a href="structs.md#">Protocol::</a> |
+| Rssi | 0xA1 | A | RSSI | <a href="structs.md#">Protocol::</a> |
+
 <br>
 
 - A: 모든 장치(All)
