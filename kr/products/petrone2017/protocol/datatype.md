@@ -1,8 +1,8 @@
 <style type="text/css">
 /*<![CDATA[*/
-table.ex1 {width:98%; margin:0 auto; text-align:left; vertical-align:middle; border-collapse:collapse}
+table.ex1 {width:98%; margin:0 auto; text-align:left; border-collapse:collapse}
 .ex1 th, .ex1 td {padding:5px 10px}
-.ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:left; margin-bottom:5px}
+.ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:left; vertical-align:middle; margin-bottom:5px}
 .ex1 thead th {background:#ABC668; color:#fff; text-align:center; border-right:1px solid #fff}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
