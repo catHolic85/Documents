@@ -275,8 +275,10 @@ namespace Trim
 }
 ```
 
+
 <br>
 <br>
+
 
 ## <a name="FlightEvent">FlightEvent::Type</a>
 페트론 비행 이벤트를 실행합니다.
@@ -311,6 +313,134 @@ namespace FlightEvent
 
 
 <br>
+<br>
+
+
+## <a name="Joystick_Direction">Joystick::Direction::Type</a>
+조이스틱 방향
+
+```cpp
+namespace Joystick
+{
+    // 조이스틱 방향
+    namespace Direction
+    {
+        enum Type
+        {
+            None    = 0,        // 정의하지 않은 영역(무시함)
+            
+            VT      = 0x10,     //   위(세로)
+            VM      = 0x20,     // 중앙(세로)
+            VB      = 0x40,     // 아래(세로)
+            
+            HL      = 0x01,     //   왼쪽(가로)
+            HM      = 0x02,     //   중앙(가로)
+            HR      = 0x04,     // 오른쪽(가로)
+            
+            TL = 0x11,  TM = 0x12,  TR = 0x14,
+            ML = 0x21,  CN = 0x22,  MR = 0x24,
+            BL = 0x41,  BM = 0x42,  BR = 0x44
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+
+## <a name="Joystick_Event">Joystick::Event::Type</a>
+조이스틱 방향
+
+```cpp
+namespace Joystick
+{
+    // 조이스틱 방향
+    namespace Event
+    {
+        enum Type
+        {
+            None    = 0,        // 이벤트 없음
+            
+            In,                 // 특정 영역에 진입
+            Stay,               // 특정 영역에서 상태 유지
+            Out,                // 특정 영역에서 벗어남
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Buzzer_Mode">Buzzer::Mode::Type</a>
+버저 모드
+
+```cpp
+namespace Buzzer
+{
+    namespace Mode
+    {
+        enum Type
+        {
+            Stop                = 0,    // 정지(Mode에서의 Stop은 통신에서 받았을 때 Buzzer를 끄는 용도로 사용, set으로만 호출)
+
+            MuteInstantally     = 1,    // 묵음 즉시 적용
+            MuteContinually     = 2,    // 묵음 예약
+
+            ScaleInstantally    = 3,    // 음계 즉시 적용
+            ScaleContinually    = 4,    // 음계 예약
+
+            HzInstantally       = 5,    // 주파수 즉시 적용
+            HzContinually       = 6,    // 주파수 예약
+
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Buzzer_Scale">Buzzer::Scale::Type</a>
+버저 음계
+
+```cpp
+namespace Buzzer
+{
+    namespace Scale
+    {
+        enum Type
+        {
+            /* 1, 2, 3, 4 옥타브는 Timer tick 사용 */
+            C1, CS1, D1, DS1, E1, F1, FS1, G1, GS1, A1, AS1, B1,
+            C2, CS2, D2, DS2, E2, F2, FS2, G2, GS2, A2, AS2, B2,
+            C3, CS3, D3, DS3, E3, F3, FS3, G3, GS3, A3, AS3, B3,
+            C4, CS4, D4, DS4, E4, F4, FS4, G4, GS4, A4, AS4, B4,
+            
+            /* 5, 6, 7, 8 옥타브는 PWM 사용 */
+            C5, CS5, D5, DS5, E5, F5, FS5, G5, GS5, A5, AS5, B5,
+            C6, CS6, D6, DS6, E6, F6, FS6, G6, GS6, A6, AS6, B6,
+            C7, CS7, D7, DS7, E7, F7, FS7, G7, GS7, A7, AS7, B7,
+            C8, CS8, D8, DS8, E8, F8, FS8, G8, GS8, A8, AS8, B8,
+        
+            EndOfType,
+            
+            Mute    = 0xEE,     // 묵음
+            Fin     = 0xFF      // 악보의 끝
+        };
+    }
+}
+```
+
+<br>
 
 ---
 
@@ -320,9 +450,8 @@ namespace FlightEvent
 2. [Typedef](typedef.md)
 3. [DataType](datatype.md)
 4. ***Definitions***
-5. [Base Structs](base_structs.md)
-6. [Structs](structs.md)
-7. [Structs - Light](structs_light.md)
+5. [Structs](structs.md)
+6. [Structs - Light](structs_light.md)
 
 <br>
 

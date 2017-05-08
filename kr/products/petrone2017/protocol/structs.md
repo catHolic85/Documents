@@ -9,7 +9,7 @@ Modified : 2017.05.02
 
 <br>
 
-## <a name="Ping">Protocol::Ping</a>
+## <a name="Protocol_Ping">Protocol::Ping</a>
 특정 장치가 존재하는지를 확인할 때 사용합니다. 응답은 Ack를 받습니다.
 ```cpp
 namespace Protocol
@@ -26,7 +26,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Ack">Protocol::Ack</a>
+## <a name="Protocol_Ack">Protocol::Ack</a>
 특정한 데이터를 요청하지 않은 경우에 Ack를 응답으로 전송합니다. 수신 받은 데이터의 crc16을 포함하여 돌려보내기 때문에 데이터를 전송한 측에서 정상적으로 데이터를 전송했는지 판별하는데 사용합니다.
 ```cpp
 namespace Protocol
@@ -46,7 +46,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Request">Protocol::Request</a>
+## <a name="Protocol_Request">Protocol::Request</a>
 PETRONE에 데이터를 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -118,25 +118,27 @@ Control 입력 값의 범위는 다음과 같습니다. Drive 모드에서는 **
 <br>
 
 
-## <a name="Command">Protocol::Command</a>
-명령 하나를 전달합니다.
+## <a name="Protocol_Command">Protocol::Command</a>
+PETRONE의 설정을 변경하거나 데이터를 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Command
     {
-        CommandBase   command;
+        u8 commandType;   // 명령 타입
+        u8 option;        // 명령에 대한 옵션
     };
 }
 ```
-- command : [Protocol::CommandBase](base_structs.md#CommandBase)
+- commandType : [Protocol::CommandType::Type](definitions.md#CommandType)
+- option : [System::ModeVehicle::Type](definitions.md#ModeVehicle), [System::Coordinate::Type](definitions.md#Coordinate), [System::Trim::Type](definitions.md#Trim),  [System::FlightEvent::Type](definitions.md#FlightEvent), [Protocol::DataType::Type](datatype.md#DataType)
 
 
 <br>
 <br>
 
 
-## <a name="Address">Protocol::Address</a>
+## <a name="Protocol_Address">Protocol::Address</a>
 BLE 주소를 반환합니다.
 ```cpp
 namespace Protocol
@@ -152,7 +154,7 @@ namespace Protocol
 <br>
 
 
-## <a name="State">Protocol::State</a>
+## <a name="Protocol_State">Protocol::State</a>
 PETRONE의 현재 상태값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -183,7 +185,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Attitude">Protocol::Attitude</a>
+## <a name="Protocol_Attitude">Protocol::Attitude</a>
 자세값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -219,7 +221,7 @@ namespace Protocol
 <br>
 
 
-## <a name="GyroBias">Protocol::GyroBias</a>
+## <a name="Protocol_GyroBias">Protocol::GyroBias</a>
 자이로 바이어스 값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -237,7 +239,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimFlight">Protocol::TrimFlight</a>
+## <a name="Protocol_TrimFlight">Protocol::TrimFlight</a>
 비행 Trim을 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -256,7 +258,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimDrive">Protocol::TrimDrive</a>
+## <a name="Protocol_TrimDrive">Protocol::TrimDrive</a>
 자동차 Trim을 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -272,7 +274,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimAll">Protocol::TrimAll</a>
+## <a name="Protocol_TrimAll">Protocol::TrimAll</a>
 비행 및 자동차 Trim을 한 번에 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -292,7 +294,7 @@ namespace Protocol
 <br>
 
 
-## <a name="CountFlight">Protocol::CountFlight</a>
+## <a name="Protocol_CountFlight">Protocol::CountFlight</a>
 비행과 관련된 저장값을 읽을 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -312,7 +314,7 @@ namespace Protocol
 <br>
 
 
-## <a name="CountDrive">Protocol::CountDrive</a>
+## <a name="Protocol_CountDrive">Protocol::CountDrive</a>
 주행과 관련된 저장값을 읽을 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -332,7 +334,7 @@ countAccident 변수는 주행 중 충돌을 카운트 하기 위해 만든 변�
 <br>
 
 
-## <a name="IrMessage">Protocol::IrMessage</a>
+## <a name="Protocol_IrMessage">Protocol::IrMessage</a>
 IR 데이터를 전송하는데 사용하거나, PETRONE이 IR 데이터를 수신 받았을 때 외부 장치로 전송하는 데이터입니다.
 ```cpp
 namespace Protocol
@@ -351,7 +353,7 @@ namespace Protocol
 <br>
 
 
-## <a name="ImuRawAndAngle">Protocol::ImuRawAndAngle</a>
+## <a name="Protocol_ImuRawAndAngle">Protocol::ImuRawAndAngle</a>
 자이로 센서에서 출력한 값과 내부에서 계산한 드론의 자세 값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -375,7 +377,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Pressure">Protocol::Pressure</a>
+## <a name="Protocol_Pressure">Protocol::Pressure</a>
 압력 센서의 출력값을 반환합니다. d1과 d2는 MS5607에서만 출력하는 값으로 DPS310이 사용된 기체에서는 0으로 출력됩니다.
 ```cpp
 namespace Protocol
@@ -394,7 +396,7 @@ namespace Protocol
 <br>
 
 
-## <a name="ImageFlow">Protocol::ImageFlow</a>
+## <a name="Protocol_ImageFlow">Protocol::ImageFlow</a>
 자세 제어에 사용하는 영상 데이터 처리 값입니다.
 ```cpp
 namespace Protocol
@@ -411,7 +413,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Button">Protocol::Button</a>
+## <a name="Protocol_Button">Protocol::Button</a>
 버튼 입력 값입니다.
 ```cpp
 namespace Protocol
@@ -427,7 +429,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Motor">Protocol::Motor</a>
+## <a name="Protocol_Motor">Protocol::Motor</a>
 모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -445,7 +447,7 @@ namespace Protocol
 <br>
 
 
-## <a name="Range">Protocol::Range</a>
+## <a name="Protocol_Range">Protocol::Range</a>
 거리 센서에서 입력받은 거리 값을 반환합니다. 앞으로 거리센서 모듈이 추가될 예정이어서 6방향에 대한 값을 모두 담는 구조체를 사용합니다.
 ```cpp
 namespace Protocol
@@ -465,6 +467,110 @@ namespace Protocol
 
 
 <br>
+<br>
+
+
+## <a name="Protocol_JoystickBlock">Protocol::JoystickBlock</a>
+조이스틱 한 축의 입력 값
+```cpp
+namespace Protocol
+{
+    struct JoystickBlock
+    {
+        s8      x;
+        s8      y;
+        u8      direction;
+        u8      event;
+    };
+}
+```
+- x : 조이스틱 가로축, -100 ~ 100
+- y : 조이스틱 세로축, -100 ~ 100
+- direction : [Joystick::Direction](definitions.md#Joystick_Direction)
+- event : [Joystick::Event](definitions.md#Joystick_Event)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Joystick">Protocol::Joystick</a>
+조종기 좌우 조이스틱의 입력 값
+```cpp
+namespace Protocol
+{
+    struct Joystick
+    {
+        Protocol::JoystickBlock     left;
+        Protocol::JoystickBlock     right;
+    };
+}
+```
+- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Buzzer">Protocol::Buzzer</a>
+조이스틱 버저 소리 내기
+```cpp
+namespace Protocol
+{
+    struct Buzzer
+    {
+        u8      mode;   // 버저 작동 모드
+        u16     value;  // 옥타브 또는 주파수
+        u16     time;   // 연주 시간(ms)
+    };
+}
+```
+- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Joystick">Protocol::Joystick</a>
+조이스틱 한 축의 입력 값
+```cpp
+namespace Protocol
+{
+    struct Joystick
+    {
+        Protocol::JoystickBlock     left;
+        Protocol::JoystickBlock     right;
+    };
+}
+```
+- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Joystick">Protocol::Joystick</a>
+조이스틱 한 축의 입력 값
+```cpp
+namespace Protocol
+{
+    struct Joystick
+    {
+        Protocol::JoystickBlock     left;
+        Protocol::JoystickBlock     right;
+    };
+}
+```
+- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+
+<br>
 
 ---
 
@@ -474,9 +580,8 @@ namespace Protocol
 2. [Typedef](typedef.md)
 3. [DataType](datatype.md)
 4. [Definitions](definitions.md)
-5. [Base Structs](base_structs.md)
-6. ***Structs***
-7. [Structs - Light](structs_light.md)
+5. ***Structs***
+6. [Structs - Light](structs_light.md)
 
 <br>
 

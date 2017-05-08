@@ -37,9 +37,8 @@ typedef uint8_t   u8;
 2. ***Typedef***
 3. [DataType](datatype.md)
 4. [Definitions](definitions.md)
-5. [Base Structs](base_structs.md)
-6. [Structs](structs.md)
-7. [Structs - Light](structs_light.md)
+5. [Structs](structs.md)
+6. [Structs - Light](structs_light.md)
 
 <br>
 

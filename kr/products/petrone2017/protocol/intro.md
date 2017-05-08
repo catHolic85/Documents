@@ -62,39 +62,39 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
 <br>
 
 <table>
-	<tr>
-		<td colspan="2"><div align="center">영역</div></td>
-		<td><div align="center">설명</div></td>
-	</tr>
-	<tr>
-		<td colspan="2"><div align="center">Start code</div></td>
-		<td><div align="left">데이터 전송 시작을 알림</div></td>
-	</tr>
-	<tr>
-		<td rowspan="4"><div align="center">Header</div></td>
-		<td><div align="center">DataType</div></td>
-		<td><div align="left">데이터의 형식</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">Length</div></td>
-		<td><div align="left">데이터의 길이</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">From</div></td>
-		<td><div align="left">데이터를 전송하는 장치의 DeviceType</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">To</div></td>
-		<td><div align="left">데이터를 수신 받는 장치의 DeviceType</div></td>
-	</tr>
-	<tr>
-		<td colspan="2"><div align="center">Data</div></td>
-		<td><div align="left">전송할 데이터</div></td>
-	</tr>
-	<tr>
-		<td colspan="2"><div align="center">CRC16</div></td>
-		<td><div align="left">Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a></div></td>
-	</tr>
+    <tr>
+        <td colspan="2"><div align="center">영역</div></td>
+        <td><div align="center">설명</div></td>
+    </tr>
+    <tr>
+        <td colspan="2"><div align="center">Start code</div></td>
+        <td><div align="left">데이터 전송 시작을 알림</div></td>
+    </tr>
+    <tr>
+        <td rowspan="4"><div align="center">Header</div></td>
+        <td><div align="center">DataType</div></td>
+        <td><div align="left">데이터의 형식</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Length</div></td>
+        <td><div align="left">데이터의 길이</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">From</div></td>
+        <td><div align="left">데이터를 전송하는 장치의 DeviceType</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">To</div></td>
+        <td><div align="left">데이터를 수신 받는 장치의 DeviceType</div></td>
+    </tr>
+    <tr>
+        <td colspan="2"><div align="center">Data</div></td>
+        <td><div align="left">전송할 데이터</div></td>
+    </tr>
+    <tr>
+        <td colspan="2"><div align="center">CRC16</div></td>
+        <td><div align="left">Header와 Data가 정상적으로 전달되었는지 판별<br><a href="http://www.menie.org/georges/embedded/crc16.html">http://www.menie.org/georges/embedded/crc16.html</a></div></td>
+    </tr>
 </table>
 
 <br>
@@ -102,55 +102,55 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
 Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. Little Endian일 때 2바이트 이상의 변수는 하위 바이트가 배열의 앞 부분에 위치합니다. C#에서는 Bitconverter를 사용하시면 편리하게 변경할 수 있습니다.
 
 <table>
-	<tr>
-		<td><div align="center">16진수 값</div></td>
-		<td colspan="2"><div align="center">0x1234</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">배열의 인덱스</div></td>
-		<td><div align="center"><b>0</b></div></td>
-		<td><div align="center"><b>1</b></div></td>
-	</tr>
-	<tr>
-		<td><div align="center">Big Endian</div></td>
-		<td><div align="center">12</div></td>
-		<td><div align="center">34</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">Little Endian</div></td>
-		<td><div align="center">34</div></td>
-		<td><div align="center">12</div></td>
-	</tr>
+    <tr>
+        <td><div align="center">16진수 값</div></td>
+        <td colspan="2"><div align="center">0x1234</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">배열의 인덱스</div></td>
+        <td><div align="center"><b>0</b></div></td>
+        <td><div align="center"><b>1</b></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Big Endian</div></td>
+        <td><div align="center">12</div></td>
+        <td><div align="center">34</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Little Endian</div></td>
+        <td><div align="center">34</div></td>
+        <td><div align="center">12</div></td>
+    </tr>
 </table>
 
 <br>
 
 <table>
-	<tr>
-		<td><div align="center">16진수 값</div></td>
-		<td colspan="4"><div align="center">0x12345678</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">배열의 인덱스</div></td>
-		<td><div align="center"><b>0</b></div></td>
-		<td><div align="center"><b>1</b></div></td>
-		<td><div align="center"><b>2</b></div></td>
-		<td><div align="center"><b>3</b></div></td>
-	</tr>
-	<tr>
-		<td><div align="center">Big Endian</div></td>
-		<td><div align="center">12</div></td>
-		<td><div align="center">34</div></td>
-		<td><div align="center">56</div></td>
-		<td><div align="center">78</div></td>
-	</tr>
-	<tr>
-		<td><div align="center">Little Endian</div></td>
-		<td><div align="center">78</div></td>
-		<td><div align="center">56</div></td>
-		<td><div align="center">34</div></td>
-		<td><div align="center">12</div></td>
-	</tr>
+    <tr>
+        <td><div align="center">16진수 값</div></td>
+        <td colspan="4"><div align="center">0x12345678</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">배열의 인덱스</div></td>
+        <td><div align="center"><b>0</b></div></td>
+        <td><div align="center"><b>1</b></div></td>
+        <td><div align="center"><b>2</b></div></td>
+        <td><div align="center"><b>3</b></div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Big Endian</div></td>
+        <td><div align="center">12</div></td>
+        <td><div align="center">34</div></td>
+        <td><div align="center">56</div></td>
+        <td><div align="center">78</div></td>
+    </tr>
+    <tr>
+        <td><div align="center">Little Endian</div></td>
+        <td><div align="center">78</div></td>
+        <td><div align="center">56</div></td>
+        <td><div align="center">34</div></td>
+        <td><div align="center">12</div></td>
+    </tr>
 </table>
 
 
@@ -204,9 +204,8 @@ Petrone2017 조종기는 윈도우10인 경우 자동으로 인식합니다. 그
 2. [Typedef](typedef.md)
 3. [DataType](datatype.md)
 4. [Definitions](definitions.md)
-5. [Base Structs](base_structs.md)
-6. [Structs](structs.md)
-7. [Structs - Light](structs_light.md)
+5. [Structs](structs.md)
+6. [Structs - Light](structs_light.md)
 
 <br>
 

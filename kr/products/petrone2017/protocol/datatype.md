@@ -135,7 +135,7 @@ namespace Protocol
     <tr class="header">
         <td>이름</td>
         <td>값</td>
-		<td>대상</td>
+        <td>대상</td>
         <td>설명</td>
         <td>구조체</td>
     </tr>
@@ -277,133 +277,133 @@ namespace Protocol
         <td>0x21</td>
         <td>A</td>
         <td class="desc">LED 모드 지정</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_Mode">Protocol::Light::Mode</a></td>
     </tr>
     <tr class="odd">
         <td>LightModeCommand</td>
         <td>0x22</td>
         <td>A</td>
         <td class="desc">LED 모드, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeCommand">Protocol::Light::ModeCommand</a></td>
     </tr>
     <tr>
         <td>LightModeCommandIr</td>
         <td>0x23</td>
         <td>A</td>
         <td class="desc">LED 모드, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeCommandIr">Protocol::Light::ModeCommandIr</a></td>
     </tr>
     <tr class="odd">
         <td>LightModeColor</td>
         <td>0x24</td>
         <td>A</td>
         <td class="desc">LED 모드 3색</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColor">Protocol::Light::ModeColor</a></td>
     </tr>
     <tr>
         <td>LightModeColorCommand</td>
         <td>0x25</td>
         <td>A</td>
         <td class="desc">LED 모드 3색, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColorCommand">Protocol::Light::ModeColorCommand</a></td>
     </tr>
     <tr class="odd">
         <td>LightModeColorCommandIr</td>
         <td>0x26</td>
         <td>A</td>
         <td class="desc">LED 모드 3색, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColorCommandIr">Protocol::Light::ModeColorCommandIr</a></td>
     </tr>
     <tr>
         <td>LightModeColors</td>
         <td>0x27</td>
         <td>A</td>
         <td class="desc">LED 모드 팔레트</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColors">Protocol::Light::ModeColors</a></td>
     </tr>
     <tr class="odd">
         <td>LightModeColorsCommand</td>
         <td>0x28</td>
         <td>A</td>
         <td class="desc">LED 모드 팔레트, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColorsCommand">Protocol::Light::ModeColorsCommand</a></td>
     </tr>
     <tr>
         <td>LightModeColorsCommandIr</td>
         <td>0x29</td>
         <td>A</td>
         <td class="desc">LED 모드 팔레트, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColorsCommandIr">Protocol::Light::ModeColorsCommandIr</a></td>
     </tr>
     <tr class="odd">
         <td>LightEvent</td>
         <td>0x2A</td>
         <td>A</td>
         <td class="desc">LED 이벤트</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_Event">Protocol::Light::Event</a></td>
     </tr>
     <tr>
         <td>LightEventCommand</td>
         <td>0x2B</td>
         <td>A</td>
         <td class="desc">LED 이벤트, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventCommand">Protocol::Light::EventCommand</a></td>
     </tr>
     <tr class="odd">
         <td>LightEventCommandIr</td>
         <td>0x2C</td>
         <td>A</td>
         <td class="desc">LED 이벤트, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventCommandIr">Protocol::Light::EventCommandIr</a></td>
     </tr>
     <tr>
         <td>LightEventColor</td>
         <td>0x2D</td>
         <td>A</td>
         <td class="desc">LED 이벤트 3색</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColor">Protocol::Light::EventColor</a></td>
     </tr>
     <tr class="odd">
         <td>LightEventColorCommand</td>
         <td>0x2E</td>
         <td>A</td>
         <td class="desc">LED 이벤트 3색, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColorCommand">Protocol::Light::EventColorCommand</a></td>
     </tr>
     <tr>
         <td>LightEventColorCommandIr</td>
         <td>0x2F</td>
         <td>A</td>
         <td class="desc">LED 이벤트 3색, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColorCommandIr">Protocol::Light::EventColorCommandIr</a></td>
     </tr>
     <tr class="odd">
         <td>LightEventColors</td>
         <td>0x30</td>
         <td>A</td>
         <td class="desc">LED 이벤트 팔레트</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColors">Protocol::Light::EventColors</a></td>
     </tr>
     <tr>
         <td>LightEventColorsCommand</td>
         <td>0x31</td>
         <td>A</td>
         <td class="desc">LED 이벤트 팔레트, 커맨드</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColorsCommand">Protocol::Light::EventColorsCommand</a></td>
     </tr>
     <tr class="odd">
         <td>LightEventColorsCommandIr</td>
         <td>0x32</td>
         <td>A</td>
         <td class="desc">LED 이벤트 팔레트, 커맨드, IR</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_EventColorsCommandIr">Protocol::Light::EventColorsCommandIr</a></td>
     </tr>
     <tr>
         <td>LightModeDefaultColor</td>
         <td>0x33</td>
         <td>D</td>
         <td class="desc">LED 초기 모드 3색</td>
-        <td>&nbsp;</td>
+        <td><a href="structs_light.md#Protocol_Light_ModeColor">Protocol::Light::ModeColor</a></td>
     </tr>
     <tr class="odd">
         <td>State</td>
@@ -508,7 +508,7 @@ namespace Protocol
         <td>0x71</td>
         <td>C</td>
         <td class="desc">조이스틱 입력</td>
-        <td><a href="structs.md#">Protocol::</a></td>
+        <td><a href="structs.md#Protocol_Joystick">Protocol::Joystick</a></td>
     </tr>
     <tr>
         <td>Motor</td>
@@ -591,9 +591,8 @@ namespace Protocol
 2. [Typedef](typedef.md)
 3. ***DataType***
 4. [Definitions](definitions.md)
-5. [Base Structs](base_structs.md)
-6. [Structs](structs.md)
-7. [Structs - Light](structs_light.md)
+5. [Structs](structs.md)
+6. [Structs - Light](structs_light.md)
 
 <br>
 
