@@ -1,14 +1,14 @@
 <style type="text/css">
 /*<![CDATA[*/
-table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse}
+table.ex1 {width:98%; margin:0 auto; text-align:center; border-collapse:collapse}
 .ex1 th, .ex1 td {padding:5px 10px}
 .ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:left; margin-bottom:5px}
 .ex1 thead th {background:#ABC668; color:#fff; text-align:center; border-right:1px solid #fff}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
 .ex1 tbody td.desc {text-align:left; width:35%}
-.ex1 tbody tr.header {background:#a9c9f9}
-.ex1 tbody tr.odd {background:#c9e9e9}
+.ex1 tbody tr.header {background:#c9c9f9}
+.ex1 tbody tr.odd {background:#c9f0f0}
 .ex1 tbody tr.odd th {background:#f2f2f2}
 .ex1 tbody tr:hover {background:#F3F5BB}
 .ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
