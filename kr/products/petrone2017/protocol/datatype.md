@@ -1,3 +1,21 @@
+<style type="text/css">
+/*<![CDATA[*/
+table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse}
+.ex1 th, .ex1 td {padding:5px 10px}
+.ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:left; margin-bottom:5px}
+.ex1 thead th {background:#ABC668; color:#fff; text-align:center; border-right:1px solid #fff}
+.ex1 tbody th {text-align:left; width:12%}
+.ex1 tbody td.date1 {text-align:center; width:8%}
+.ex1 tbody td.desc {text-align:left; width:35%}
+.ex1 tbody tr.odd {background:#f9f9f9}
+.ex1 tbody tr.odd th {background:#f2f2f2}
+.ex1 tbody tr:hover {background:#F3F5BB}
+.ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
+.ex1 tfoot tr {border-top:6px solid #E9F7F6; color:#1BA6B2}
+.ex1 tfoot th {text-align:left; padding-left:10px}
+/*]]>*/
+</style>
+
 ***PETRONE2017 / Protocol / DataType***<br>
 Modified : 2017.05.02
 
@@ -112,7 +130,7 @@ namespace Protocol
 
 아래는 각 DataType와 연관된 구조체들을 링크로 연결해두었습니다.
 
-<table>
+<table class="ex1">
     <tr>
         <td><div align="center">이름</div></td>
         <td><div align="center">값</div></td>
