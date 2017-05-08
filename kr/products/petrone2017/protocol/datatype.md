@@ -7,8 +7,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse}
 .ex1 tbody th {text-align:left; width:12%}
 .ex1 tbody td.date1 {text-align:center; width:8%}
 .ex1 tbody td.desc {text-align:left; width:35%}
-.ex1 tbody tr.header {background:#c9e9e9}
-.ex1 tbody tr.odd {background:#a9c9f9}
+.ex1 tbody tr.header {background:#a9c9f9}
+.ex1 tbody tr.odd {background:#c9e9e9}
 .ex1 tbody tr.odd th {background:#f2f2f2}
 .ex1 tbody tr:hover {background:#F3F5BB}
 .ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
@@ -133,382 +133,382 @@ namespace Protocol
 
 <table class="ex1">
     <tr class="header">
-        <td><div align="center">이름</div></td>
-        <td><div align="center">값</div></td>
-        <td><div align="center">설명</div></td>
-        <td><div align="center">구조체</div></td>
+        <td>이름</td>
+        <td>값</td>
+        <td>설명</td>
+        <td>구조체</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">None</div></td>
-        <td><div align="center">0x00</div></td>
-        <td class="desc"><div align="center">없음</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>None</td>
+        <td>0x00</td>
+        <td class="desc">없음</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Ping</div></td>
-        <td><div align="center">0x01</div></td>
-        <td class="desc"><div align="center">통신 확인</div></td>
-        <td><div align="center"><a href="structs.md#Ping">Protocol::Ping</a></div></td>
+        <td>Ping</td>
+        <td>0x01</td>
+        <td class="desc">통신 확인</td>
+        <td><a href="structs.md#Ping">Protocol::Ping</a></td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Ack</div></td>
-        <td><div align="center">0x02</div></td>
-        <td class="desc"><div align="center">데이터 수신에 대한 응답</div></td>
-        <td><div align="center"><a href="structs.md#Ack">Protocol::Ack</a></div></td>
+        <td>Ack</td>
+        <td>0x02</td>
+        <td class="desc">데이터 수신에 대한 응답</td>
+        <td><a href="structs.md#Ack">Protocol::Ack</a></td>
     </tr>
     <tr>
-        <td><div align="center">Error</div></td>
-        <td><div align="center">0x03</div></td>
-        <td class="desc"><div align="center">오류(reserve, 비트 플래그는 추후에 지정)</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Error</td>
+        <td>0x03</td>
+        <td class="desc">오류(reserve, 비트 플래그는 추후에 지정)</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Request</div></td>
-        <td><div align="center">0x04</div></td>
-        <td class="desc"><div align="center">지정한 타입의 데이터 요청</div></td>
-        <td><div align="center"><a href="structs.md#Request">Protocol::Request</a></div></td>
+        <td>Request</td>
+        <td>0x04</td>
+        <td class="desc">지정한 타입의 데이터 요청</td>
+        <td><a href="structs.md#Request">Protocol::Request</a></td>
     </tr>
     <tr>
-        <td><div align="center">Message</div></td>
-        <td><div align="center">0x05</div></td>
-        <td class="desc"><div align="center">문자열 데이터</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Message</td>
+        <td>0x05</td>
+        <td class="desc">문자열 데이터</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Reserved_1</div></td>
-        <td><div align="center">0x06</div></td>
-        <td class="desc"><div align="center">예약</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Reserved_1</td>
+        <td>0x06</td>
+        <td class="desc">예약</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Reserved_2</div></td>
-        <td><div align="center">0x07</div></td>
-        <td class="desc"><div align="center">예약</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Reserved_2</td>
+        <td>0x07</td>
+        <td class="desc">예약</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Monitor</div></td>
-        <td><div align="center">0x08</div></td>
-        <td><div align="center">디버깅용 값 배열 전송</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Monitor</td>
+        <td>0x08</td>
+        <td>디버깅용 값 배열 전송</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">SystemCounter</div></td>
-        <td><div align="center">0x09</div></td>
-        <td><div align="center">시스템 카운터</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>SystemCounter</td>
+        <td>0x09</td>
+        <td>시스템 카운터</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Information</div></td>
-        <td><div align="center">0x0A</div></td>
-        <td><div align="center">펌웨어 및 장치 정보</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Information</td>
+        <td>0x0A</td>
+        <td>펌웨어 및 장치 정보</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">UpdateLocation</div></td>
-        <td><div align="center">0x0B</div></td>
-        <td><div align="center">펌웨어 업데이트 위치 정정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>UpdateLocation</td>
+        <td>0x0B</td>
+        <td>펌웨어 업데이트 위치 정정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Update</div></td>
-        <td><div align="center">0x0C</div></td>
-        <td><div align="center">펌웨어 업데이트</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Update</td>
+        <td>0x0C</td>
+        <td>펌웨어 업데이트</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Encrypt</div></td>
-        <td><div align="center">0x0D</div></td>
-        <td><div align="center">펌웨어 암호화</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Encrypt</td>
+        <td>0x0D</td>
+        <td>펌웨어 암호화</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Address</div></td>
-        <td><div align="center">0x0E</div></td>
-        <td><div align="center">장치 주소</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Address</td>
+        <td>0x0E</td>
+        <td>장치 주소</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Administrator</div></td>
-        <td><div align="center">0x0F</div></td>
-        <td><div align="center">관리자 권한</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Administrator</td>
+        <td>0x0F</td>
+        <td>관리자 권한</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Control</div></td>
-        <td><div align="center">0x10</div></td>
-        <td><div align="center">조종 명령</div></td>
-        <td><div align="center"><a href="structs.md#Control_Double8">Control::Double8</a>, <a href="structs.md#Control_Quad8">Control::Quad8</a></div></td>
+        <td>Control</td>
+        <td>0x10</td>
+        <td>조종 명령</td>
+        <td><a href="structs.md#Control_Double8">Control::Double8</a>, <a href="structs.md#Control_Quad8">Control::Quad8</a></td>
     </tr>
     <tr>
-        <td><div align="center">Command</div></td>
-        <td><div align="center">0x11</div></td>
-        <td><div align="center">명령</div></td>
-        <td><div align="center"><a href="structs.md#Command">Protocol::Command</a></div></td>
+        <td>Command</td>
+        <td>0x11</td>
+        <td>명령</td>
+        <td><a href="structs.md#Command">Protocol::Command</a></td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightManual</div></td>
-        <td><div align="center">0x20</div></td>
-        <td><div align="center">LED 수동 제어</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightManual</td>
+        <td>0x20</td>
+        <td>LED 수동 제어</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightMode</div></td>
-        <td><div align="center">0x21</div></td>
-        <td><div align="center">LED 모드 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightMode</td>
+        <td>0x21</td>
+        <td>LED 모드 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightModeCommand</div></td>
-        <td><div align="center">0x22</div></td>
-        <td><div align="center">LED 모드, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeCommand</td>
+        <td>0x22</td>
+        <td>LED 모드, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightModeCommandIr</div></td>
-        <td><div align="center">0x23</div></td>
-        <td><div align="center">LED 모드, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeCommandIr</td>
+        <td>0x23</td>
+        <td>LED 모드, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightModeColor</div></td>
-        <td><div align="center">0x24</div></td>
-        <td><div align="center">LED 모드 3색 직접 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColor</td>
+        <td>0x24</td>
+        <td>LED 모드 3색 직접 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightModeColorCommand</div></td>
-        <td><div align="center">0x25</div></td>
-        <td><div align="center">LED 모드 3색 직접 지정, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColorCommand</td>
+        <td>0x25</td>
+        <td>LED 모드 3색 직접 지정, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightModeColorCommandIr</div></td>
-        <td><div align="center">0x26</div></td>
-        <td><div align="center">LED 모드 3색 직접 지정, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColorCommandIr</td>
+        <td>0x26</td>
+        <td>LED 모드 3색 직접 지정, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightModeColors</div></td>
-        <td><div align="center">0x27</div></td>
-        <td><div align="center">LED 모드 팔레트의 색상으로 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColors</td>
+        <td>0x27</td>
+        <td>LED 모드 팔레트의 색상으로 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightModeColorsCommand</div></td>
-        <td><div align="center">0x28</div></td>
-        <td><div align="center">LED 모드 팔레트의 색상으로 지정, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColorsCommand</td>
+        <td>0x28</td>
+        <td>LED 모드 팔레트의 색상으로 지정, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightModeColorsCommandIr</div></td>
-        <td><div align="center">0x29</div></td>
-        <td><div align="center">LED 모드 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeColorsCommandIr</td>
+        <td>0x29</td>
+        <td>LED 모드 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightEvent</div></td>
-        <td><div align="center">0x2A</div></td>
-        <td><div align="center">LED 이벤트</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEvent</td>
+        <td>0x2A</td>
+        <td>LED 이벤트</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightEventCommand</div></td>
-        <td><div align="center">0x2B</div></td>
-        <td><div align="center">LED 이벤트, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventCommand</td>
+        <td>0x2B</td>
+        <td>LED 이벤트, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightEventCommandIr</div></td>
-        <td><div align="center">0x2C</div></td>
-        <td><div align="center">LED 이벤트, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventCommandIr</td>
+        <td>0x2C</td>
+        <td>LED 이벤트, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightEventColor</div></td>
-        <td><div align="center">0x2D</div></td>
-        <td><div align="center">LED 이벤트 3색 직접 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColor</td>
+        <td>0x2D</td>
+        <td>LED 이벤트 3색 직접 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightEventColorCommand</div></td>
-        <td><div align="center">0x2E</div></td>
-        <td><div align="center">LED 이벤트 3색 직접 지정, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColorCommand</td>
+        <td>0x2E</td>
+        <td>LED 이벤트 3색 직접 지정, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightEventColorCommandIr</div></td>
-        <td><div align="center">0x2F</div></td>
-        <td><div align="center">LED 이벤트 3색 직접 지정, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColorCommandIr</td>
+        <td>0x2F</td>
+        <td>LED 이벤트 3색 직접 지정, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightEventColors</div></td>
-        <td><div align="center">0x30</div></td>
-        <td><div align="center">LED 이벤트 팔레트의 색상으로 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColors</td>
+        <td>0x30</td>
+        <td>LED 이벤트 팔레트의 색상으로 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightEventColorsCommand</div></td>
-        <td><div align="center">0x31</div></td>
-        <td><div align="center">LED 이벤트 팔레트의 색상으로 지정, 커맨드</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColorsCommand</td>
+        <td>0x31</td>
+        <td>LED 이벤트 팔레트의 색상으로 지정, 커맨드</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">LightEventColorsCommandIr</div></td>
-        <td><div align="center">0x32</div></td>
-        <td><div align="center">LED 이벤트 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightEventColorsCommandIr</td>
+        <td>0x32</td>
+        <td>LED 이벤트 팔레트의 색상으로 지정, 커맨드, IR 데이터 송신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">LightModeDefaultColor</div></td>
-        <td><div align="center">0x33</div></td>
-        <td><div align="center">LED 초기 모드 3색 직접 지정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>LightModeDefaultColor</td>
+        <td>0x33</td>
+        <td>LED 초기 모드 3색 직접 지정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">State</div></td>
-        <td><div align="center">0x40</div></td>
-        <td><div align="center">드론의 상태(비행 모드, 방위기준, 배터리량)</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>State</td>
+        <td>0x40</td>
+        <td>드론의 상태(비행 모드, 방위기준, 배터리량)</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Attitude</div></td>
-        <td><div align="center">0x41</div></td>
-        <td><div align="center">드론의 자세(Angle)(Vector)</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Attitude</td>
+        <td>0x41</td>
+        <td>드론의 자세(Angle)(Vector)</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">GyroBias</div></td>
-        <td><div align="center">0x42</div></td>
-        <td><div align="center">자이로 바이어스 값(Vector)</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>GyroBias</td>
+        <td>0x42</td>
+        <td>자이로 바이어스 값(Vector)</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">TrimAll</div></td>
-        <td><div align="center">0x43</div></td>
-        <td><div align="center">전체 트림</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>TrimAll</td>
+        <td>0x43</td>
+        <td>전체 트림</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">TrimFlight</div></td>
-        <td><div align="center">0x44</div></td>
-        <td><div align="center">비행 트림</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>TrimFlight</td>
+        <td>0x44</td>
+        <td>비행 트림</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">TrimDrive</div></td>
-        <td><div align="center">0x45</div></td>
-        <td><div align="center">주행 트림</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>TrimDrive</td>
+        <td>0x45</td>
+        <td>주행 트림</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">UserInterface</div></td>
-        <td><div align="center">0x46</div></td>
-        <td><div align="center">사용자 인터페이스 설정</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>UserInterface</td>
+        <td>0x46</td>
+        <td>사용자 인터페이스 설정</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Imu</div></td>
-        <td><div align="center">0x50</div></td>
-        <td><div align="center">IMU Raw and Angle(Accel, Gyro, Angle)</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Imu</td>
+        <td>0x50</td>
+        <td>IMU Raw and Angle(Accel, Gyro, Angle)</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Pressure</div></td>
-        <td><div align="center">0x51</div></td>
-        <td><div align="center">압력 센서 데이터</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Pressure</td>
+        <td>0x51</td>
+        <td>압력 센서 데이터</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Battery</div></td>
-        <td><div align="center">0x52</div></td>
-        <td><div align="center">배터리</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Battery</td>
+        <td>0x52</td>
+        <td>배터리</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Range</div></td>
-        <td><div align="center">0x53</div></td>
-        <td><div align="center">거리 센서</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Range</td>
+        <td>0x53</td>
+        <td>거리 센서</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">ImageFlow</div></td>
-        <td><div align="center">0x54</div></td>
-        <td><div align="center">ImageFlow</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>ImageFlow</td>
+        <td>0x54</td>
+        <td>ImageFlow</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">CameraImage</div></td>
-        <td><div align="center">0x55</div></td>
-        <td><div align="center">CameraImage</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>CameraImage</td>
+        <td>0x55</td>
+        <td>CameraImage</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Button</div></td>
-        <td><div align="center">0x70</div></td>
-        <td><div align="center">버튼 입력</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Button</td>
+        <td>0x70</td>
+        <td>버튼 입력</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Joystick</div></td>
-        <td><div align="center">0x71</div></td>
-        <td><div align="center">조이스틱 입력</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Joystick</td>
+        <td>0x71</td>
+        <td>조이스틱 입력</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Motor</div></td>
-        <td><div align="center">0x80</div></td>
-        <td><div align="center">모터 제어 및 현재 제어값 확인</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Motor</td>
+        <td>0x80</td>
+        <td>모터 제어 및 현재 제어값 확인</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">MotorSingle</div></td>
-        <td><div align="center">0x81</div></td>
-        <td><div align="center">한 개의 모터 제어</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>MotorSingle</td>
+        <td>0x81</td>
+        <td>한 개의 모터 제어</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">IrMessage</div></td>
-        <td><div align="center">0x82</div></td>
-        <td><div align="center">IR 데이터 송수신</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>IrMessage</td>
+        <td>0x82</td>
+        <td>IR 데이터 송수신</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Buzzer</div></td>
-        <td><div align="center">0x83</div></td>
-        <td><div align="center">부저 제어</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Buzzer</td>
+        <td>0x83</td>
+        <td>부저 제어</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Vibrator</div></td>
-        <td><div align="center">0x84</div></td>
-        <td><div align="center">진동 제어</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Vibrator</td>
+        <td>0x84</td>
+        <td>진동 제어</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">CountFlight</div></td>
-        <td><div align="center">0x90</div></td>
-        <td><div align="center">비행 관련 카운트</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>CountFlight</td>
+        <td>0x90</td>
+        <td>비행 관련 카운트</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">CountDrive</div></td>
-        <td><div align="center">0x91</div></td>
-        <td><div align="center">주행 관련 카운트</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>CountDrive</td>
+        <td>0x91</td>
+        <td>주행 관련 카운트</td>
+        <td>&nbsp;</td>
     </tr>
     <tr class="odd">
-        <td><div align="center">Pairing</div></td>
-        <td><div align="center">0xA0</div></td>
-        <td><div align="center">페어링</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Pairing</td>
+        <td>0xA0</td>
+        <td>페어링</td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
-        <td><div align="center">Rssi</div></td>
-        <td><div align="center">0xA1</div></td>
-        <td><div align="center">RSSI</div></td>
-        <td><div align="center">&nbsp;</div></td>
+        <td>Rssi</td>
+        <td>0xA1</td>
+        <td>RSSI</td>
+        <td>&nbsp;</td>
     </tr>
 </table>
 
