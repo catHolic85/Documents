@@ -397,7 +397,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_ImageFlow">Protocol::ImageFlow</a>
-자세 제어에 사용하는 영상 데이터 처리 값입니다.
+자세 제어에 사용하는 영상 데이터 처리 값입니다. 카메라 및 OpticalFlow 알고리즘이 동작하는지를 확인하는 용도로만 사용하고 있습니다. 외부에서 기체를 제어하는데에는 사용하실 수 없습니다.
 ```cpp
 namespace Protocol
 {
@@ -408,6 +408,7 @@ namespace Protocol
     };
 }
 ```
+
 
 <br>
 <br>
