@@ -378,16 +378,16 @@ namespace Protocol
 
 
 ## <a name="Protocol_Pressure">Protocol::Pressure</a>
-압력 센서의 출력값을 반환합니다. d1과 d2는 MS5607에서만 출력하는 값으로 DPS310이 사용된 기체에서는 0으로 출력됩니다.
+압력 센서의 출력값을 반환합니다.
 ```cpp
 namespace Protocol
 {
     struct Pressure
     {
-        s32     d1;
-        s32     d2;
-        s32     temperature;
-        s32     pressure;
+        u32		systemTime;
+        
+        float	temperature;
+        float	pressure;
     };
 }
 ```
@@ -430,17 +430,40 @@ namespace Protocol
 
 
 ## <a name="Protocol_Motor">Protocol::Motor</a>
-모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
+모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다. 주로 4개의 모터를 동시에 작동하거나 동작을 확인하는 데 사용합니다. 이 때에는 아래의 구조체를 배열로 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Motor
     {
-        MotorBase motor[4];
+        u8	rotation;
+        s16	value;
     };
 }
 ```
-- motor : [Protocol::MotorBase::Type](base_structs.md#MotorBase)
+- rotation : [Rotation::Type](definitions.md#Rotation)
+- value : 0 ~ 4096
+
+
+<br>
+<br>
+
+## <a name="Protocol_MotorSingle">Protocol::MotorSingle</a>
+하나의 모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct MotorSingle
+    {
+        u8	target;
+        u8	rotation;
+        s16	value;
+    };
+}
+```
+- target : [Motor::Part::Type](definitions.md#Motor_Part)
+- rotation : [Rotation::Type](definitions.md#Rotation)
+- value : 0 ~ 4096
 
 
 <br>

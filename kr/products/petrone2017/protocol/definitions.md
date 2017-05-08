@@ -246,8 +246,10 @@ namespace Coordinate
 }
 ```
 
+
 <br>
 <br>
+
 
 ## <a name="Trim">Trim::Type</a>
 페트론이 한쪽 방향으로 흐를 때 반대 방향을 입력하여 호버링을 할 수 있게 조정합니다. 한 번 전송할 때마다 일정하게 값이 변합니다.
@@ -272,6 +274,56 @@ namespace Trim
         
         EndOfType
     };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Rotation">Rotation::Type</a>
+모터 회전 방향
+
+```cpp
+namespace Rotation
+{
+    enum Type
+    {
+        None = 0,
+        
+        Clockwise,				// 시계 방향
+        Counterclockwise,		// 반시계 방향
+        
+        EndOfType
+    };
+}
+```
+
+<br>
+<br>
+
+
+## <a name="Motor_Part">Motor::Part::Type</a>
+모터 번호
+
+```cpp
+namespace Rotation
+{
+    namespace Part
+    {
+        enum Type
+        {
+            M1,		// Front Left
+            M2,		// Front Right
+            M3,		// Rear Right
+            M4,		// Rear Left
+            
+            EndOfPart,
+            
+            All
+        };
+    }
 }
 ```
 
