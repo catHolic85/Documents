@@ -141,49 +141,49 @@ namespace Protocol
     <tr class="odd">
         <td><div align="center">None</div></td>
         <td><div align="center">0x00</div></td>
-        <td><div align="center">없음</div></td>
+        <td class="desc"><div align="center">없음</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
     <tr>
         <td><div align="center">Ping</div></td>
         <td><div align="center">0x01</div></td>
-        <td><div align="center">통신 확인</div></td>
+        <td class="desc"><div align="center">통신 확인</div></td>
         <td><div align="center"><a href="structs.md#Ping">Protocol::Ping</a></div></td>
     </tr>
     <tr class="odd">
         <td><div align="center">Ack</div></td>
         <td><div align="center">0x02</div></td>
-        <td><div align="center">데이터 수신에 대한 응답</div></td>
+        <td class="desc"><div align="center">데이터 수신에 대한 응답</div></td>
         <td><div align="center"><a href="structs.md#Ack">Protocol::Ack</a></div></td>
     </tr>
     <tr>
         <td><div align="center">Error</div></td>
         <td><div align="center">0x03</div></td>
-        <td><div align="center">오류(reserve, 비트 플래그는 추후에 지정)</div></td>
+        <td class="desc"><div align="center">오류(reserve, 비트 플래그는 추후에 지정)</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
     <tr class="odd">
         <td><div align="center">Request</div></td>
         <td><div align="center">0x04</div></td>
-        <td><div align="center">지정한 타입의 데이터 요청</div></td>
+        <td class="desc"><div align="center">지정한 타입의 데이터 요청</div></td>
         <td><div align="center"><a href="structs.md#Request">Protocol::Request</a></div></td>
     </tr>
     <tr>
         <td><div align="center">Message</div></td>
         <td><div align="center">0x05</div></td>
-        <td><div align="center">문자열 데이터</div></td>
+        <td class="desc"><div align="center">문자열 데이터</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
     <tr class="odd">
         <td><div align="center">Reserved_1</div></td>
         <td><div align="center">0x06</div></td>
-        <td><div align="center">예약</div></td>
+        <td class="desc"><div align="center">예약</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
     <tr>
         <td><div align="center">Reserved_2</div></td>
         <td><div align="center">0x07</div></td>
-        <td><div align="center">예약</div></td>
+        <td class="desc"><div align="center">예약</div></td>
         <td><div align="center">&nbsp;</div></td>
     </tr>
     <tr class="odd">
