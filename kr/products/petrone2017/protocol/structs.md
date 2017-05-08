@@ -384,10 +384,10 @@ namespace Protocol
 {
     struct Pressure
     {
-        u32		systemTime;
+        u32     systemTime;
         
-        float	temperature;
-        float	pressure;
+        float   temperature;
+        float   pressure;
     };
 }
 ```
