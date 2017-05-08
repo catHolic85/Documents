@@ -452,10 +452,10 @@ namespace Vibrator
     {
         enum Type
         {
-            Stop			= 0,	// 정지
+            Stop            = 0,    // 정지
             
-            Instantally		= 1,	// 즉시 적용
-            Continually		= 2,	// 예약
+            Instantally     = 1,    // 즉시 적용
+            Continually     = 2,    // 예약
             
             EndOfType
         };
@@ -566,11 +566,11 @@ namespace UserInterface
         {
             None,
             
-            Clear,				// 초기화
-            Custom,				// 사용자 설정(기본 설정에서 변경된 상태)
+            Clear,              // 초기화
+            Custom,             // 사용자 설정(기본 설정에서 변경된 상태)
             
-            Drone2017,			// 기본 설정
-            Education,			// 교육용 설정
+            Drone2017,          // 기본 설정
+            Education,          // 교육용 설정
             
             EndOfType
         };

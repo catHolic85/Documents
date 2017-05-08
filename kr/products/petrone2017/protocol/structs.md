@@ -543,10 +543,10 @@ namespace Protocol
 {
     struct Vibrator
     {
-        u8		mode;	// 모드(0은 set, 1은 reserve)
-        u16		on;		// 진동을 켠 시간(ms)
-        u16		off;	// 진동을 끈 시간(ms)
-        u16		total;	// 전체 진행 시간(ms)
+        u8      mode;   // 모드(0은 set, 1은 reserve)
+        u16     on;     // 진동을 켠 시간(ms)
+        u16     off;    // 진동을 끈 시간(ms)
+        u16     total;  // 전체 진행 시간(ms)
     };
 }
 ```
@@ -567,13 +567,35 @@ namespace Protocol
 {
     struct UserInterface
     {
-        u8		command;	// 명령
-        u8		function;	// 기능
+        u8      command;    // 명령
+        u8      function;   // 기능
     };
 }
 ```
 - command : [UserInterface::Commands](definitions.md#UserInterface_Commands)
 - function : [UserInterface::Functions](definitions.md#UserInterface_Functions)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Pairing">Protocol::Pairing</a>
+조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정
+```cpp
+namespace Protocol
+{
+    struct Pairing
+    {
+        u16     addressLocal;
+        u16     addressRemote;
+        u8      channel;
+    };
+}
+```
+- addressLocal : 0x0001 ~ 0xFFFE, 0x0000은 사용하지 않음, 0xFFFF는 Broadcasting에 사용
+- addressRemote : 0x0001 ~ 0xFFFE, 0x0000은 사용하지 않음, 0xFFFF는 Broadcasting에 사용
+- channel : 0 ~ 255(미확정)
 
 <br>
 
