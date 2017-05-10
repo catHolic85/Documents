@@ -10,7 +10,7 @@
 <br>
 <br>
 
-## 2. Petrone 및 PetroneLink 장치를 연결한 상태
+## 2. Petrone과 PetroneLink를 연결한 상태
 
 ![Image of PetroneLink](petronelink.jpg)
 
@@ -21,7 +21,6 @@
 
 ![Image of AutoUpdater_1](petrone_auto_updater_1.png)
 
-- 인터페이스 설명
 |이름      |  설명                                |
 |:-------:|:-----------------------------------|
 | SCAN | PC에 연결된 시리얼 통신 장치 검색 |
@@ -29,6 +28,7 @@
 | FORCE SUB | 통신 펌웨어 강제 업데이트 |
 | AUTO UPDATE | 펌웨어 업데이트 시작 |
 | DISCONNECT | 펌웨어 업데이트 중단. PetroneLink와의 연결 해제 |
+
 - PetroneLink 모듈을 PC에 연결한 후 화면 우측 상단의 'SCAN' 버튼을 누르면 바로 아래의 콤보 박스에 검색된 시리얼 포트가 표시됨.
 - PetroneLink는 LED가 노란색으로 Dimming 되는 상태로 둘 것.
 - 시리얼 통신 장치 중 마지막에 연결한 장치가 가장 아래에 표시됨.
