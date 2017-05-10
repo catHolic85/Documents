@@ -7,6 +7,12 @@
 
 3. [Petrone2017](/kr/products/petrone2017/protocol/index.md)
 
+<br>
+<br>
+
+# Drone Firmware Update
+
+1. [Petrone](/kr/products/petrone/firmwareupdate/autoupdater/autoupdater.md)
 
 
 ---
