@@ -37,9 +37,10 @@
 - 버젼과 상관없이 강제로 펌웨어를 업데이트하려면 'FORCE MAIN'(메인 펌웨어) 또는 'FORCE SUB'(통신 펌웨어) 버튼을 눌러 활성화해야 함.
 - 하나의 Petrone 펌웨어를 업데이트하고 나서 업데이트 된 Petrone을 제거하고, 새로운 Petrone을 연결하면 연속해서 펌웨어 업데이트를 실행.
 - 'Disconnect' 버튼을 누르면 PetroneLink와의 연결을 끊음.
-- 펌웨어 업데이트는 통신 펌웨어 -> 메인 펌웨어 순서로 진행됨.
+- 펌웨어 업데이트는 '통신 펌웨어' -> '메인 펌웨어' 순서로 진행됨.
 - 업데이트 프로그램을 실행할 때에는 [.Net Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17851)이 필요.
 - PetroneLink를 PC와 연결할 때에는 CP2104용 드라이버가 필요. [CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
+- 업데이트를 완료한 장치는 업데이트 전의 펌웨어 버젼과 주소가 '>> Devices'에 등록되며 이 리스트에서 삭제하기 전까지는 업데이트가 안됨.
 
 <br>
 <br>
