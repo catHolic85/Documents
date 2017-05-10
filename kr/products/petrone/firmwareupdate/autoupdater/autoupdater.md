@@ -1,20 +1,21 @@
 
 # Auto Updater
 
-
+<br>
 
 ## 1. Petrone과 PetroneLink를 유선으로 연결할 때 사용하는 커넥터
 
 ![Image of PetroneLink](connector.jpg)
 
-
+<br>
+<br>
 
 ## 2. Petrone 및 PetroneLink 장치를 연결한 상태
 
-![Image of PetroneLink](petrone_link.jpg)
+![Image of PetroneLink](petronelink.jpg)
 
-
-
+<br>
+<br>
 
 ## 3. Auto Updater 프로그램을 실행한 화면
 
@@ -32,19 +33,21 @@
 - 업데이트 프로그램을 실행할 때에는 [.Net Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17851)이 필요.
 - PetroneLink를 PC와 연결할 때에는 CP2104용 드라이버가 필요. [CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
 
-
+<br>
+<br>
 
 ## 4. 펌웨어 업데이트를 진행하고 있는 화면.
 
 ![Image of AutoUpdater_2](petrone_auto_updater_2.png)
 
-
+<br>
+<br>
 
 ## 5. 펌웨어 업데이트가 완료된 화면.
 
 ![Image of AutoUpdater_3](petrone_auto_updater_3.png)
 
-
+<br>
 
 ---
 
