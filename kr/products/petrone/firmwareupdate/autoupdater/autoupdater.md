@@ -37,13 +37,13 @@
 
 #### 3.2. 펌웨어 업데이트 진행 방법
 
-1) PetroneLink를 PC에 연결
-2) PetroneLink의 LED가 노란색으로 Dimming 되도록 버튼을 눌러 모드를 변경.
-3) AUTO UPDATER에서 'SCAN' 버튼을 눌러 시리얼 통신 장치 검색
-4) AUTO UPDATER에서'SCAN' 버튼 아래의 콤보 박스에서 PetroneLink의 포트 선택
-5) AUTO UPDATER에서'AUTO UPDATE' 버튼을 눌러 펌웨어 업데이트 진행
-6) PetroneLink에 Petrone을 연결하면 자동으로 업데이트가 진행됨. 펌웨어 업데이트가 완료되면 다음 Petrone을 연결하여 연속으로 업데이트 진행 가능
-7) 모든 업데이트가 완료된 경우 'DISCONNECT' 버튼을 눌러 PetroneLink와의 연결을 해제
+> 1. PetroneLink를 PC에 연결
+> 2. PetroneLink의 LED가 노란색으로 Dimming 되도록 버튼을 눌러 모드를 변경.
+> 3. AUTO UPDATER에서 'SCAN' 버튼을 눌러 시리얼 통신 장치 검색
+> 4. AUTO UPDATER에서'SCAN' 버튼 아래의 콤보 박스에서 PetroneLink의 포트 선택
+> 5. AUTO UPDATER에서'AUTO UPDATE' 버튼을 눌러 펌웨어 업데이트 진행
+> 6. PetroneLink에 Petrone을 연결하면 자동으로 업데이트가 진행됨. 펌웨어 업데이트가 완료되면 다음 Petrone을 연결하여 연속으로 업데이트 진행 가능
+> 7. 모든 업데이트가 완료된 경우 'DISCONNECT' 버튼을 눌러 PetroneLink와의 연결을 해제
 
 <br>
 
