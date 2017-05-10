@@ -21,6 +21,8 @@
 
 ![Image of AutoUpdater_1](petrone_auto_updater_1.png)
 
+<br>
+
 #### 3.1. 버튼에 대한 설명
 
 |이름      |  설명                                |
@@ -31,6 +33,8 @@
 | AUTO UPDATE | 펌웨어 업데이트 시작 |
 | DISCONNECT | 펌웨어 업데이트 중단. PetroneLink와의 연결 해제 |
 
+<br>
+
 #### 3.2. 펌웨어 업데이트 진행 방법
 
 1) PetroneLink를 PC에 연결
@@ -40,6 +44,8 @@
 5) AUTO UPDATER에서'AUTO UPDATE' 버튼을 눌러 펌웨어 업데이트 진행
 6) PetroneLink에 Petrone을 연결하면 자동으로 업데이트가 진행됨. 펌웨어 업데이트가 완료되면 다음 Petrone을 연결하여 연속으로 업데이트 진행 가능
 7) 모든 업데이트가 완료된 경우 'DISCONNECT' 버튼을 눌러 PetroneLink와의 연결을 해제
+
+<br>
 
 #### 3.3. 주의 사항
 
