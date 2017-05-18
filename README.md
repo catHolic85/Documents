@@ -1,7 +1,7 @@
 
 # Drone Protocols (Korean)
 
-1. [DroneFighter2017](/kr/products/dronefighter2017/protocol/index.md)
+1. [DroneFighter2017](/kr/products/dronefighter2017/protocol/index.md) (UNDER CONSTRUCTION)
 
 2. [Petrone](/kr/products/petrone/protocol/index.md)
 

@@ -1,15 +1,15 @@
-***PETRONE / BLE / Protocol / Definitions***<br>
-Modified : 2017.03.28
+***DRONEFIGHTER2017 / Protocol / Definitions***<br>
+Modified : 2017.05.18
 
 ---
 
-#### Petrone에서 사용하고 있는 기본 정의들을 소개합니다.
+#### Drone Fighter에서 사용하고 있는 기본 정의들을 소개합니다.
 
 ---
 
 <br>
 
-## <a name="CommandType">Protocol::CommandType::Type</a>
+## <a name="Protocol_CommandType">Protocol::CommandType::Type</a>
 CommandBase 구조체에서 commandType 변수에 사용합니다.
 
 ```cpp
@@ -19,25 +19,27 @@ namespace Protocol
     {
         enum Type
         {
-            None = 0,               // 없음
-            
+            None = 0,                       // 이벤트 없음
+
             // 설정
-            ModeVehicle = 0x10,     // 동작 모드 전환
-            
+            ModeVehicle = 0x10,             // Vehicle 동작 모드 전환
+
             // 제어
-            Coordinate = 0x20,      // 좌표 기준 변경
-            Trim,                   // 트림 변경
-            FlightEvent,            // 비행 이벤트 실행
-            DriveEvent,             // 주행 이벤트 실행
-            Stop,                   // 정지
+            Coordinate = 0x20,              // 방위 기준 변경
+            Trim,                           // 트림 변경
+            FlightEvent,                    // 비행 이벤트 실행
+            DriveEvent,                     // 주행 이벤트 실행
+            Stop,                           // 정지
             
-            ResetHeading = 0x50,    // 방향 초기화
-            ClearGyroBiasAndTrim,   // 자이로 바이어스와 트림 설정 초기화
-            ClearTrim,              // 트림 초기화
+            ClearTrim = 0x50,               // 트림 초기화
+            GyroBiasAndTrimReset,           // 자이로 바이어스와 트림 리셋
             
-            // 요청
-            Request = 0x90,         // 지정한 타입의 데이터 요청
-            
+            UserInterfacePreset = 0x80,     // 사용자 인터페이스 설정
+            DataStorageWrite,               // 변경사항이 있는 경우 데이터 저장소에 기록
+
+            // 관리자
+            ClearCounter = 0xA0,            // 카운터 클리어(관리자 권한을 획득했을 경우에만 동작)
+
             EndOfType
         };
     }
@@ -47,13 +49,13 @@ namespace Protocol
 <br>
 <br>
 
-## <a name="ModeVehicle">System::ModeVehicle::Type</a>
-페트론 동작 모드를 선택합니다.
+## <a name="Mode_Vehicle">Mode::Vehicle::Type</a>
+Drone Fighter 동작 모드를 선택합니다.
 
 ```cpp
-namespace System
+namespace Mode
 {
-    namespace ModeVehicle
+    namespace Vehicle
     {
         enum Type
         {
@@ -66,40 +68,39 @@ namespace System
             Drive = 0x20,       // 주행
             DriveFPV,           // 주행(FPV)
             
+            Test = 0x30,        // 테스트
+            
             EndOfType
         };
     }
-    
 }
 ```
 
 <br>
 <br>
 
-## <a name="ModeSystem">System::ModeSystem::Type</a>
+## <a name="Mode_System">Mode::System::Type</a>
 시스템 동작 상태를 나타냅니다.
 
 ```cpp
-namespace System
+namespace Mode
 {
-    namespace ModeSystem
+    namespace System
     {
         enum Type
         {
             None = 0,           // 없음
             
             Boot,               // 부팅
-            Wait,               // 연결 대기 상태
             
-            Ready,              // 대기 상태
+            Start,              // 시작 코드 실행
             
             Running,            // 메인 코드 동작
-            
-            Update,             // 펌웨어 업데이트
-            UpdateComplete,     // 펌웨어 업데이트 완료
-            
-            Error,              // 오류
+                            
+            ReadyToReset,       // 리셋 대기(1초 뒤 리셋)
                 
+            Error,              // 오류
+                    
             EndOfType
         };
     }
@@ -110,30 +111,33 @@ namespace System
 <br>
 <br>
 
-## <a name="ModeFlight">System::ModeFlight::Type</a>
+## <a name="Mode_Flight">Mode::Flight::Type</a>
 비행 제어기 동작 상태를 나타냅니다.
 
 ```cpp
-namespace System
+namespace Mode
 {
-    namespace ModeFlight
+    namespace Flight
     {
         enum Type
         {
             None = 0,           // 없음
             
-            Ready,              // 비행 준비
+            Ready = 0x10,       // 준비
             
             TakeOff,            // 이륙 (Flight로 자동전환)
             Flight,             // 비행
-            Flip,               // 회전           
-            Stop,               // 강제 정지
             Landing,            // 착륙
+            Flip,               // 회전         
             Reverse,            // 뒤집기
             
-            Accident,           // 사고 (Ready로 자동전환)
+            Stop = 0x20,        // 강제 정지
+            
+            Accident = 0x30,    // 사고 (Ready로 자동전환)
             Error,              // 오류
-                        
+            
+            Test = 0x40,        // 테스트 모드
+            
             EndOfType
         };
     }
@@ -144,27 +148,30 @@ namespace System
 <br>
 <br>
 
-## <a name="ModeDrive">System::ModeDrive::Type</a>
+## <a name="Mode_Drive">Mode::Drive::Type</a>
 자동차 제어기 동작 상태를 나타냅니다.
 
 ```cpp
-namespace System
+namespace Mode
 {
-    namespace ModeDrive
+    namespace Drive
     {
         enum Type
         {
             None = 0,           // 없음
             
-            Ready,              // 준비
+            Ready = 0x10,       // 준비
             
             Start,              // 출발
             Drive,              // 주행
-            Stop,               // 강제 정지
             
-            Accident,           // 사고 (Ready로 자동전환)
+            Stop = 0x20,        // 강제 정지
+            
+            Accident = 0x30,    // 사고 (Ready로 자동전환)
             Error,              // 오류
             
+            Test = 0x40,        // 테스트 모드
+
             EndOfType
         };
     }
@@ -175,45 +182,241 @@ namespace System
 <br>
 <br>
 
-## <a name="SensorOrientation">System::SensorOrientation::Type</a>
+## <a name="SensorOrientation">SensorOrientation::Type</a>
 센서 방향을 나타냅니다.
 ```cpp
-namespace System
+namespace SensorOrientation
 {
-    namespace SensorOrientation
+    enum Type
     {
-        enum Type
-        {
-            None = 0,           // 없음
-            
-            Normal,             // 정상
-            ReverseStart,       // 뒤집히기 시작
-            Reversed,           // 뒤집힘
-            
-            EndOfType
-        };
-    }
+        None = 0,           // 없음
+        
+        Normal,             // 정상
+        ReverseStart,       // 뒤집히기 시작
+        Reversed,           // 뒤집힘
+        
+        EndOfType
+    };
 }
 ```
 
 <br>
 <br>
 
-## <a name="Direction">System::Direction::Type</a>
+## <a name="Direction">Direction::Type</a>
 방향을 나타냅니다.
 ```cpp
-namespace System
+namespace Direction
 {
+    enum Type
+    {
+        None = 0,
+
+        Left,
+        Front,
+        Right,
+        Rear,
+        
+        Top,
+        Bottom,
+        
+        EndOfType
+    };
+}
+```
+
+<br>
+<br>
+
+## <a name="Coordinate">Coordinate::Type</a>
+조종기 방향 기준을 선택합니다. World는 앱솔루트 모드입니다. 드론 외부 세계를 중심으로 좌표를 판단합니다. Local은 일반모드입니다. 드론을 중심으로 좌표를 판단합니다.
+
+```cpp
+namespace Coordinate
+{
+    enum Type
+    {
+        None = 0,           // 없음
+        
+        World,              // 고정 좌표계(Absolute)
+        Local,              // 상대 좌표계(일반)
+        
+        EndOfType
+    };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Trim">Trim::Type</a>
+드론이 한쪽 방향으로 흐를 때 반대 방향을 입력하여 호버링을 할 수 있게 조정합니다. 한 번 전송할 때마다 일정하게 값이 변합니다.
+
+```cpp
+namespace Trim
+{
+    enum Type
+    {
+        None = 0,           // 없음
+
+        RollIncrease,       // Roll 증가
+        RollDecrease,       // Roll 감소                
+        PitchIncrease,      // Pitch 증가
+        PitchDecrease,      // Pitch 감소               
+        YawIncrease,        // Yaw 증가
+        YawDecrease,        // Yaw 감소             
+        ThrottleIncrease,   // Throttle 증가
+        ThrottleDecrease,   // Throttle 감소
+        
+        Reset,              // 전체 트림 리셋
+        
+        EndOfType
+    };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Rotation">Rotation::Type</a>
+모터 회전 방향
+
+```cpp
+namespace Rotation
+{
+    enum Type
+    {
+        None = 0,
+        
+        Clockwise,				// 시계 방향
+        Counterclockwise,		// 반시계 방향
+        
+        EndOfType
+    };
+}
+```
+
+<br>
+<br>
+
+
+## <a name="Motor_Part">Motor::Part::Type</a>
+모터 번호
+
+```cpp
+namespace Rotation
+{
+    namespace Part
+    {
+        enum Type
+        {
+            M1,		// Front Left
+            M2,		// Front Right
+            M3,		// Rear Right
+            M4,		// Rear Left
+            
+            EndOfPart,
+            
+            All
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="FlightEvent">FlightEvent::Type</a>
+비행 이벤트를 실행합니다.
+
+```cpp
+namespace FlightEvent
+{
+    enum Type
+    {
+        None = 0,               // 없음
+        
+        Stop = 0x10,            // 정지
+        TakeOff,                // 이륙
+        Landing,                // 착륙
+        
+        Reverse,                // 뒤집기
+        
+        FlipFront,              // 회전
+        FlipRear,               // 회전
+        FlipLeft,               // 회전
+        FlipRight,              // 회전
+        
+        Shot,                   // 미사일 쏠때 움직임
+        UnderAttack,            // 미사일 맞을때 움직임
+        
+        ResetHeading = 0xA0,    // 헤딩 리셋(앱솔루트 모드 일 때 현재 heading을 0도로 변경)
+        
+        EndOfType   
+    };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Joystick_Direction">Joystick::Direction::Type</a>
+조이스틱 방향
+
+```cpp
+namespace Joystick
+{
+    // 조이스틱 방향
     namespace Direction
     {
         enum Type
         {
-            None = 0,
+            None    = 0,        // 정의하지 않은 영역(무시함)
+            
+            VT      = 0x10,     //   위(세로)
+            VM      = 0x20,     // 중앙(세로)
+            VB      = 0x40,     // 아래(세로)
+            
+            HL      = 0x01,     //   왼쪽(가로)
+            HM      = 0x02,     //   중앙(가로)
+            HR      = 0x04,     // 오른쪽(가로)
+            
+            TL = 0x11,  TM = 0x12,  TR = 0x14,
+            ML = 0x21,  CN = 0x22,  MR = 0x24,
+            BL = 0x41,  BM = 0x42,  BR = 0x44
+        };
+    }
+}
+```
 
-            Left,
-            Front,
-            Right,
-            Rear,
+<br>
+<br>
+
+
+## <a name="Joystick_Event">Joystick::Event::Type</a>
+조이스틱 방향
+
+```cpp
+namespace Joystick
+{
+    // 조이스틱 방향
+    namespace Event
+    {
+        enum Type
+        {
+            None    = 0,        // 이벤트 없음
+            
+            In,                 // 특정 영역에 진입
+            Stay,               // 특정 영역에서 상태 유지
+            Out,                // 특정 영역에서 벗어남
             
             EndOfType
         };
@@ -221,125 +424,90 @@ namespace System
 }
 ```
 
+
 <br>
 <br>
 
-## <a name="Coordinate">System::Coordinate::Type</a>
-페트론 조종기 방향 기준을 선택합니다. World는 앱솔루트 모드입니다. 드론 외부 세계를 중심으로 좌표를 판단합니다. Local은 일반모드입니다. 드론을 중심으로 좌표를 판단합니다.
+
+## <a name="Buzzer_Mode">Buzzer::Mode::Type</a>
+버저 모드
 
 ```cpp
-namespace System
-{
-    namespace Coordinate
-    {
-        enum Type
-        {
-            None = 0,           // 없음
-            
-            World,              // 고정 좌표계(Absolute)
-            Local,              // 상대 좌표계(일반)
-            
-            EndOfType
-        };
-    }
-}
-```
-
-<br>
-<br>
-
-## <a name="Trim">System::Trim::Type</a>
-페트론이 한쪽 방향으로 흐를 때 반대 방향을 입력하여 호버링을 할 수 있게 조정합니다. 한 번 전송할 때마다 일정하게 값이 변합니다.
-
-```cpp
-namespace System
-{
-    namespace Trim
-    {
-        enum Type
-        {
-            None = 0,           // 없음
- 
-            RollIncrease,       // Roll 증가
-            RollDecrease,       // Roll 감소              
-            PitchIncrease,      // Pitch 증가
-            PitchDecrease,      // Pitch 감소             
-            YawIncrease,        // Yaw 증가
-            YawDecrease,        // Yaw 감소               
-            ThrottleIncrease,   // Throttle 증가
-            ThrottleDecrease,   // Throttle 감소
-            
-            EndOfType
-        };
-    }
-}
-```
-
-<br>
-<br>
-
-## <a name="FlightEvent">System::FlightEvent::Type</a>
-페트론 비행 이벤트를 실행합니다.
-
-```cpp
-namespace System
-{
-    namespace FlightEvent
-    {
-        enum Type
-        {
-            None = 0,           // 없음
-            
-            TakeOff,            // 이륙
-            
-            FlipFront,          // 회전(Not Yet)
-            FlipRear,           // 회전(Not Yet)
-            FlipLeft,           // 회전(Not Yet)
-            FlipRight,          // 회전(Not Yet)
-            
-            Stop,               // 정지
-            Landing,            // 착륙
-            Reverse,            // 뒤집기
-            
-            Shot,               // 미사일 쏠때 움직임
-            UnderAttack,        // 미사일 맞을때 움직임
-            
-            EndOfType   
-        };
-    }
-}
-```
-
-<br>
-<br>
-
-## <a name="LightMode">Light::Mode::Type</a>
-LED 모드 또는 이벤트 명령 시 동작 모드를 지정할 때 사용합니다.
-
-```cpp
-namespace Light
+namespace Buzzer
 {
     namespace Mode
     {
         enum Type
         {
-            None,
+            Stop                = 0,    // 정지(Mode에서의 Stop은 통신에서 받았을 때 Buzzer를 끄는 용도로 사용, set으로만 호출)
+
+            MuteInstantally     = 1,    // 묵음 즉시 적용
+            MuteContinually     = 2,    // 묵음 예약
+
+            ScaleInstantally    = 3,    // 음계 즉시 적용
+            ScaleContinually    = 4,    // 음계 예약
+
+            HzInstantally       = 5,    // 주파수 즉시 적용
+            HzContinually       = 6,    // 주파수 예약
+
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Buzzer_Scale">Buzzer::Scale::Type</a>
+버저 음계
+
+```cpp
+namespace Buzzer
+{
+    namespace Scale
+    {
+        enum Type
+        {
+            C1, CS1, D1, DS1, E1, F1, FS1, G1, GS1, A1, AS1, B1,
+            C2, CS2, D2, DS2, E2, F2, FS2, G2, GS2, A2, AS2, B2,
+            C3, CS3, D3, DS3, E3, F3, FS3, G3, GS3, A3, AS3, B3,
+            C4, CS4, D4, DS4, E4, F4, FS4, G4, GS4, A4, AS4, B4,
             
-            EyeNone = 0x10,
-            EyeHold,            // 지정한 색상을 계속 켬
-            EyeMix,             // 순차적으로 LED 색 변경
-            EyeFlicker,         // 깜빡임         
-            EyeFlickerDouble,   // 깜빡임(두 번 깜빡이고 깜빡인 시간만큼 꺼짐)
-            EyeDimming,         // 밝기 제어하여 천천히 깜빡임
+            C5, CS5, D5, DS5, E5, F5, FS5, G5, GS5, A5, AS5, B5,
+            C6, CS6, D6, DS6, E6, F6, FS6, G6, GS6, A6, AS6, B6,
+            C7, CS7, D7, DS7, E7, F7, FS7, G7, GS7, A7, AS7, B7,
+            C8, CS8, D8, DS8, E8, F8, FS8, G8, GS8, A8, AS8, B8,
+        
+            EndOfType,
             
-            ArmNone = 0x40,     
-            ArmHold,            // 지정한 색상을 계속 켬
-            ArmMix,             // 순차적으로 LED 색 변경
-            ArmFlicker,         // 깜빡임         
-            ArmFlickerDouble,   // 깜빡임(두 번 깜빡이고 깜빡인 시간만큼 꺼짐)
-            ArmDimming,         // 밝기 제어하여 천천히 깜빡임
-            ArmFlow,            // 앞에서 뒤로 흐름           
-            ArmFlowReverse,     // 뒤에서 앞으로 흐름 
+            Mute    = 0xEE,     // 묵음
+            Fin     = 0xFF      // 악보의 끝
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+
+## <a name="Vibrator_Mode">Vibrator::Mode::Type</a>
+진동 모드
+
+```cpp
+namespace Vibrator
+{
+    namespace Mode
+    {
+        enum Type
+        {
+            Stop            = 0,    // 정지
+            
+            Instantally     = 1,    // 즉시 적용
+            Continually     = 2,    // 예약
             
             EndOfType
         };
@@ -350,159 +518,113 @@ namespace Light
 <br>
 <br>
 
-## <a name="LightColors">Light::Colors::Type</a>
-LED 색상을 지정할 때 사용합니다.
+
+## <a name="UserInterface_Commands">UserInterface::Commands::Type</a>
+사용자 인터페이스 입력
 
 ```cpp
-namespace Light
+namespace UserInterface
 {
-    namespace Colors
+    namespace Commands
     {
         enum Type
         {
-            AliceBlue,
-            AntiqueWhite,
-            Aqua,
-            Aquamarine,
-            Azure,
-            Beige,
-            Bisque,
-            Black,
-            BlanchedAlmond,
-            Blue,
-            BlueViolet,
-            Brown,
-            BurlyWood,
-            CadetBlue,
-            Chartreuse,
-            Chocolate,
-            Coral,
-            CornflowerBlue,
-            Cornsilk,
-            Crimson,
-            Cyan,
-            DarkBlue,
-            DarkCyan,
-            DarkGoldenRod,
-            DarkGray,
-            DarkGreen,
-            DarkKhaki,
-            DarkMagenta,
-            DarkOliveGreen,
-            DarkOrange,
-            DarkOrchid,
-            DarkRed,
-            DarkSalmon,
-            DarkSeaGreen,
-            DarkSlateBlue,
-            DarkSlateGray,
-            DarkTurquoise,
-            DarkViolet,
-            DeepPink,
-            DeepSkyBlue,
-            DimGray,
-            DodgerBlue,
-            FireBrick,
-            FloralWhite,
-            ForestGreen,
-            Fuchsia,
-            Gainsboro,
-            GhostWhite,
-            Gold,
-            GoldenRod,
-            Gray,
-            Green,
-            GreenYellow,
-            HoneyDew,
-            HotPink,
-            IndianRed,
-            Indigo,
-            Ivory,
-            Khaki,
-            Lavender,
-            LavenderBlush,
-            LawnGreen,
-            LemonChiffon,
-            LightBlue,
-            LightCoral,
-            LightCyan,
-            LightGoldenRodYellow,
-            LightGray,
-            LightGreen,
-            LightPink,
-            LightSalmon,
-            LightSeaGreen,
-            LightSkyBlue,
-            LightSlateGray,
-            LightSteelBlue,
-            LightYellow,
-            Lime,
-            LimeGreen,
-            Linen,
-            Magenta,
-            Maroon,
-            MediumAquaMarine,
-            MediumBlue,
-            MediumOrchid,
-            MediumPurple,
-            MediumSeaGreen,
-            MediumSlateBlue,
-            MediumSpringGreen,
-            MediumTurquoise,
-            MediumVioletRed,
-            MidnightBlue,
-            MintCream,
-            MistyRose,
-            Moccasin,
-            NavajoWhite,
-            Navy,
-            OldLace,
-            Olive,
-            OliveDrab,
-            Orange,
-            OrangeRed,
-            Orchid,
-            PaleGoldenRod,
-            PaleGreen,
-            PaleTurquoise,
-            PaleVioletRed,
-            PapayaWhip,
-            PeachPuff,
-            Peru,
-            Pink,
-            Plum,
-            PowderBlue,
-            Purple,
-            RebeccaPurple,
-            Red,
-            RosyBrown,
-            RoyalBlue,
-            SaddleBrown,
-            Salmon,
-            SandyBrown,
-            SeaGreen,
-            SeaShell,
-            Sienna,
-            Silver,
-            SkyBlue,
-            SlateBlue,
-            SlateGray,
-            Snow,
-            SpringGreen,
-            SteelBlue,
-            Tan,
-            Teal,
-            Thistle,
-            Tomato,
-            Turquoise,
-            Violet,
-            Wheat,
-            White,
-            WhiteSmoke,
-            Yellow,
-            YellowGreen,
+            None,
             
-            EndOfColor
+            Setup_Button_FrontLeft_Down,
+            Setup_Button_FrontRight_Down,
+            Setup_Button_MidTurnLeft_Down,
+            Setup_Button_MidTurnRight_Down,
+            Setup_Button_MidUp_Down,
+            Setup_Button_MidLeft_Down,
+            Setup_Button_MidRight_Down,
+            Setup_Button_MidDown_Down,
+            
+            Setup_Joystick_Left_Up_In,
+            Setup_Joystick_Left_Left_In,
+            Setup_Joystick_Left_Right_In,
+            Setup_Joystick_Left_Down_In,
+            
+            Setup_Joystick_Right_Up_In,
+            Setup_Joystick_Right_Left_In,
+            Setup_Joystick_Right_Right_In,
+            Setup_Joystick_Right_Down_In,
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="UserInterface_Functions">UserInterface::Functions::Type</a>
+사용자 인터페이스 기능
+
+```cpp
+namespace UserInterface
+{
+    namespace Functions
+    {
+        enum Type
+        {
+            None,
+            
+            JoystickCalibration_Reset,
+            
+            Change_Team_Red,
+            Change_Team_Blue,
+            
+            Change_Mode_Vehicle_Flight,
+            Change_Mode_Vehicle_FlightNoGuard,
+            Change_Mode_Vehicle_Drive,
+            
+            Change_Coordinate_Local,                // Normal
+            Change_Coordinate_World,                // Absolute
+            
+            Change_Mode_Control_Mode1,
+            Change_Mode_Control_Mode2,
+            Change_Mode_Control_Mode3,
+            Change_Mode_Control_Mode4,
+                            
+            GyroBias_Reset,
+            
+            Change_Mode_USB_CDC,
+            Change_Mode_USB_HID,
+            
+            EndOfType
+        };
+    }
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="UserInterface_Preset">UserInterface::Preset::Type</a>
+사용자 인터페이스 프리셋
+
+```cpp
+namespace UserInterface
+{
+    namespace Preset
+    {
+        enum Type
+        {
+            None,
+            
+            Clear,              // 초기화
+            Custom,             // 사용자 설정(기본 설정에서 변경된 상태)
+            
+            Drone2017,          // 기본 설정
+            Education,          // 교육용 설정
+            
+            EndOfType
         };
     }
 }
@@ -511,30 +633,18 @@ namespace Light
 
 <br>
 
+
 ---
 
-### PETRONE
+### DRONE FIGHTER 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
 3. [DataType](datatype.md)
 4. ***Definitions***
-5. [Base Structs](base_structs.md)
-6. [Structs](structs.md)
-7. [Structs - Light](structs_light.md)
-
-
-### PETRONE Link
-
-1. [Intro](link/intro.md)
-2. [DataType](link/datatype.md)
-3. [Definitions](link/definitions.md)
-4. [Structs](link/structs.md)
-5. [Examples](link/examples.md)
+5. [Structs](structs.md)
+6. [Structs - Light](structs_light.md)
 
 <br>
 
-[Home](../../README.md)
-
-
-
+[Index](index.md)

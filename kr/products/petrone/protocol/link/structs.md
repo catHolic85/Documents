@@ -1,5 +1,5 @@
 ***PETRONE / LINK / Protocol / Structs***<br>
-Modified : 2017.03.27
+Modified : 2017.05.18
 
 ---
 
@@ -144,5 +144,9 @@ PETRONE과 페어링이 필요한 경우에 먼저 LinkPasscode를 사용하여 
 
 <br>
 
-[Home](../../../README.md)
+[Index](../index.md)
+
+<br>
+
+[Home](../../../../../README.md)
 

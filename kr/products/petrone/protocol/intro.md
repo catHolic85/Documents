@@ -76,5 +76,9 @@ Modified : 2017.03.28
 
 <br>
 
-[Home](../../README.md)
+[Index](index.md)
+
+<br>
+
+[Home](../../../../README.md)
 

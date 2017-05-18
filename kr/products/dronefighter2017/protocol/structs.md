@@ -1,5 +1,5 @@
-***PETRONE / BLE / Protocol / Structs***<br>
-Modified : 2017.04.17
+***DRONEFIGHTER2017 / Protocol / Structs***<br>
+Modified : 2017.05.18
 
 ---
 
@@ -9,26 +9,44 @@ Modified : 2017.04.17
 
 <br>
 
-## <a name="Ack">Protocol::Ack</a>
-PETRONE이 데이터를 수신 받았을 때 응답으로 보내는 데이터입니다. PETRONE의 현재 내부 시간과 수신 받은 데이터의 타입을 담아서 반환합니다. Ack와 Control을 제외한 대부분의 명령에 대해 응답으로 전송합니다.
+## <a name="Protocol_Ping">Protocol::Ping</a>
+특정 장치가 존재하는지를 확인할 때 사용합니다. 응답은 Ack를 받습니다.
+```cpp
+namespace Protocol
+{
+    struct Ping
+    {
+        u32  systemTime;   // Ping을 전송하는 장치의 시각
+    };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Ack">Protocol::Ack</a>
+특정한 데이터를 요청하지 않은 경우에 Ack를 응답으로 전송합니다. 수신 받은 데이터의 crc16을 포함하여 돌려보내기 때문에 데이터를 전송한 측에서 정상적으로 데이터를 전송했는지 판별하는데 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Ack
     {
-        u32  systemTime;   // 수신 받은 시각
-        u8   dataType;     // 수신 받은 데이터 타입
+        u32     systemTime;     // 수신 받은 시간
+        u8      dataType;       // 수신 받은 데이터 타입
+        u16     crc16;          // 수신 받은 데이터의 crc16
     };
 }
 ```
-- dataType : [Protocol::DataType::Type](datatype.md#DataType)
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
 
 
 <br>
 <br>
 
 
-## <a name="Request">Protocol::Request</a>
+## <a name="Protocol_Request">Protocol::Request</a>
 PETRONE에 데이터를 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -39,30 +57,54 @@ namespace Protocol
     };
 }
 ```
-- dataType : [Protocol::DataType::Type](datatype.md#DataType)
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
 
 
 <br>
 <br>
 
 
-## <a name="Control">Protocol::Control</a>
-PETRONE을 조종할 때 사용하는 입력값입니다.
+## <a name="Control_Double8">Control::Double8</a>
+PETRONE 자동차 조종 시에 사용합니다. 드론 모드일 때 이 명령을 전송하면 무시합니다.
 ```cpp
-namespace Protocol
+namespace Control
 {
-    struct Control
+    struct Double8
     {
-        s8   roll;        // Roll
-        s8   pitch;       // Pitch
-        s8   yaw;         // Yaw
-        s8   throttle;    // Throttle
+        s8      wheel;      // wheel
+        s8      accel;      // accel
+    };
+}
+```
+
+Control::Double8 입력 값의 범위는 다음과 같습니다
+
+|이름      | 형식 | 범위        | 방향      | 음수 값(-) | 양수 값(+)    |
+|:--------:|:----:|:-----------:|:---------:|:----------:|:-------------:|
+| wheel     | s8   | -100 ~ 100  | 좌우 회전 | 좌회전       | 우회전          |
+| accel | s8   | -100 ~ 100  | 전후진 속도    | 후진       | 전진          |
+
+
+<br>
+<br>
+
+
+## <a name="Control_Quad8">Control::Quad8</a>
+PETRONE 드론 및 자동차 조종 시에 사용합니다.
+```cpp
+namespace Control
+{
+    struct Quad8
+    {
+        s8      roll;       // roll
+        s8      pitch;      // pitch
+        s8      yaw;        // yaw
+        s8      throttle;   // throttle
     };
 }
 ```
 
 Control 입력 값의 범위는 다음과 같습니다. Drive 모드에서는 **throttle**(전후)과 **roll**(좌우)만 사용합니다.
-
 
 |이름      | 형식 | 범위        | 방향      | 음수 값(-) | 양수 값(+)    |
 |:--------:|:----:|:-----------:|:---------:|:----------:|:-------------:|
@@ -76,71 +118,34 @@ Control 입력 값의 범위는 다음과 같습니다. Drive 모드에서는 **
 <br>
 
 
-## <a name="Command">Protocol::Command</a>
-명령 하나를 전달합니다.
+## <a name="Protocol_Command">Protocol::Command</a>
+PETRONE의 설정을 변경하거나 데이터를 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Command
     {
-        CommandBase   command;
+        u8 commandType;   // 명령 타입
+        u8 option;        // 명령에 대한 옵션
     };
 }
 ```
-- command : [Protocol::CommandBase](base_structs.md#CommandBase)
+- commandType : [Protocol::CommandType::Type](definitions.md#Protocol_CommandType)
+- option : [Mode::Vehicle::Type](definitions.md#Mode_Vehicle), [Coordinate::Type](definitions.md#Coordinate), [System::Trim::Type](definitions.md#Trim),  [System::FlightEvent::Type](definitions.md#FlightEvent), [Protocol::DataType::Type](datatype.md#Protocol_DataType), [UserInterface::Preset::Type](definitions.md#UserInterface_Preset)
 
 
 <br>
 <br>
 
 
-## <a name="Command2">Protocol::Command2</a>
-명령 두 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct Command2
-    {
-        CommandBase   command1;
-        CommandBase   command2;
-    };
-}
-```
-- command1, command2 : [Protocol::CommandBase](base_structs.md#CommandBase)
-
-
-<br>
-<br>
-
-
-## <a name="Command3">Protocol::Command3</a>
-명령 세 개를 전달합니다.
-```cpp
-namespace Protocol
-{
-    struct Command3
-    {
-        CommandBase   command1;
-        CommandBase   command2;
-        CommandBase   command3;
-    };
-}
-```
-- command1, command2, command3 : [Protocol::CommandBase](base_structs.md#CommandBase)
-
-
-<br>
-<br>
-
-
-## <a name="Address">Protocol::Address</a>
-BLE 주소를 반환합니다.
+## <a name="Protocol_Address">Protocol::Address</a>
+장치 주소를 반환합니다.
 ```cpp
 namespace Protocol
 {
     struct Address
     {
-        u8   address[6];
+        u8   address[8];
     };
 }
 ```
@@ -149,7 +154,7 @@ namespace Protocol
 <br>
 
 
-## <a name="State">Protocol::State</a>
+## <a name="Protocol_State">Protocol::State</a>
 PETRONE의 현재 상태값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -168,19 +173,19 @@ namespace Protocol
     };
 }
 ```
-- modeVehicle : [System::ModeVehicle::Type](definitions.md#ModeVehicle)
-- modeSystem : [System::ModeSystem::Type](definitions.md#ModeSystem)
-- modeFlight : [System::ModeFlight::Type](definitions.md#ModeFlight)
-- modeDrive : [System::ModeDrive::Type](definitions.md#ModeDrive)
-- sensorOrientation : [System::SensorOrientation::Type](definitions.md#SensorOrientation)
-- coordinate : [System::Coordinate::Type](definitions.md#Coordinate)
+- modeVehicle : [Mode::Vehicle::Type](definitions.md#Mode_Vehicle)
+- modeSystem : [Mode::System::Type](definitions.md#Mode_System)
+- modeFlight : [Mode::Flight::Type](definitions.md#Mode_Flight)
+- modeDrive : [Mode::Drive::Type](definitions.md#Mode_Drive)
+- sensorOrientation : [SensorOrientation::Type](definitions.md#SensorOrientation)
+- coordinate : [Coordinate::Type](definitions.md#Coordinate)
 
 
 <br>
 <br>
 
 
-## <a name="Attitude">Protocol::Attitude</a>
+## <a name="Protocol_Attitude">Protocol::Attitude</a>
 자세값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -216,7 +221,7 @@ namespace Protocol
 <br>
 
 
-## <a name="GyroBias">Protocol::GyroBias</a>
+## <a name="Protocol_GyroBias">Protocol::GyroBias</a>
 자이로 바이어스 값을 반환합니다.
 ```cpp
 namespace Protocol
@@ -234,7 +239,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimFlight">Protocol::TrimFlight</a>
+## <a name="Protocol_TrimFlight">Protocol::TrimFlight</a>
 비행 Trim을 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -253,7 +258,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimDrive">Protocol::TrimDrive</a>
+## <a name="Protocol_TrimDrive">Protocol::TrimDrive</a>
 자동차 Trim을 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -269,7 +274,7 @@ namespace Protocol
 <br>
 
 
-## <a name="TrimAll">Protocol::TrimAll</a>
+## <a name="Protocol_TrimAll">Protocol::TrimAll</a>
 비행 및 자동차 Trim을 한 번에 조정할 때 사용합니다.
 ```cpp
 namespace Protocol
@@ -281,26 +286,26 @@ namespace Protocol
     };
 }
 ```
-- flight : [Protocol::TrimFlight](#TrimFlight)
-- drive : [Protocol::TrimDrive](#TrimDrive)
+- flight : [Protocol::TrimFlight](#Protocol_TrimFlight)
+- drive : [Protocol::TrimDrive](#Protocol_TrimDrive)
 
 
 <br>
 <br>
 
 
-## <a name="CountFlight">Protocol::CountFlight</a>
+## <a name="Protocol_CountFlight">Protocol::CountFlight</a>
 비행과 관련된 저장값을 읽을 때 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct CountFlight
     {
-        u64 timeFlight;             // 비행 시간
+        u64     timeFlight;             // 비행 시간
         
-        u16 countTakeOff;           // 이륙 횟수
-        u16 countLanding;           // 착륙 횟수
-        u16 countAccident;          // 충돌 횟수
+        u16     countTakeOff;           // 이륙 횟수
+        u16     countLanding;           // 착륙 횟수
+        u16     countAccident;          // 충돌 횟수
     };
 }
 ```
@@ -309,16 +314,16 @@ namespace Protocol
 <br>
 
 
-## <a name="CountDrive">Protocol::CountDrive</a>
+## <a name="Protocol_CountDrive">Protocol::CountDrive</a>
 주행과 관련된 저장값을 읽을 때 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct CountDrive
     {
-        u64 timeDrive;              // 주행 시간
+        u64     timeDrive;              // 주행 시간
         
-        u16 countAccident;          // 충돌 횟수
+        u16     countAccident;          // 충돌 횟수
     };
 }
 ```
@@ -329,15 +334,15 @@ countAccident 변수는 주행 중 충돌을 카운트 하기 위해 만든 변�
 <br>
 
 
-## <a name="IrMessage">Protocol::IrMessage</a>
+## <a name="Protocol_IrMessage">Protocol::IrMessage</a>
 IR 데이터를 전송하는데 사용하거나, PETRONE이 IR 데이터를 수신 받았을 때 외부 장치로 전송하는 데이터입니다.
 ```cpp
 namespace Protocol
 {
     struct IrMessage
     {
-        u8  direction;               // 수신 받은 방향
-        u32 irData;                  // IR 메세지
+        u8      direction;               // 수신 받은 방향
+        u32     irData;                  // IR 메세지
     };
 }
 ```
@@ -348,13 +353,14 @@ namespace Protocol
 <br>
 
 
-## <a name="ImuRawAndAngle">Protocol::ImuRawAndAngle</a>
+## <a name="Protocol_Imu">Protocol::Imu</a>
 자이로 센서에서 출력한 값과 내부에서 계산한 드론의 자세 값을 반환합니다.
 ```cpp
 namespace Protocol
 {
-    struct ImuRawAndAngle
+    struct Imu
     {
+        u32     systemTime;
         s16     accX;
         s16     accY;
         s16     accZ;
@@ -372,17 +378,17 @@ namespace Protocol
 <br>
 
 
-## <a name="Pressure">Protocol::Pressure</a>
-압력 센서의 출력값을 반환합니다. d1과 d2는 MS5607에서만 출력하는 값으로 DPS310이 사용된 기체에서는 0으로 출력됩니다.
+## <a name="Protocol_Pressure">Protocol::Pressure</a>
+압력 센서의 출력값을 반환합니다.
 ```cpp
 namespace Protocol
 {
     struct Pressure
     {
-        s32		d1;
-        s32		d2;
-        s32		temperature;
-        s32		pressure;
+        u32     systemTime;
+        
+        f32     temperature;
+        f32     pressure;
     };
 }
 ```
@@ -391,24 +397,26 @@ namespace Protocol
 <br>
 
 
-## <a name="ImageFlow">Protocol::ImageFlow</a>
+## <a name="Protocol_ImageFlow">Protocol::ImageFlow</a>
 자세 제어에 사용하는 영상 데이터 처리 값입니다.
+카메라 및 OpticalFlow 알고리즘이 동작하는지를 확인하는 용도로만 사용하고 있습니다. 외부에서 기체를 제어하는 용도로는 사용하실 수 없습니다.
 ```cpp
 namespace Protocol
 {
     struct ImageFlow
     {
-        s32		fVelocitySumX;
-        s32		fVelocitySumY;
+        s32     fVelocitySumX;
+        s32     fVelocitySumY;
     };
 }
 ```
 
+
 <br>
 <br>
 
 
-## <a name="Button">Protocol::Button</a>
+## <a name="Protocol_Button">Protocol::Button</a>
 버튼 입력 값입니다.
 ```cpp
 namespace Protocol
@@ -424,37 +432,61 @@ namespace Protocol
 <br>
 
 
-## <a name="Motor">Protocol::Motor</a>
+## <a name="Protocol_Motor">Protocol::Motor</a>
 모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
+주로 모터 4개를 동시에 작동하거나 동작을 확인하는 데 사용합니다. 이 때에는 아래의 구조체를 배열로 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Motor
     {
-        MotorBase motor[4];
+        u8	rotation;
+        s16	value;
     };
 }
 ```
-- motor : [Protocol::MotorBase::Type](base_structs.md#MotorBase)
+- rotation : [Rotation::Type](definitions.md#Rotation)
+- value : 0 ~ 4096
+
+
+<br>
+<br>
+
+## <a name="Protocol_MotorSingle">Protocol::MotorSingle</a>
+하나의 모터를 동작시키거나, 현재 모터에 입력된 값을 확인할 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct MotorSingle
+    {
+        u8	target;
+        u8	rotation;
+        s16	value;
+    };
+}
+```
+- target : [Motor::Part::Type](definitions.md#Motor_Part)
+- rotation : [Rotation::Type](definitions.md#Rotation)
+- value : 0 ~ 4096
 
 
 <br>
 <br>
 
 
-## <a name="Range">Protocol::Range</a>
+## <a name="Protocol_Range">Protocol::Range</a>
 거리 센서에서 입력받은 거리 값을 반환합니다. 앞으로 거리센서 모듈이 추가될 예정이어서 6방향에 대한 값을 모두 담는 구조체를 사용합니다.
 ```cpp
 namespace Protocol
 {
     struct Range
     {
-        u16	left;
-        u16	front;
-        u16	right;
-        u16	rear;
-        u16	top;
-        u16	bottom;
+        u16 left;
+        u16 front;
+        u16 right;
+        u16 rear;
+        u16 top;
+        u16 bottom;
     };
 }
 ```
@@ -462,30 +494,149 @@ namespace Protocol
 
 
 <br>
+<br>
+
+
+## <a name="Protocol_JoystickBlock">Protocol::JoystickBlock</a>
+조종기 조이스틱 한 축의 입력 값입니다.
+```cpp
+namespace Protocol
+{
+    struct JoystickBlock
+    {
+        s8      x;
+        s8      y;
+        u8      direction;
+        u8      event;
+    };
+}
+```
+- x : 조이스틱 가로축, -100 ~ 100
+- y : 조이스틱 세로축, -100 ~ 100
+- direction : [Joystick::Direction::Type](definitions.md#Joystick_Direction)
+- event : [Joystick::Event::Type](definitions.md#Joystick_Event)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Joystick">Protocol::Joystick</a>
+조종기 좌우 조이스틱의 입력 값입니다.
+```cpp
+namespace Protocol
+{
+    struct Joystick
+    {
+        Protocol::JoystickBlock     left;
+        Protocol::JoystickBlock     right;
+    };
+}
+```
+- left : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+- right : [Protocol::JoystickBlock](#Protocol_JoystickBlock)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Buzzer">Protocol::Buzzer</a>
+조이스틱 버저 소리를 낼 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct Buzzer
+    {
+        u8      mode;   // 버저 작동 모드
+        u16     value;  // 옥타브 또는 주파수
+        u16     time;   // 연주 시간(ms)
+    };
+}
+```
+- mode : [Buzzer::Mode::Type](definitions.md#Buzzer_Mode)
+- value : mode에서 ScaleInstantally 또는 ScaleContinually를 선택한 경우 [Buzzer::Scale::Type](definitions.md#Buzzer_Scale), HzInstantally 또는 HzContinually를 선택한 경우 0 ~ 8000(Hz)
+- time : 0 ~ 65535(ms)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Vibrator">Protocol::Vibrator</a>
+조이스틱 진동 모터를 제어할 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct Vibrator
+    {
+        u8      mode;   // 모드(0은 set, 1은 reserve)
+        u16     on;     // 진동을 켠 시간(ms)
+        u16     off;    // 진동을 끈 시간(ms)
+        u16     total;  // 전체 진행 시간(ms)
+    };
+}
+```
+- mode : [Vibrator::Mode::Type](definitions.md#Vibrator_Mode)
+- on : 0 ~ 65535(ms)
+- off : 0 ~ 65535(ms)
+- total : 0 ~ 65535(ms)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_UserInterface">Protocol::UserInterface</a>
+조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정할 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct UserInterface
+    {
+        u8      command;    // 명령
+        u8      function;   // 기능
+    };
+}
+```
+- command : [UserInterface::Commands](definitions.md#UserInterface_Commands)
+- function : [UserInterface::Functions](definitions.md#UserInterface_Functions)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Pairing">Protocol::Pairing</a>
+장치 페어링 시 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct Pairing
+    {
+        u16     addressLocal;
+        u16     addressRemote;
+        u8      channel;
+    };
+}
+```
+- addressLocal : 0x0001 ~ 0xFFFE, 0x0000은 사용하지 않음, 0xFFFF는 Broadcasting에 사용
+- addressRemote : 0x0001 ~ 0xFFFE, 0x0000은 사용하지 않음, 0xFFFF는 Broadcasting에 사용
+- channel : 0 ~ 255(미확정)
+
+<br>
 
 ---
 
-### PETRONE
+### DRONE FIGHTER 2017
 
 1. [Intro](intro.md)
 2. [Typedef](typedef.md)
 3. [DataType](datatype.md)
 4. [Definitions](definitions.md)
-5. [Base Structs](base_structs.md)
-6. ***Structs***
-7. [Structs - Light](structs_light.md)
-
-
-### PETRONE Link
-
-1. [Intro](link/intro.md)
-2. [DataType](link/datatype.md)
-3. [Definitions](link/definitions.md)
-4. [Structs](link/structs.md)
-5. [Examples](link/examples.md)
+5. ***Structs***
+6. [Structs - Light](structs_light.md)
 
 <br>
 
-[Home](../../README.md)
-
-
+[Index](index.md)
