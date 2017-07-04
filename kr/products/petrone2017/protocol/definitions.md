@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / Definitions***<br>
-Modified : 2017.05.08
+Modified : 2017.07.04
 
 ---
 
@@ -19,7 +19,7 @@ namespace Protocol
     {
         enum Type
         {
-            None = 0,                       // 이벤트 없음
+            None = 0,
 
             // 설정
             ModeVehicle = 0x10,             // Vehicle 동작 모드 전환
@@ -32,15 +32,45 @@ namespace Protocol
             Stop,                           // 정지
             
             ClearTrim = 0x50,               // 트림 초기화
-            GyroBiasAndTrimReset,           // 자이로 바이어스와 트림 리셋
+            ClearGyroBias,                  // 자이로 바이어스 리셋
             
-            UserInterfacePreset = 0x80,     // 사용자 인터페이스 설정
-            DataStorageWrite,               // 변경사항이 있는 경우 데이터 저장소에 기록
-
-            // 관리자
-            ClearCounter = 0xA0,            // 카운터 클리어(관리자 권한을 획득했을 경우에만 동작)
+            DataStorageWrite = 0x80,        // 변경사항이 있는 경우 데이터 저장소에 기록
 
             EndOfType
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+## <a name="Protocol_DeviceType">Protocol::DeviceType::Type</a>
+CommandBase 구조체에서 DeviceType 변수에 사용합니다.
+
+```cpp
+namespace Protocol
+{
+    namespace DeviceType
+    {
+        enum Type
+        {
+            None = 0,
+
+            Drone = 0x30,           // 드론
+            Controller,             // 조종기
+            Link,                   // 링크 모듈
+            Tester,                 // 테스터
+            Monitor,                // 모니터
+            Updater,                // 펌웨어 업데이트 도구
+            Encrypter,              // 암호화 도구
+            Scratch,                // 스크래치
+            Entry,                  // 네이버 엔트리
+            ByScratch,              // 바이스크래치
+
+            EndOfType,
+
+            Broadcasting = 0xFF
         };
     }
 }
@@ -59,7 +89,7 @@ namespace Mode
     {
         enum Type
         {
-            None = 0,           // 없음
+            None = 0,
             
             Flight = 0x10,      // 비행(가드 포함)
             FlightNoGuard,      // 비행(가드 없음)
@@ -89,16 +119,12 @@ namespace Mode
     {
         enum Type
         {
-            None = 0,           // 없음
+            None = 0,
             
             Boot,               // 부팅
-            
             Start,              // 시작 코드 실행
-            
             Running,            // 메인 코드 동작
-                            
             ReadyToReset,       // 리셋 대기(1초 뒤 리셋)
-                
             Error,              // 오류
                     
             EndOfType
@@ -121,7 +147,7 @@ namespace Mode
     {
         enum Type
         {
-            None = 0,           // 없음
+            None = 0,
             
             Ready = 0x10,       // 준비
             
@@ -158,7 +184,7 @@ namespace Mode
     {
         enum Type
         {
-            None = 0,           // 없음
+            None = 0,
             
             Ready = 0x10,       // 준비
             
@@ -182,6 +208,36 @@ namespace Mode
 <br>
 <br>
 
+## <a name="Mode_Update">Mode::Update::Type</a>
+업데이트 상태를 나타냅니다.
+
+```cpp
+namespace Mode
+{
+    namespace Update
+    {
+        enum Type
+        {
+            None,           // 
+
+            Ready,          // 업데이트 가능 상태
+            Update,         // 업데이트 중
+            Complete,       // 업데이트 완료
+                
+            Faild,          // 업데이트 실패(업데이트 완료까지 갔으나 body의 CRC16이 일치하지 않는 경우 등)
+
+            NotAvailable,   // 업데이트 불가능 상태(Debug 모드 등)
+
+            EndOfType
+        };
+    }
+    
+}
+```
+
+<br>
+<br>
+
 ## <a name="SensorOrientation">SensorOrientation::Type</a>
 센서 방향을 나타냅니다.
 ```cpp
@@ -189,7 +245,7 @@ namespace SensorOrientation
 {
     enum Type
     {
-        None = 0,           // 없음
+        None = 0,
         
         Normal,             // 정상
         ReverseStart,       // 뒤집히기 시작
@@ -229,17 +285,18 @@ namespace Direction
 <br>
 
 ## <a name="Coordinate">Coordinate::Type</a>
-페트론 조종기 방향 기준을 선택합니다. World는 앱솔루트 모드입니다. 드론 외부 세계를 중심으로 좌표를 판단합니다. Local은 일반모드입니다. 드론을 중심으로 좌표를 판단합니다.
+페트론 조종 시 방향 기준을 선택합니다. World는 드론 외부 세계를 중심으로 좌표를 판단합니다. Local은 드론을 중심으로 좌표를 판단합니다.
+조종기 상에서는 World를 'Headless ON', Local을 'Headless Off'로 표현하고 있습니다. 기본 설정은 Local입니다.
 
 ```cpp
 namespace Coordinate
 {
     enum Type
     {
-        None = 0,           // 없음
+        None = 0,
         
-        World,              // 고정 좌표계(Absolute)
-        Local,              // 상대 좌표계(일반)
+        World,              // 고정 좌표계(Headless)
+        Local,              // 상대 좌표계(Normal)
         
         EndOfType
     };
@@ -259,7 +316,7 @@ namespace Trim
 {
     enum Type
     {
-        None = 0,           // 없음
+        None = 0,
 
         RollIncrease,       // Roll 증가
         RollDecrease,       // Roll 감소                
@@ -517,118 +574,6 @@ namespace Vibrator
 
 <br>
 <br>
-
-
-## <a name="UserInterface_Commands">UserInterface::Commands::Type</a>
-사용자 인터페이스 입력
-
-```cpp
-namespace UserInterface
-{
-    namespace Commands
-    {
-        enum Type
-        {
-            None,
-            
-            Setup_Button_FrontLeft_Down,
-            Setup_Button_FrontRight_Down,
-            Setup_Button_MidTurnLeft_Down,
-            Setup_Button_MidTurnRight_Down,
-            Setup_Button_MidUp_Down,
-            Setup_Button_MidLeft_Down,
-            Setup_Button_MidRight_Down,
-            Setup_Button_MidDown_Down,
-            
-            Setup_Joystick_Left_Up_In,
-            Setup_Joystick_Left_Left_In,
-            Setup_Joystick_Left_Right_In,
-            Setup_Joystick_Left_Down_In,
-            
-            Setup_Joystick_Right_Up_In,
-            Setup_Joystick_Right_Left_In,
-            Setup_Joystick_Right_Right_In,
-            Setup_Joystick_Right_Down_In,
-            
-            EndOfType
-        };
-    }
-}
-```
-
-
-<br>
-<br>
-
-
-## <a name="UserInterface_Functions">UserInterface::Functions::Type</a>
-사용자 인터페이스 기능
-
-```cpp
-namespace UserInterface
-{
-    namespace Functions
-    {
-        enum Type
-        {
-            None,
-            
-            JoystickCalibration_Reset,
-            
-            Change_Team_Red,
-            Change_Team_Blue,
-            
-            Change_Mode_Vehicle_Flight,
-            Change_Mode_Vehicle_FlightNoGuard,
-            Change_Mode_Vehicle_Drive,
-            
-            Change_Coordinate_Local,                // Normal
-            Change_Coordinate_World,                // Absolute
-            
-            Change_Mode_Control_Mode1,
-            Change_Mode_Control_Mode2,
-            Change_Mode_Control_Mode3,
-            Change_Mode_Control_Mode4,
-                            
-            GyroBias_Reset,
-            
-            Change_Mode_USB_CDC,
-            Change_Mode_USB_HID,
-            
-            EndOfType
-        };
-    }
-}
-```
-
-
-<br>
-<br>
-
-
-## <a name="UserInterface_Preset">UserInterface::Preset::Type</a>
-사용자 인터페이스 프리셋
-
-```cpp
-namespace UserInterface
-{
-    namespace Preset
-    {
-        enum Type
-        {
-            None,
-            
-            Clear,              // 초기화
-            Custom,             // 사용자 설정(기본 설정에서 변경된 상태)
-            
-            Drone2017,          // 기본 설정
-            Education,          // 교육용 설정
-            
-            EndOfType
-        };
-    }
-}
-```
 
 
 <br>

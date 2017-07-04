@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / DataType***<br>
-Modified : 2017.05.08
+Modified : 2017.07.04
 
 ---
 
@@ -67,11 +67,11 @@ namespace Protocol
             // 상태, 설정
             State                       = 0x40,     // 드론의 상태
             Attitude,                               // 드론의 자세
+            AccelBias,                              // 엑셀 바이어스 값(Vector)
             GyroBias,                               // 자이로 바이어스 값
             TrimAll,                                // 전체 트림
             TrimFlight,                             // 비행 트림
             TrimDrive,                              // 주행 트림
-            UserInterface,                          // 사용자 인터페이스 설정
     
             // Sensor raw data      
             Imu                         = 0x50,     // IMU Raw
@@ -124,11 +124,11 @@ namespace Protocol
 | Reserved_2                | 0x07 | - | 예약                                        | &nbsp; |
 | Monitor                   | 0x08 | D | 디버깅용 값 배열 전송                       | &nbsp; |
 | SystemCounter             | 0x09 | A | 시스템 카운터                               | &nbsp; |
-| Information               | 0x0A | A | 펌웨어 및 장치 정보                         | &nbsp; |
+| Information               | 0x0A | A | 펌웨어 및 장치 정보                         | [Protocol::Information](structs.md#Protocol_Information) |
 | UpdateLocation            | 0x0B | A | 펌웨어 업데이트 위치 정정                   | &nbsp; |
 | Update                    | 0x0C | A | 펌웨어 업데이트                             | &nbsp; |
 | Encrypt                   | 0x0D | - | 펌웨어 암호화                               | &nbsp; |
-| Address                   | 0x0E | A | 장치 주소                                   | &nbsp; |
+| Address                   | 0x0E | A | 장치 주소                                   | [Protocol::Address](structs.md#Protocol_Address) |
 | Administrator             | 0x0F | - | 관리자 권한                                 | &nbsp; |
 | Control                   | 0x10 | D | 조종 명령                                   | [Control::Double8](structs.md#Control_Double8), [Control::Quad8](structs.md#Control_Quad8) |
 | Command                   | 0x11 | A | 명령                                        | [Protocol::Command](structs.md#Protocol_Command) |
@@ -154,14 +154,14 @@ namespace Protocol
 | LightModeDefaultColor     | 0x33 | D | LED 초기 모드 3색                           | [Protocol::Light::ModeColor](structs_light.md#Protocol_Light_ModeColor) |
 | State                     | 0x40 | D | 드론의 상태                                 | [Protocol::State](structs.md#Protocol_State) |
 | Attitude                  | 0x41 | D | 드론의 자세(Angle)                          | [Protocol::Attitude](structs.md#Protocol_Attitude) |
-| GyroBias                  | 0x42 | D | 자이로 바이어스 값                          | [Protocol::GyroBias](structs.md#Protocol_GyroBias) |
-| TrimAll                   | 0x43 | D | 전체 트림                                   | [Protocol::TrimAll](structs.md#Protocol_TrimAll) |
-| TrimFlight                | 0x44 | D | 비행 트림                                   | [Protocol::TrimFlight](structs.md#Protocol_TrimFlight) |
-| TrimDrive                 | 0x45 | D | 주행 트림                                   | [Protocol::TrimDrive](structs.md#Protocol_TrimDrive) |
-| UserInterface             | 0x46 | C | 사용자 인터페이스 설정                      | [Protocol::UserInterface](structs.md#Protocol_UserInterface) |
+| AccelBias                 | 0x42 | D | Accel 바이어스 값                          | [Protocol::AccelBias](structs.md#Protocol_AccelBias) |
+| GyroBias                  | 0x43 | D | Gyro 바이어스 값                           | [Protocol::GyroBias](structs.md#Protocol_GyroBias) |
+| TrimAll                   | 0x44 | D | 전체 트림                                   | [Protocol::TrimAll](structs.md#Protocol_TrimAll) |
+| TrimFlight                | 0x45 | D | 비행 트림                                   | [Protocol::TrimFlight](structs.md#Protocol_TrimFlight) |
+| TrimDrive                 | 0x46 | D | 주행 트림                                   | [Protocol::TrimDrive](structs.md#Protocol_TrimDrive) |
 | Imu                       | 0x50 | D | IMU(Accel, Gyro, Angle)                     | [Protocol::Imu](structs.md#Protocol_Imu) |
 | Pressure                  | 0x51 | D | 압력 센서 데이터                            | [Protocol::Pressure](structs.md#Protocol_Pressure) |
-| Battery                   | 0x52 | - | 배터리                                      | &nbsp; |
+| Battery                   | 0x52 | D | 배터리                                      | [Protocol::Battery](structs.md#Protocol_Battery) |
 | Range                     | 0x53 | D | 거리 센서                                   | [Protocol::Range](structs.md#Protocol_Range) |
 | ImageFlow                 | 0x54 | D | ImageFlow                                   | [Protocol::ImageFlow](structs.md#Protocol_ImageFlow) |
 | CameraImage               | 0x55 | D | CameraImage                                 | &nbsp; |
@@ -175,7 +175,7 @@ namespace Protocol
 | CountFlight               | 0x90 | D | 비행 관련 카운트                            | [Protocol::CountFlight](structs.md#Protocol_CountFlight) |
 | CountDrive                | 0x91 | D | 주행 관련 카운트                            | [Protocol::CountDrive](structs.md#Protocol_CountDrive) |
 | Pairing                   | 0xA0 | A | 페어링                                      | [Protocol::Pairing](structs.md#Protocol_Pairing) |
-| Rssi                      | 0xA1 | - | RSSI                                        | &nbsp; |
+| Rssi                      | 0xA1 | A | RSSI                                        | [Protocol::Rssi](structs.md#Protocol_Rssi) |
 
 <br>
 

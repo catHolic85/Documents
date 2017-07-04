@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / Structs***<br>
-Modified : 2017.05.08
+Modified : 2017.07.04
 
 ---
 
@@ -16,7 +16,7 @@ namespace Protocol
 {
     struct Ping
     {
-        u32  systemTime;   // Ping을 전송하는 장치의 시각
+        u64     systemTime;   // Ping을 전송하는 장치의 시각
     };
 }
 ```
@@ -33,7 +33,7 @@ namespace Protocol
 {
     struct Ack
     {
-        u32     systemTime;     // 수신 받은 시간
+        u64     systemTime;     // 수신 받은 시간
         u8      dataType;       // 수신 받은 데이터 타입
         u16     crc16;          // 수신 받은 데이터의 crc16
     };
@@ -53,11 +53,87 @@ namespace Protocol
 {
     struct Request
     {
-        u8   dataType;     // 요청할 데이터 타입
+        u8   dataType;          // 요청할 데이터 타입
     };
 }
 ```
 - dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Information">Protocol::Information</a>
+드론 또는 조종기의 펌웨어 정보를 전달할 때 사용합니다.
+```cpp
+namespace Protocol
+{
+    struct Information
+    {
+        u8      modeUpdate;     // 현재 업데이트 모드
+
+        u32     deviceType;     // 장치 타입
+        u32     imageVersion;   // 현재 펌웨어의 버젼
+
+        u16     year;           // 빌드 년
+        u8      month;          // 빌드 월
+        u8      day;            // 빌드 일
+    };
+}
+```
+- modeUpdate : [Mode::Update::Type](definitions.md#Mode_Update)
+- deviceType : [Protocol::DeviceType::Type](definitions.md#Protocol_DeviceType)
+- imageVersion : [Protocol::Version](#Protocol_Version)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_Version">Protocol::Version</a>
+드론 또는 조종기의 펌웨어 버젼을 의미합니다.
+```cpp
+namespace Protocol
+{
+    union Version
+    {
+        struct
+        {
+            u8                      major;      // Major Number
+            u8                      minor;      // Minor Number
+            DevelopmentStage::Type  stage:2;    // Development stage(0~3)
+            u16                     build:14;   // Build Number(0~16383)
+        };
+
+        u32 v;
+    };
+}
+```
+- stage : [Protocol::DevelopmentStage::Type](#Protocol_DevelopmentStage)
+
+
+<br>
+<br>
+
+
+## <a name="Protocol_DevelopmentStage">Protocol::DevelopmentStage::Type</a>
+펌웨어 개발 단계를 나타냅니다.
+```cpp
+namespace Protocol
+{
+    namespace DevelopmentStage
+    {
+        enum Type
+        {
+            Alpha,
+            Beta,
+            ReleaseCandidate,
+            Release
+        };
+    }
+}
+```
 
 
 <br>
@@ -169,7 +245,7 @@ namespace Protocol
         
         u8          sensorOrientation;  // 센서 방향
         u8          coordinate;         // 방위
-        u8          battery;            // 배터리량(0 ~ 100)
+        u8          battery;            // 배터리량(0 ~ 100%)
     };
 }
 ```
@@ -221,6 +297,24 @@ namespace Protocol
 <br>
 
 
+## <a name="Protocol_AccelBias">Protocol::AccelBias</a>
+자이로 바이어스 값을 반환합니다.
+```cpp
+namespace Protocol
+{
+    struct AccelBias
+    {
+        s16          x;         // X
+        s16          y;         // Y
+        s16          z;         // Z
+    };
+}
+```
+
+<br>
+<br>
+
+
 ## <a name="Protocol_GyroBias">Protocol::GyroBias</a>
 자이로 바이어스 값을 반환합니다.
 ```cpp
@@ -266,6 +360,7 @@ namespace Protocol
     struct TrimDrive
     {
         s16          wheel;         // Wheel
+        s16          accel;         // Accel
     };
 }
 ```
@@ -360,7 +455,6 @@ namespace Protocol
 {
     struct Imu
     {
-        u32     systemTime;
         s16     accX;
         s16     accY;
         s16     accZ;
@@ -374,6 +468,33 @@ namespace Protocol
 }
 ```
 
+
+<br>
+<br>
+
+
+## <a name="Protocol_Battery">Protocol::Battery</a>
+배터리 설정 값을 반환합니다.
+```cpp
+namespace Protocol
+{
+    struct Battery
+    {
+        f32     gradient;
+        f32     yIntercept;
+        f32     adjustGradient;
+        f32     adjustYIntercept;
+        u8      flagBatteryCalibration;
+
+        s16     batteryRaw;
+        f32     batteryPercent;
+
+        f32     voltage;
+    };
+}
+```
+
+
 <br>
 <br>
 
@@ -385,13 +506,13 @@ namespace Protocol
 {
     struct Pressure
     {
-        u32     systemTime;
-        
         f32     temperature;
         f32     pressure;
     };
 }
 ```
+- temperature 출력 값의 단위는 Celsius(°C)입니다.
+- pressure 출력 값의 단위는 미터(m)입니다.
 
 <br>
 <br>
@@ -399,17 +520,17 @@ namespace Protocol
 
 ## <a name="Protocol_ImageFlow">Protocol::ImageFlow</a>
 자세 제어에 사용하는 영상 데이터 처리 값입니다.
-카메라 및 OpticalFlow 알고리즘이 동작하는지를 확인하는 용도로만 사용하고 있습니다. 외부에서 기체를 제어하는 용도로는 사용하실 수 없습니다.
 ```cpp
 namespace Protocol
 {
     struct ImageFlow
     {
-        s32     fVelocitySumX;
-        s32     fVelocitySumY;
+        s32     positionX;
+        s32     positionY;
     };
 }
 ```
+- positionX, positionY 출력 값의 단위는 미터(m)입니다.
 
 
 <br>
@@ -423,7 +544,8 @@ namespace Protocol
 {
     struct Button
     {
-        u8      button;
+        u16     button;
+        u8      event;
     };
 }
 ```
@@ -440,8 +562,8 @@ namespace Protocol
 {
     struct Motor
     {
-        u8	rotation;
-        s16	value;
+        u8      rotation;
+        s16     value;
     };
 }
 ```
@@ -459,9 +581,9 @@ namespace Protocol
 {
     struct MotorSingle
     {
-        u8	target;
-        u8	rotation;
-        s16	value;
+        u8      target;
+        u8      rotation;
+        s16     value;
     };
 }
 ```
@@ -481,16 +603,16 @@ namespace Protocol
 {
     struct Range
     {
-        u16 left;
-        u16 front;
-        u16 right;
-        u16 rear;
-        u16 top;
-        u16 bottom;
+        f32     left;
+        f32     front;
+        f32     right;
+        f32     rear;
+        f32     top;
+        f32     bottom;
     };
 }
 ```
-거리센서 출력값의 단위는 millimeter(mm)입니다.
+- 모든 출력 값의 단위는 미터(m)입니다.
 
 
 <br>
@@ -581,26 +703,6 @@ namespace Protocol
 - on : 0 ~ 65535(ms)
 - off : 0 ~ 65535(ms)
 - total : 0 ~ 65535(ms)
-
-
-<br>
-<br>
-
-
-## <a name="Protocol_UserInterface">Protocol::UserInterface</a>
-조이스틱 설정 모드에서 각 버튼 및 조이스틱 방향에 원하는 기능을 지정할 때 사용합니다.
-```cpp
-namespace Protocol
-{
-    struct UserInterface
-    {
-        u8      command;    // 명령
-        u8      function;   // 기능
-    };
-}
-```
-- command : [UserInterface::Commands](definitions.md#UserInterface_Commands)
-- function : [UserInterface::Functions](definitions.md#UserInterface_Functions)
 
 
 <br>

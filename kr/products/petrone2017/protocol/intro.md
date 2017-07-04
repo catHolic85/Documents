@@ -97,6 +97,28 @@ Petrone2017은 외부 장치와 통신할 경우, 주로 조종기를 PC와 연�
     </tr>
 </table>
 
+
+<br>
+
+
+## <a name="Protocol_Header">Protocol::Header</a>
+데이터 송수신 시에 사용하는 헤더입니다.
+```cpp
+namespace Protocol
+{
+    struct Ack
+    {
+        u8      dataType;       // 데이터의 형식
+        u8      length;         // 데이터의 길이
+        u8      from;           // 데이터를 전송하는 장치의 DeviceType
+        u8      to;             // 데이터를 수신 받는 장치의 DeviceType
+    };
+}
+```
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
+- from, to : [Protocol::DeviceType::Type](definitions.md#Protocol_DeviceType)
+
+
 <br>
 
 Data 영역과 CRC16 영역 모두 Little Endian을 사용하고 있습니다. Little Endian일 때 2바이트 이상의 변수는 하위 바이트가 배열의 앞 부분에 위치합니다. C#에서는 Bitconverter를 사용하시면 편리하게 변경할 수 있습니다.

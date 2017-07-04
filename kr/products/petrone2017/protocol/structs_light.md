@@ -1,5 +1,5 @@
 ***PETRONE2017 / Protocol / Structs / Light***<br>
-Modified : 2017.05.08
+Modified : 2017.07.04
 
 ---
 
@@ -96,31 +96,13 @@ namespace Light
             {
                 None,
                 
-                Manual,                         ///< 수동 조작
-                
                 // Team
                 TeamNone = 0x10,
-                
-                TeamHoldRed,
-                TeamHoldBlue,
-                TeamHoldAll,
-                
-                TeamFlickerRed,
-                TeamFlickerBlue,
-                TeamFlickerAll,
-                TeamFlickerSeesaw,
-                
-                TeamFlickerDoubleRed,
-                TeamFlickerDoubleBlue,
-                TeamFlickerDoubleAll,
-                
-                TeamDimmingRed,
-                TeamDimmingBlue,
-                TeamDimmingAll,
-                TeamDimmingSeesaw,
-                
-                Team,                           ///< 팀 표시
-                
+                TeamManual,             // 수동 조작
+                TeamHold,
+                TeamFlicker,
+                TeamFlickerDouble,
+                TeamDimming,
                 
                 EndOfType
             };
@@ -146,8 +128,9 @@ namespace Light
             {
                 None        = 0x00,
                 
-                Blue        = 0x08,
-                Red         = 0x04
+                Red         = 0x08,
+                Green       = 0x04,
+                Blue        = 0x02
             };
         }
     }
@@ -355,7 +338,7 @@ namespace Protocol
     {
         struct Manual
         {
-            u8  flags;         // Flags 열거형을 조합한 값
+            u16 flags;         // Flags 열거형을 조합한 값
             u8  brightness;    // 밝기     
         };
     }
