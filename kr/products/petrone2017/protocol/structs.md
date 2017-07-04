@@ -750,6 +750,23 @@ namespace Protocol
 - addressRemote : 0x0001 ~ 0xFFFE, 0x0000은 사용하지 않음, 0xFFFF는 Broadcasting에 사용
 - channel : 0 ~ 255(미확정)
 
+
+<br>
+<br>
+
+
+## <a name="Protocol_Rssi">Protocol::Rssi</a>
+현재 무선으로 연결된 장치와의 연결 상태를 의미합니다.
+```cpp
+namespace Protocol
+{
+    struct Rssi
+    {
+        s8     Rssi;
+    };
+}
+```
+
 <br>
 
 ---
