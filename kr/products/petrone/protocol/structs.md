@@ -385,6 +385,7 @@ namespace Protocol
         s32		pressure;
     };
 }
+- pressure 출력 값의 단위는 밀리미터(mm)입니다.
 ```
 
 <br>
@@ -398,10 +399,11 @@ namespace Protocol
 {
     struct ImageFlow
     {
-        s32		fVelocitySumX;
-        s32		fVelocitySumY;
+        s32		positionX;
+        s32		positionY;
     };
 }
+- positionX, positionY 출력 값의 단위는 밀리미터(mm)입니다.
 ```
 
 <br>
@@ -458,7 +460,7 @@ namespace Protocol
     };
 }
 ```
-거리센서 출력값의 단위는 millimeter(mm)입니다.
+- 모든 출력 값의 단위는 밀리미터(mm)입니다.
 
 
 <br>

@@ -549,8 +549,8 @@ namespace Protocol
 {
     struct ImageFlow
     {
-        s32     positionX;
-        s32     positionY;
+        f32     positionX;
+        f32     positionY;
     };
 }
 ```
