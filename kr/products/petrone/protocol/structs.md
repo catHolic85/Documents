@@ -385,8 +385,8 @@ namespace Protocol
         s32		pressure;
     };
 }
-- pressure 출력 값의 단위는 밀리미터(mm)입니다.
 ```
+- pressure 출력 값의 단위는 밀리미터(mm)입니다.
 
 <br>
 <br>
@@ -403,8 +403,8 @@ namespace Protocol
         s32		positionY;
     };
 }
-- positionX, positionY 출력 값의 단위는 밀리미터(mm)입니다.
 ```
+- positionX, positionY 출력 값의 단위는 밀리미터(mm)입니다.
 
 <br>
 <br>
