@@ -7,7 +7,31 @@ Modified : 2017.07.04
 
 ---
 
+
 <br>
+
+
+## <a name="Protocol_Header">Protocol::Header</a>
+데이터 송수신 시에 사용하는 헤더입니다.
+```cpp
+namespace Protocol
+{
+    struct Header
+    {
+        u8      dataType;       // 데이터의 형식
+        u8      length;         // 데이터의 길이
+        u8      from;           // 데이터를 전송하는 장치의 DeviceType
+        u8      to;             // 데이터를 수신 받는 장치의 DeviceType
+    };
+}
+```
+- dataType : [Protocol::DataType::Type](datatype.md#Protocol_DataType)
+- from, to : [Protocol::DeviceType::Type](definitions.md#Protocol_DeviceType)
+
+
+<br>
+<br>
+
 
 ## <a name="Protocol_Ping">Protocol::Ping</a>
 특정 장치가 존재하는지를 확인할 때 사용합니다. 응답은 Ack를 받습니다.
