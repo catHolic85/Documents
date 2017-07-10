@@ -16,8 +16,8 @@ namespace Protocol
 {
     struct Ack
     {
-        u32  systemTime;   // 수신 받은 시각
-        u8   dataType;     // 수신 받은 데이터 타입
+        u32  systemTime;    // 수신 받은 시각
+        u8   dataType;      // 수신 받은 데이터 타입
     };
 }
 ```
@@ -472,7 +472,8 @@ namespace Protocol
 
 
 ## <a name="UpdateLookupTarget">Protocol::UpdateLookupTarget</a>
-펌웨어 정보 요청.
+펌웨어 정보 요청.<br>
+페트론은 제어 MCU와 통신 MCU로 구성되어 있습니다. 여기에서 원하는 장치의 Protocol::UpdateInformation을 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
@@ -490,7 +491,8 @@ namespace Protocol
 
 
 ## <a name="UpdateInformation">Protocol::UpdateInformation</a>
-펌웨어 정보.
+펌웨어 정보.<br>
+PC 또는 App 등에서 Protocol::UpdateLookupTarget을 전송한 경우 deviceType이 일치하는 장치가 Protocol::UpdateInformation을 응답으로 전송합니다.
 ```cpp
 namespace Protocol
 {
@@ -518,18 +520,19 @@ namespace Protocol
 
 
 ## <a name="Update">Protocol::Update</a>
-펌웨어 업데이트.
+펌웨어 업데이트.<br>
+펌웨어 업데이트 시에는 파일에서 16바이트씩 데이터를 잘라서 전송합니다. Protocol::Update를 전송하는 동안에 다른 응답은 없습니다. 만약 전송 실패가 발생한 경우 드론이 Protocol::UpdateLocationCorrect를 보냅니다. 해당 패킷을 받으면 지정한 블럭 위치부터 다시 전송을 시작하면 됩니다.
 ```cpp
 namespace Protocol
 {
     struct Update
     {
-        u16     indexBlock;			// 블럭 번호(16바이트 단위)
-        u8      dataArray[16];		// 데이터 블럭
+        u16     indexBlock;         // 블럭 번호(16바이트 단위)
+        u8      dataArray[16];      // 데이터 블럭
     };
 }
 ```
-- indexBlock : 펌웨어 파일에서 16바이트씩 데이터를 잘라서 전송합니다. Protocol::Update를 전송하는 동안에 다른 응답은 없으며 만약 전송 실패로 문제가 발생한 경우 드론이 Protocol::UpdateLocationCorrect를 보냅니다. 해당 패킷을 받으면 지정한 블럭 위치부터 다시 전송을 시작하면 됩니다.
+- indexBlock : 파일의 실제 위치에서 16으로 나눈 값
 
 
 <br>
@@ -537,15 +540,17 @@ namespace Protocol
 
 
 ## <a name="UpdateLocationCorrect">Protocol::UpdateLocationCorrect</a>
-펌웨어 업데이트 위치 정정.
+펌웨어 업데이트 위치 정정.<br>
+펌웨어 업데이트 중 전송에 실패하는 블럭이 발생하는 경우 indexBlockNext부터 다시 전송하라는 요청을 보냅니다.
 ```cpp
 namespace Protocol
 {
     struct UpdateLocationCorrect
     {
-        u16     indexBlockNext;		// 요청 블럭 번호
+        u16     indexBlockNext;     // 요청 블럭 번호
     };
 }
+- indexBlockNext : 파일의 실제 위치에서 16으로 나눈 값
 ```
 
 
@@ -554,9 +559,9 @@ namespace Protocol
 
 
 ## <a name="UpdaterHeader">Updater::Header</a>
-펌웨어 파일 헤더.
-페트론은 제어 펌웨어와 통신 펌웨어 두 가지 펌웨어로 구성되어 있고, 각각의 펌웨어는 내부 플래시 공간에 두 개의 영역을 나누어 ImageA에서 ImageB, ImageB에서 ImageA로 업데이트를 진행하여 정상적으로 펌웨어 업데이트가 완료된 경우 새로운 이미지로 부팅을 합니다. 제어 펌웨어를 업데이트 한 경우엔 펌웨어 업데이트가 완료되면 바로 시스템을 재시작합니다. 통신 펌웨어를 업데이트 한 경우엔 BLE 연결을 끊은 이후에 시스템을 재시작합니다. 
-펌웨어 파일의 처음 16바이트는 아래와 같이 구성되어 있습니다. 이 부분을 읽어서 펌웨어에 대한 정보를 확인할 수 있습니다.
+펌웨어 파일 헤더.<br>
+페트론은 제어 펌웨어와 통신 펌웨어 두 가지 펌웨어로 구성되어 있습니다. 그리고 각각의 펌웨어는 내부 플래시 공간을 두 개의 영역으로 나누어 ImageA 영역과 ImageB 영역으로 분리되어 있습니다. 펌웨어 업데이트 시에는 ImageA에서 ImageB, ImageB에서 ImageA로 업데이트를 진행합니다. 따라서 현재 구동중인 드론 메인펌웨어가 ImageA라면 ImageB를 전송해야합니다. 펌웨어 업데이트가 정상적으로 완료된 경우에만 새로운 이미지로 부팅을 합니다. 만약 중간에 실패하더라도 이전 펌웨어를 보존하고 있기 때문에 대부분의 경우 펌웨어 업데이트를 실패해도 큰 문제가 발생하지는 않습니다. 제어 펌웨어를 업데이트 한 경우엔 펌웨어 업데이트가 완료되면 바로 시스템을 재시작합니다. 통신 펌웨어를 업데이트 한 경우엔 BLE 연결을 끊은 이후에 시스템을 재시작합니다.<br>
+펌웨어 파일의 처음 16바이트는 아래와 같이 구성되어 있습니다. 이 부분을 읽어서 펌웨어 파일에 대한 정보를 확인할 수 있습니다.
 ```cpp
 namespace Updater
 {
