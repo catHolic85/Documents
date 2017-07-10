@@ -48,7 +48,8 @@ namespace Protocol
 <br>
 
 ## <a name="DeviceType">System::DeviceType::Type</a>
-장치 타입. 펌웨어 정보를 요청할 때 사용합니다.
+장치 타입.<br>
+펌웨어 정보를 요청할 때 사용합니다.
 
 ```cpp
 namespace System
@@ -100,7 +101,7 @@ namespace System
 <br>
 
 ## <a name="ImageType">System::ImageType::Type</a>
-펌웨어 이미지 타입
+펌웨어 이미지 타입.
 
 ```cpp
 namespace System
