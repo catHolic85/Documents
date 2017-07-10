@@ -550,8 +550,8 @@ namespace Protocol
         u16     indexBlockNext;     // 요청 블럭 번호
     };
 }
-- indexBlockNext : 파일의 실제 위치에서 16으로 나눈 값
 ```
+- indexBlockNext : 파일의 실제 위치에서 16으로 나눈 값
 
 
 <br>
