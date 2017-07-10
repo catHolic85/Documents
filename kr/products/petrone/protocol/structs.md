@@ -368,6 +368,7 @@ namespace Protocol
 }
 ```
 
+
 <br>
 <br>
 
@@ -388,6 +389,7 @@ namespace Protocol
 ```
 - pressure 출력 값의 단위는 밀리미터(mm)입니다.
 
+
 <br>
 <br>
 
@@ -406,6 +408,7 @@ namespace Protocol
 ```
 - positionX, positionY 출력 값의 단위는 밀리미터(mm)입니다.
 
+
 <br>
 <br>
 
@@ -421,6 +424,7 @@ namespace Protocol
     };
 }
 ```
+
 
 <br>
 <br>
@@ -461,6 +465,119 @@ namespace Protocol
 }
 ```
 - 모든 출력 값의 단위는 밀리미터(mm)입니다.
+
+
+<br>
+<br>
+
+
+## <a name="UpdateLookupTarget">Protocol::UpdateLookupTarget</a>
+펌웨어 정보 요청.
+```cpp
+namespace Protocol
+{
+    struct UpdateLookupTarget
+    {
+        u32	deviceType;
+    };
+}
+```
+- deviceType : [System::DeviceType::Type](definitions.md#DeviceType)
+
+
+<br>
+<br>
+
+
+## <a name="UpdateInformation">Protocol::UpdateInformation</a>
+펌웨어 정보.
+```cpp
+namespace Protocol
+{
+    struct UpdateInformation
+    {
+        u8      modeUpdate;     // 현재 업데이트 모드
+
+        u32     deviceType;     // 장치 Type
+        u8      imageType;      // 현재 펌웨어의 이미지 타입
+        u16     imageVersion;   // 현재 펌웨어의 버젼
+
+        u8      year;           // 빌드 년
+        u8      month;          // 빌드 월
+        u8      day;            // 빌드 일
+    };
+}
+```
+- modeUpdate : [System::ModeUpdate::Type](definitions.md#ModeUpdate)
+- deviceType : [System::DeviceType::Type](definitions.md#DeviceType)
+- imageType : [System::ImageType::Type](definitions.md#ImageType)
+
+
+<br>
+<br>
+
+
+## <a name="Update">Protocol::Update</a>
+펌웨어 업데이트.
+```cpp
+namespace Protocol
+{
+    struct Update
+    {
+        u16     indexBlock;			// 블럭 번호(16바이트 단위)
+        u8      dataArray[16];		// 데이터 블럭
+    };
+}
+```
+- indexBlock : 펌웨어 파일에서 16바이트씩 데이터를 잘라서 전송합니다. Protocol::Update를 전송하는 동안에 다른 응답은 없으며 만약 전송 실패로 문제가 발생한 경우 드론이 Protocol::UpdateLocationCorrect를 보냅니다. 해당 패킷을 받으면 지정한 블럭 위치부터 다시 전송을 시작하면 됩니다.
+
+
+<br>
+<br>
+
+
+## <a name="UpdateLocationCorrect">Protocol::UpdateLocationCorrect</a>
+펌웨어 업데이트 위치 정정.
+```cpp
+namespace Protocol
+{
+    struct UpdateLocationCorrect
+    {
+        u16     indexBlockNext;		// 요청 블럭 번호
+    };
+}
+```
+
+
+<br>
+<br>
+
+
+## <a name="UpdaterHeader">Updater::Header</a>
+펌웨어 파일 헤더.
+페트론은 제어 펌웨어와 통신 펌웨어 두 가지 펌웨어로 구성되어 있고, 각각의 펌웨어는 내부 플래시 공간에 두 개의 영역을 나누어 ImageA에서 ImageB, ImageB에서 ImageA로 업데이트를 진행하여 정상적으로 펌웨어 업데이트가 완료된 경우 새로운 이미지로 부팅을 합니다. 제어 펌웨어를 업데이트 한 경우엔 펌웨어 업데이트가 완료되면 바로 시스템을 재시작합니다. 통신 펌웨어를 업데이트 한 경우엔 BLE 연결을 끊은 이후에 시스템을 재시작합니다. 
+펌웨어 파일의 처음 16바이트는 아래와 같이 구성되어 있습니다. 이 부분을 읽어서 펌웨어에 대한 정보를 확인할 수 있습니다.
+```cpp
+namespace Updater
+{
+    struct Header
+    {
+        u16     reserve;        // 예약 [2byte]
+
+        u32     length;         // 펌웨어 길이(헤더 16바이트 제외한 실제 펌웨어의 길이)[4byte]
+
+        u8      year;           // 펌웨어 배포일[년 2byte]
+        u8      month;          // 펌웨어 배포일[월 1byte]
+        u8      day;            // 펌웨어 배포일[일 1byte
+
+        u16     version;        // 펌웨어 버젼[2byte]
+        u8      imageType;      // 펌웨어 이미지 타입[1byte]
+        u32     deviceType;     // 업데이트 대상 장치[4byte]
+    };
+}
+```
+- imageType : [System::ImageType::Type](definitions.md#ImageType)
+- deviceType : [System::DeviceType::Type](definitions.md#DeviceType)
 
 
 <br>

@@ -47,6 +47,97 @@ namespace Protocol
 <br>
 <br>
 
+## <a name="DeviceType">System::DeviceType::Type</a>
+장치 타입. 펌웨어 정보를 요청할 때 사용합니다.
+
+```cpp
+namespace System
+{
+    namespace DeviceType
+    {
+        enum Type
+        {
+            None,
+			
+            PetroneMain,
+            PetroneSub,
+            Link,
+			
+            EndOfType
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+## <a name="ModeUpdate">System::ModeUpdate::Type</a>
+펌웨어 업데이트 동작 상태.
+
+```cpp
+namespace System
+{
+    namespace ModeUpdate
+    {
+        enum Type
+        {
+            None,       // 업데이트 불가능 상태(Debug 모드 등)
+
+            Ready,      // 업데이트 가능 상태
+            Update,     // 업데이트 중
+            Complete,   // 업데이트 완료
+
+            Faild,      // 업데이트 실패(업데이트 완료까지 갔으나 body의 CRC16이 일치하지 않는 경우)
+
+            EndOfType
+        };
+    }
+}
+```
+
+<br>
+<br>
+
+## <a name="ImageType">System::ImageType::Type</a>
+펌웨어 이미지 타입
+
+```cpp
+namespace System
+{
+    namespace ImageType
+    {
+        enum Type
+        {
+            None,
+
+            // 현재 장치의 이미지
+            ImageA,
+            ImageB,
+
+            // 펌웨어 이미지
+            RawImageA,
+            RawImageB,
+
+            EncryptedImageA,
+            EncryptedImageB,
+
+            // 현재 장치의 이미지
+            ImageSingle,
+
+            // 현재 장치의 이미지
+            RawImageSingle,
+            EncryptedImageSingle,
+
+            EndOfType
+        };
+    }
+}
+```
+
+<br>
+<br>
+
 ## <a name="ModeVehicle">System::ModeVehicle::Type</a>
 페트론 동작 모드를 선택합니다.
 
