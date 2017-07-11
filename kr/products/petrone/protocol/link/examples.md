@@ -1,5 +1,5 @@
 ***PETRONE / LINK / Protocol / Structs***<br>
-Modified : 2017.05.18
+Modified : 2017.07.11
 
 ---
 
@@ -563,6 +563,7 @@ PETRONE과 연결된 경우, 아래의 명령을 보내면 프로펠러 쪽 LED�
 5. [Base Structs](../base_structs.md)
 6. [Structs](../structs.md)
 7. [Structs - Light](../structs_light.md)
+8. [Firmware Update]((../firmware_update.md)
 
 
 ### PETRONE Link

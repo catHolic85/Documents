@@ -1,5 +1,5 @@
 ***PETRONE / BLE / Protocol / Intro***<br>
-Modified : 2017.03.28
+Modified : 2017.07.11
 
 ---
 
@@ -64,6 +64,7 @@ Modified : 2017.03.28
 5. [Base Structs](base_structs.md)
 6. [Structs](structs.md)
 7. [Structs - Light](structs_light.md)
+8. [Firmware Update](firmware_update.md)
 
 
 ### PETRONE Link

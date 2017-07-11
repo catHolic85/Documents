@@ -1,5 +1,5 @@
 ***PETRONE / LINK / Protocol / Intro***<br>
-Modified : 2017.05.18
+Modified : 2017.07.11
 
 ---
 
@@ -121,6 +121,7 @@ LINK 모듈은 시리얼 통신용으로 Silicon Labs사의 CP2104를 사용하�
 5. [Base Structs](../base_structs.md)
 6. [Structs](../structs.md)
 7. [Structs - Light](../structs_light.md)
+8. [Firmware Update]((../firmware_update.md)
 
 
 ### PETRONE Link

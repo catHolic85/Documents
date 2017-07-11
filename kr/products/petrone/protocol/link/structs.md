@@ -1,5 +1,5 @@
 ***PETRONE / LINK / Protocol / Structs***<br>
-Modified : 2017.05.18
+Modified : 2017.07.11
 
 ---
 
@@ -132,6 +132,7 @@ PETRONE과 페어링이 필요한 경우에 먼저 LinkPasscode를 사용하여 
 5. [Base Structs](../base_structs.md)
 6. [Structs](../structs.md)
 7. [Structs - Light](../structs_light.md)
+8. [Firmware Update]((../firmware_update.md)
 
 
 ### PETRONE Link

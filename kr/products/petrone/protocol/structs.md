@@ -1,5 +1,5 @@
 ***PETRONE / BLE / Protocol / Structs***<br>
-Modified : 2017.07.10
+Modified : 2017.07.11
 
 ---
 
@@ -555,39 +555,6 @@ namespace Protocol
 
 
 <br>
-<br>
-
-
-## <a name="UpdaterHeader">Updater::Header</a>
-펌웨어 파일 헤더.<br>
-페트론은 제어 펌웨어와 통신 펌웨어 두 가지 펌웨어로 구성되어 있습니다. 그리고 각각의 펌웨어는 내부 플래시 공간을 두 개의 영역으로 나누어 ImageA 영역과 ImageB 영역으로 분리되어 있습니다. 펌웨어 업데이트 시에는 ImageA에서 ImageB, ImageB에서 ImageA로 업데이트를 진행합니다. 따라서 현재 구동중인 드론 메인펌웨어가 ImageA라면 ImageB를 전송해야합니다.<br>
-펌웨어 업데이트가 정상적으로 완료된 경우에만 새로운 이미지로 부팅을 합니다. 만약 중간에 실패하더라도 이전 펌웨어를 보존하고 있기 때문에 대부분의 경우 펌웨어 업데이트를 실패해도 큰 문제가 발생하지는 않습니다.<br>
-제어 펌웨어를 업데이트 한 경우엔 펌웨어 업데이트가 완료되면 바로 시스템을 재시작합니다. 통신 펌웨어를 업데이트 한 경우엔 BLE 연결을 끊은 이후에 시스템을 재시작합니다.<br>
-펌웨어 파일의 처음 16바이트는 아래와 같이 구성되어 있습니다. 이 부분을 읽어서 펌웨어 파일에 대한 정보를 확인할 수 있습니다.
-```cpp
-namespace Updater
-{
-    struct Header
-    {
-        u16     reserve;        // 예약 [2byte]
-
-        u32     length;         // 펌웨어 길이(헤더 16바이트 제외한 실제 펌웨어의 길이)[4byte]
-
-        u8      year;           // 펌웨어 배포일[년 2byte]
-        u8      month;          // 펌웨어 배포일[월 1byte]
-        u8      day;            // 펌웨어 배포일[일 1byte
-
-        u16     version;        // 펌웨어 버젼[2byte]
-        u8      imageType;      // 펌웨어 이미지 타입[1byte]
-        u32     deviceType;     // 업데이트 대상 장치[4byte]
-    };
-}
-```
-- imageType : [System::ImageType::Type](definitions.md#ImageType)
-- deviceType : [System::DeviceType::Type](definitions.md#DeviceType)
-
-
-<br>
 
 ---
 
@@ -600,6 +567,7 @@ namespace Updater
 5. [Base Structs](base_structs.md)
 6. ***Structs***
 7. [Structs - Light](structs_light.md)
+8. [Firmware Update](firmware_update.md)
 
 
 ### PETRONE Link

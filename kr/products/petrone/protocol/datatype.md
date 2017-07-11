@@ -1,5 +1,5 @@
 ***PETRONE / BLE / Protocol / DataType***<br>
-Modified : 2017.07.10
+Modified : 2017.07.11
 
 ---
 
@@ -102,6 +102,7 @@ namespace Protocol
 5. [Base Structs](base_structs.md)
 6. [Structs](structs.md)
 7. [Structs - Light](structs_light.md)
+8. [Firmware Update](firmware_update.md)
 
 
 ### PETRONE Link
