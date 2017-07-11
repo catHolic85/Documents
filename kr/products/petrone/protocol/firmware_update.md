@@ -49,7 +49,7 @@ namespace Updater
 
 1. 펌웨어 업데이트를 시작하기 전에 서버로부터 펌웨어 파일 4개(제어 펌웨어 A, B, 통신 펌웨어 A, B)를 받습니다.
 
-2. 펌웨어 파일 앞 부분 16바이트를 읽어 각각의 파일에 대한 정보를 확인합니다. [Updater::Header](#UpdaterHeader)
+2. 펌웨어 파일 앞 부분 16바이트를 읽어 각각의 파일에 대한 정보를 확인합니다. ([Updater::Header](#UpdaterHeader))
     - 제어 펌웨어인 경우, 펌웨어 파일의 이미지 타입([System::ImageType::Type](definitions.md#ImageType))은 **EncryptedImageA** 또는 **EncryptedImageB**입니다.
     - 통신 펌웨어인 경우, 펌웨어 파일의 이미지 타입([System::ImageType::Type](definitions.md#ImageType))은 **RawImageA** 또는 **RawImageB**입니다.
 
@@ -57,7 +57,7 @@ namespace Updater
 
 3. 각각의 요청에 대해 드론은 [Protocol::UpdateInformation](structs.md#UpdateInformation) 구조체를 응답으로 보냅니다.
 
-4. 드론의 펌웨어와 서버로부터 받은 펌웨어의 정보를 비교하여 적절한 펌웨어를 전송합니다. [Protocol::Update](structs.md#Update)
+4. 드론의 펌웨어와 서버로부터 받은 펌웨어의 정보를 비교하여 적절한 펌웨어를 전송합니다. ([Protocol::Update](structs.md#Update))
     - 펌웨어 업데이트 시에는 파일에서 16바이트씩 데이터를 잘라서 전송합니다. 1블럭은 16바이트입니다.
     - 드론에서 실행중인 펌웨어 이미지 타입이 **ImageA**인 경우 이미지 타입이 **RawImageB** 또는 **EncryptedImageB**인 펌웨어를 전송합니다. 반대로 실행중인 펀웨어 이미지 타입이 **ImageB**인 경우 이미지 타입이 **RawImageA** 또는 **EncryptedImageA**인 펌웨어를 전송하면 됩니다.
     - BLE를 통해 펌웨어 데이터 전송 시 별다른 문제가 없다면 드론은 응답을 하지 않습니다. 만약 전송하는 데이터를 잃어버리거나하는 문제가 발생하면 펌웨어 업데이트 위치 정정을 [Protocol::UpdateLocationCorrect](structs.md#UpdateLocationCorrect) 응답으로 전송합니다. 이 구조체를 받은 경우 해당 위치부터 다시 전송을 시작해야 합니다.
@@ -84,7 +84,7 @@ namespace Updater
 
 ## 데이터 요청 예제
 
-#### 제어 펌웨어 정보 요청 패킷(시리얼 통신)
+- 제어 펌웨어 정보 요청 패킷(시리얼 통신)
 
 <table>
     <tr>
@@ -123,7 +123,7 @@ namespace Updater
     </tr>
 </table>
 
-#### 통신 펌웨어 정보 요청 패킷(시리얼 통신)
+- 통신 펌웨어 정보 요청 패킷(시리얼 통신)
 
 <table>
     <tr>
