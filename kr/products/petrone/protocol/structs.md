@@ -473,7 +473,7 @@ namespace Protocol
 
 ## <a name="UpdateLookupTarget">Protocol::UpdateLookupTarget</a>
 펌웨어 정보 요청.<br>
-페트론은 제어 MCU와 통신 MCU로 구성되어 있습니다. 여기에서 원하는 장치의 Protocol::UpdateInformation을 요청할 때 사용합니다.
+페트론은 제어 MCU와 통신 MCU로 구성되어 있습니다. Protocol::UpdateLookupTarget은 원하는 장치의 Protocol::UpdateInformation을 요청할 때 사용합니다.
 ```cpp
 namespace Protocol
 {
