@@ -57,9 +57,9 @@ namespace Updater
 
 5. 드론의 펌웨어와 서버로부터 받은 펌웨어의 정보를 비교하여 적절한 펌웨어를 전송합니다. ([Protocol::Update](structs.md#Update))
     - 펌웨어 업데이트 시에는 파일에서 16바이트씩 데이터를 잘라서 전송합니다. 1블럭은 16바이트입니다.
-    - 드론에서 실행중인 펌웨어 이미지 타입이 **ImageA**인 경우 이미지 타입이 **RawImageB** 또는 **EncryptedImageB**인 펌웨어를 전송합니다. 반대로 실행중인 펀웨어 이미지 타입이 **ImageB**인 경우 이미지 타입이 **RawImageA** 또는 **EncryptedImageA**인 펌웨어를 전송하면 됩니다.
-    - BLE를 통해 펌웨어 데이터 전송 시 별다른 문제가 없다면 드론은 응답을 하지 않습니다. 만약 전송하는 데이터를 잃어버리거나하는 문제가 발생하면 펌웨어 업데이트 위치 정정을 [Protocol::UpdateLocationCorrect](structs.md#UpdateLocationCorrect) 응답으로 전송합니다. 이 구조체를 받은 경우 해당 위치부터 다시 전송을 시작해야 합니다.
-    - 유선 시리얼 통신으로 펌웨어 데이터를 전송하면, 매번 블럭 전송 시 응답으로 펌웨어 업데이트 위치 정정을 [Protocol::UpdateLocationCorrect](structs.md#UpdateLocationCorrect) 전송합니다.
+    - 드론에서 실행중인 펌웨어 이미지 타입이 **ImageA**인 경우 이미지 타입이 **RawImageB** 또는 **EncryptedImageB**인 펌웨어를 전송합니다. 반대로 실행중인 펌웨어 이미지 타입이 **ImageB**인 경우 이미지 타입이 **RawImageA** 또는 **EncryptedImageA**인 펌웨어를 전송하면 됩니다.
+    - BLE를 통해 펌웨어 데이터 전송 시 별다른 문제가 없다면 드론은 응답을 하지 않습니다. 만약 전송하는 데이터를 잃어버리거나하는 문제가 발생하면 펌웨어 업데이트 위치 정정을([Protocol::UpdateLocationCorrect](structs.md#UpdateLocationCorrect)) 응답으로 전송합니다. 이 구조체를 받은 경우 해당 위치부터 다시 전송을 시작해야 합니다.
+    - 유선 시리얼 통신으로 펌웨어 데이터를 전송하면, 매번 블럭 전송 시 응답으로 펌웨어 업데이트 위치 정정을([Protocol::UpdateLocationCorrect](structs.md#UpdateLocationCorrect)) 전송합니다.
 
 6. 페트론 펌웨어 업데이트 완료 처리
     - 펌웨어 업데이트가 정상적으로 완료된 경우에만 새로운 이미지로 부팅을 합니다. 만약 중간에 실패하더라도 이전 펌웨어를 보존하고 있기 때문에 대부분의 경우 펌웨어 업데이트를 실패해도 큰 문제가 발생하지는 않습니다.
