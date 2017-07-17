@@ -322,7 +322,7 @@ namespace Protocol
 
 
 ## <a name="Protocol_AccelBias">Protocol::AccelBias</a>
-자이로 바이어스 값을 반환합니다.
+엑셀 바이어스 값을 반환합니다.
 ```cpp
 namespace Protocol
 {
